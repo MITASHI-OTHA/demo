@@ -1,0 +1,336 @@
+{% extends 'espace/base.html.twig' %}
+{% set title = 'Le forum' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('css/forum.css')}}">
+        <style>
+            .thumb h1 {
+                font-size: 23px;
+                font-weight: 600;
+            }
+            .line-ifo {
+                background: #E7EDF3;
+                color: #667D99
+            }
+            .line-ifo::after {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 32px;
+                width: 0;
+                height: 0;
+                border-bottom: 10px solid #e7edf3;
+                border-right: 10px solid transparent;
+                border-left: 10px solid transparent;
+                transform: rotate(180deg);
+            }
+            .thumbs h1 {
+                font-size: 18px;
+            }
+            .liked {
+                color: var(--blue);
+            }
+            .like:hover {
+                cursor: pointer
+            }
+            .commentLine:not(:last-child) {
+                border-bottom: 1px solid #e8e8e8;
+            }
+        </style>
+{% endblock %}
+
+{% block body %}
+  {{ render(path("header")) }}
+    <section class="position-relative section">
+        <div class="container">
+            <div class="row mt-4">
+                <div class="col-md-12 mt-3 h-title">
+                    <h1> Le forum </h1>
+                </div>
+                <div class="col-md-12 my-5">
+                        <div class="row">
+                            <div class="col thumb d-flex">
+                                <div>
+                                    <div class="d-flex justify-content-center align-items-center thumbnail">
+                                        <img class="w-100" src="https://images.pexels.com/photos/654690/pexels-photo-654690.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500">
+                                    </div>
+                                </div>
+                                <div class="d-grid ml-2 mr-2 thumb-content">
+                                    <div class="d-flex align-items-center">
+                                        <span style="font-size: 18px;font-weight: 600"> Melka </span>
+                                        <span class="ml-3"> Posté le 20 novembre 2020 </span>
+                                    </div>
+                                    <h1 class="my-2"> Amet minim mollit </h1>
+                                        <p class="py-2">
+                                            Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse pariatur duis deserunt mollit dolore cillum minim tempor enim. Elit aute irure tempor cupidatat incididunt sint deserunt ut voluptate aute id deserunt nisi.
+
+                                            Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse pariatur duis deserunt mollit dolore cillum minim tempor enim. Elit aute irure tempor cupidatat incididunt sint deserunt ut voluptate aute id deserunt nisi.
+                                        </p>
+                                        <div class="py-2">
+                                            <button type="button" class="btn btnDanger repondre" style="text-transform: inherit;"> Répondre </button>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col my-3">
+                        <div class="line-ifo w-100 p-1 pl-3 position-relative">
+                            <span> 3 réponses </span>
+                        </div>
+                </div>
+                {# Commentaires #}
+                <section>
+                    <div class="row">
+                        <div class="col-md-12 d-flex my-2 p-3 commentLine">
+                            <div class="mr-auto d-flex thumbs">
+                                <div>
+                                    <div class="d-flex justify-content-center align-items-center thumbnail">
+                                        <img class="w-100" src="https://images.pexels.com/photos/3936894/pexels-photo-3936894.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500">
+                                    </div>
+                                </div>
+                                <div class="d-grid ml-2 mr-2 thumb-content">
+                                    <h1> Jacob Jones <span style="color: #b1b1b1">8 nov. 2020 à 10:59</span></h1>
+                                        <p>
+                                            Anim magna nisi elit sit quis irure reprehenderit voluptate voluptate irure occaecat ullamco nostrud. Sit voluptate ea culpa ullamco qui proident eiusmod adipisicing officia. Do nulla ullamco eu culpa laboris.
+                                        </p>
+                                    <div class="d-grid my-2">
+                                        <span class="repondre"><i class="icon-message_vector_Plan-de-travail-1"></i> Commenter</span>
+                                        <span class="mt-2 liked like"><i class="far fa-thumbs-up"></i> Vous aimez </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {# occurences #}
+                            <div class="col-md-12 d-flex my-2 p-3 commentLine">
+                            <div class="mr-auto d-flex thumbs">
+                                <div>
+                                    <div class="d-flex justify-content-center align-items-center thumbnail">
+                                        <img class="w-100" src="https://images.pexels.com/photos/3211476/pexels-photo-3211476.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260">
+                                    </div>
+                                </div>
+                                <div class="d-grid ml-2 mr-2 thumb-content">
+                                    <h1> Jacob Jones <span style="color: #b1b1b1">8 nov. 2020 à 10:59</span></h1>
+                                        <p>
+                                            Anim magna nisi elit sit quis irure reprehenderit voluptate voluptate irure occaecat ullamco nostrud. Sit voluptate ea culpa ullamco qui proident eiusmod adipisicing officia. Do nulla ullamco eu culpa laboris.
+                                        </p>
+                                    <div class="d-grid my-2">
+                                        <span class="repondre"><i class="icon-message_vector_Plan-de-travail-1"></i> Commenter</span>
+                                        <span class="mt-2 like"><i class="far fa-thumbs-up"></i> J'aime </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {# fin #}
+                        {# occurences #}
+                        <div class="col-md-12 d-flex my-2 p-3 commentLine">
+                            <div class="mr-auto d-flex thumbs">
+                                <div>
+                                    <div class="d-flex justify-content-center align-items-center thumbnail">
+                                        <img class="w-100" src="https://images.pexels.com/photos/3936894/pexels-photo-3936894.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500">
+                                    </div>
+                                </div>
+                                <div class="d-grid ml-2 mr-2 thumb-content">
+                                    <h1> Jacob Jones <span style="color: #b1b1b1">8 nov. 2020 à 10:59</span></h1>
+                                        <p>
+                                            Anim magna nisi elit sit quis irure reprehenderit voluptate voluptate irure occaecat ullamco nostrud. Sit voluptate ea culpa ullamco qui proident eiusmod adipisicing officia. Do nulla ullamco eu culpa laboris.
+                                        </p>
+                                    <div class="d-grid my-2">
+                                        <span class="repondre"><i class="icon-message_vector_Plan-de-travail-1"></i> Commenter</span>
+                                         <span class="mt-2 like"><i class="far fa-thumbs-up"></i> J'aime </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {# fin #}
+                        {# occurences #}
+                        <div class="col-md-12 d-flex my-2 p-3 commentLine">
+                            <div class="mr-auto d-flex thumbs">
+                                <div>
+                                    <div class="d-flex justify-content-center align-items-center thumbnail">
+                                        <img class="w-100" src="https://images.pexels.com/photos/3211476/pexels-photo-3211476.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260">
+                                    </div>
+                                </div>
+                                <div class="d-grid ml-2 mr-2 thumb-content">
+                                    <h1> Jacob Jones <span style="color: #b1b1b1">8 nov. 2020 à 10:59</span></h1>
+                                        <p>
+                                            Anim magna nisi elit sit quis irure reprehenderit voluptate voluptate irure occaecat ullamco nostrud. Sit voluptate ea culpa ullamco qui proident eiusmod adipisicing officia. Do nulla ullamco eu culpa laboris.
+                                        </p>
+                                    <div class="d-grid my-2">
+                                        <span class="repondre"><i class="icon-message_vector_Plan-de-travail-1"></i> Commenter</span>
+                                         <span class="mt-2 like"><i class="far fa-thumbs-up"></i> J'aime </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {# fin #}
+                    </div>
+                </section>
+                
+            </div>
+                <section class="my-4">
+                    <div class="row">
+                        <div class="col-md-12 pl-0">
+                            <div class="d-flex w-100">
+                                <div class="w-8">
+                                    <div class="d-flex justify-content-center align-items-center thumbnail">
+                                        <img class="w-100" src="https://images.pexels.com/photos/654690/pexels-photo-654690.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                                    </div>
+                                </div>
+                                <div class="w-70">
+                                    <form name="subjet">
+                                            <input type="file" name="fichier" style="display: none">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1"> Votre réponse  </label>
+                                                <textarea name="message" id="messages" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                                            </div>
+                                            <div class="d-flex align-items-center position-relative">
+                                                    
+                                                    <a type="submit" class="btn btnSubmit" href="#">Commenter</a>
+                                                    <button type="reset" class="btn btnPrimary ml-3" href="#">Annuler</button>
+                                                    <i class="fas fa-paperclip ml-3" style="font-size: 20px;"></i>
+                                                    <i class="far fa-smile-beam mx-3" style="font-size: 20px;"></i>
+                                                <div class="Divemoji m-2">
+                                                    <ul  id='emo' class="m-2"></ul>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                {# Pagination #}
+                <section>
+                    <div class="row">
+                            <div class="col-md-12 mt-5 d-flex justify-content-center">
+                                <nav aria-label="...">
+                                    <ul class="pagination">
+                                        <li class="page-item disabled">
+                                        <span class="page-link">Precèdent</span>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item active">
+                                        <span class="page-link">
+                                            2
+                                            <span class="sr-only">(current)</span>
+                                        </span>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">6</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">7</a></li>
+                                        <li class="page-item">
+                                        <a class="page-link" href="#">Suivant</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                    </div>
+                </section>
+                    
+                    {# fin #}
+        </div>
+    </section>
+    
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(function() {
+            //
+            $('.repondre').on('click', ()=> {
+                $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+            })
+            $('button[type="reset"]').on('click', ()=> {
+                $('textarea').css('height', 'auto')
+            })
+            // Ajouter l'icone de recherche sur l'input recherche
+            $('.blk-rch').append("<i class='fas fa-search position-absolute'></i>")
+                    let taille = $('.add-subject').height()
+                    $('.add-subject').css('bottom', '-'+ taille + 'px')
+            // Reduire la fenetre du formulaire d'ajout d'un sujet
+                $('.fa-minus').on('click', ()=> {
+                    $('.add-subject').toggleClass('swipDown')
+                })
+            // Fermer la fenetre du formulaire d'ajout d'un sujet
+                $('.add-subject .fa-times').click(()=> {
+                    console.log($('.add-subject').height())
+                    let taille = $('.add-subject').height()
+                    $('.add-subject').css('bottom', '-'+ taille + 'px')
+                    $('textarea').val('').css('height', 'auto')
+                } )
+            // Agrandir la fenetre
+                $('.fa-expand').on('click', ()=> {
+                    //fullexpand
+                     $('.add-subject').toggleClass('fullexpand')
+                })
+            // Autogrow
+                $('textarea').each(function () {
+                this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+                }).on('input', function () {
+                this.style.height = 'auto';
+                this.style.height = (this.scrollHeight) + 'px';
+                });
+                // On appelle le fichier full-emoji-list.json
+                $.post("{{asset('./js/full-emoji-list.json')}}").done(response=> {
+                // Ici on recupere les emoji (map) 
+                     const emoji = response.ArrSmyley.map(arr=> {
+                       return `<li class='m-1'>${arr.emoji}</li>`
+                   })
+                // On affiche tous les emoji sur la balise avec la class Divemoji
+                    $('.Divemoji #emo').append(emoji)
+
+               // Lorsqu'on clique sur un emoticone
+                    $("#emo").on("click","li",function(e){
+                            var els = $(this)
+                            console.log('els=> ', els[0].innerHTML)
+                    // On appelle la fonction ajouter
+                            Ajouter(els[0].innerHTML)
+										})
+                }).fail(err=> console.log('erreur ', err))
+                $('.fa-paperclip').on('click', ()=> {
+                    $('input[name="fichier"]').click()
+                })
+                 // Evenement lorsqu'on click sur un l'icon emoticone 
+                $('.fa-smile-beam').on('click', ()=> {
+                    $('.Divemoji').is(':visible')?$('.Divemoji').hide(): $('.Divemoji').show()
+                })
+                $('body').on('click', function() {
+                    $('.Divemoji').hide()
+                })
+                $('.Divemoji, .fa-smile-beam').on('click', function(e) {
+                    e.stopPropagation()
+                })
+                // Fonction pour ajouter l'emoji sur le textara
+                function Ajouter(b1)
+                {
+                    //Gestion des selections
+                    var mess = document.getElementById('messages');
+                    if (document.selection)
+                    //Pour Internet Explorer
+                    {
+                    var str = document.selection.createRange().text;
+                    mess.focus();
+                    sel = document.selection.createRange();
+                    sel.text = b1 + str;
+                    }
+                    else
+                    {
+                    //Pour les autres
+                    var startPos = mess.selectionStart;
+                    var endPos = mess.selectionEnd;
+                    var chaine = mess.value;
+                    var str = chaine.substring( mess.selectionStart, mess.selectionEnd );
+                    mess.value = chaine.substring(0, startPos) + b1 + str
+                    + chaine.substring(endPos, chaine.length);
+                    }
+                    mess.focus();
+                }
+            // Publier un nouveau sujet
+            $('form[name="subjet"]').on('submit', function(e) {
+                e.preventDefault()
+                console.log('form=> ', $(this).serializeArray()  )
+            })
+         })
+    </script>
+{% endblock %}

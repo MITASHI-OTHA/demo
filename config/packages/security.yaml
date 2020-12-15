@@ -1,0 +1,55 @@
+security:
+    encoders:
+        App\Entity\User:
+            algorithm : auto
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        users_in_memory: { memory: null }
+        users_in_database:
+            entity:
+                class: App\Entity\User
+                property: email
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            pattern: ^/
+            anonymous: true
+            lazy: true
+            
+            provider: users_in_database
+
+            user_checker: App\Security\UserChecker
+
+            #form_login:
+                #login_path: login
+                #check_path: login
+                #default_target_path: home
+                #csrf_token_generator: security.csrf.token_manager
+            
+            logout:
+                path: /logout
+                success_handler: authentication_handler
+                invalidate_session: false
+            guard:
+                authenticators:
+                    - App\Security\UserAuthenticator
+                    - App\Security\LoginFormAuthenticator
+                entry_point: App\Security\LoginFormAuthenticator
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/profile, roles: [ ROLE_USER, ROLE_ADMIN ] }
+        - { path: ^/project_manager, roles: [ ROLE_PROJECT_MANAGER, ROLE_ADMIN ] }
+        - { path: ^/user, roles: [ ROLE_USER, ROLE_ADMIN ] }
+        - { path: ^/ads, roles: ROLE_USER }
+        - { path: ^/ad/messages, roles: ROLE_USER }

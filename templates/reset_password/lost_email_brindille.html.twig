@@ -1,0 +1,124 @@
+{% apply inline_css %}
+
+<style>
+    h2 {
+        font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+        font-weight: 500;
+        font-size: 22px;
+        color: #4f545c;
+        letter-spacing: 0.27px;
+    }
+
+    .mailBlock {
+        width: 100%;
+        margin: 1em auto;
+        padding: 40px 0;
+        background-color: #f9f9f9;
+    }
+
+    .subjectMail {
+        color: #737f8d;
+        font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+        font-size: 16px;
+        line-height: 26px;
+        text-align: left;
+    }
+
+    .mailhead {
+        width: 75%;
+        padding: 3.5em;
+        margin: 0 auto;
+        background-color: #fff;
+    }
+
+    .email {
+        font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+        font-size: 16px;
+        line-height: 26px;
+        color: #737f8d;
+    }
+
+    .img {
+        margin: 0 auto 2em auto;
+        margin-bottom: 40px;
+    }
+
+    .centrer {
+        text-align: center;
+    }
+
+    button {
+        font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+        border-radius: 5px;
+        border: none;
+        padding: 1em 1.2em;
+        text-decoration: none;
+        letter-spacing: 0.6px;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: left;
+        background-color: #D9326F;
+    }
+
+    button a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    button:hover {
+        background-color: rgb(172, 40, 89);
+    }
+
+    i {
+        margin-right: 8px;
+    }
+
+    p,
+    a {
+        text-align: center;
+    }
+
+    p img {
+        margin-right: 8px;
+    }
+</style>
+
+<div class="mailBlock">
+    <div class="mailhead">
+        <div class="centrer img">
+            <img class="centrer" src="{{ email.image('@images/logotype_lcz.svg') }}" alt="Logo welcohome" width="140">
+        </div>
+        <h2>Bonjour {{ user.prenom }} !</h2>
+
+        <p class="subjectMail">
+            Vous venez de faire une demande de changement du mot de passe :
+        </p>
+        {% if user.civilite == 'm' and user.userContactInfos.avatar == 'default_avatar' %}
+            <p class="email">
+                <img src="{{ email.image('@images/male.svg') }}" alt="icon man" width="48">{{ email.to[0].address }}
+            </p>
+        {% endif %}
+
+        {% if user.civilite == 'f' and user.userContactInfos.avatar == 'default_avatar' %}
+            <p class="email">
+                <img src="{{ email.image('@images/female.svg') }}" alt="icon woman" width="48">{{ email.to[0].address }}
+            </p>
+        {% endif %}
+
+        {% if user.userContactInfos.avatar != 'default_avatar' %}
+            <p class="email">
+                <img class="cropMailAvatar" src="{{ email.image('@avatars/' ~ user.userContactInfos.avatar) }}"
+                    alt="{{ user.prenom }}">{{ email.to[0].address }}
+            </p>
+        {% endif %}
+        
+        <div class="centrer">
+            <button type="button">
+                <a href="{{ url }}">Veuillez cliquer sur ce lien pour pouvoir modifier votre mot de passe</a>
+            </button>
+        </div>
+    </div>
+
+</div>
+
+{% endapply %}

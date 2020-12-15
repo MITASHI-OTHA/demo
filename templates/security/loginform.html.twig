@@ -1,0 +1,78 @@
+{% block stylesheets %}
+    <style>
+            section .app__flashes__error {
+            position: absolute
+        }
+    </style>
+{% endblock %}
+
+<section>
+                <i class="fas fa-times closed"></i>
+                  <div class="row">
+                      <div class="col-md-6 position-relative">
+                          <h5>
+                            Vous disposez déjà d'un compte ? <br>
+                            <br>
+                            M'identifier 
+                          </h5>
+                        <br>
+                            
+                          <form name="login" class="blk-form-login">
+                            <input placeholder="Adresse electronique" aria-describedby="emailHelp"  type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+                            <input placeholder="Adresse electronique" class="form-control" type="password" name="password" id="inputPassword" aria-describedby="passwordHelp">
+                            <font class="mt-2"><a href="{{path('forgot')}}" style="color: rgb(55, 57, 66);"> Un trou de mémoire ? Cliquez-ici </a> </font>
+                            <button type="submit" class="btn btn-primary btn-sm btnSubmit"> Se connecter  </button>
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                          </form>
+                      </div>
+                      <div class="col-md-6">
+                          <h5>
+                            Vous n'avez pas encore de compte ? <br>
+                            <br>
+                            Inscrivez-vous 
+                          </h5>
+                          <p style="color: red;padding-top: 20px"> Il n' y en a que pour quelques secondes !</p>
+                          <ul class="list-item-no-account">
+                              <li>Déposez une annonce pour les porteurs de projet</li>
+                              <li>Integrez des projets participatifs pour les futurs habitants</li>
+                              <li>Echangez des idées, et pleins d’autres choses</li>
+                          </ul>
+                          <div class="blk-form-signup">
+                            <a href="{{path('registration')}}"><button type="button" class="btn btn-primary btn-sm btnSubmit"> Je m’inscris </button></a>
+                          </div>
+                      </div>
+                    </div>
+            </section>
+            {% block javascripts %}
+                <script>
+                    $(function(){
+                        $('form[name="login"]').on('submit',function($e) {
+                            $e.preventDefault()
+                            let form = $(this).serialize()
+                            console.log(form)
+                            $.ajax({
+                                method: 'POST',
+                                url: '/login',
+                                data: form,
+                                dataType: 'json'
+                            }).done((e)=> {
+                                    console.log('success => ', e)
+                                    if(e.hasError == true) {
+                                        let layout = `<div class="app__flashes__error">
+                                        Erreur sur vos identifiants !
+                                        <div class="app__flashes__close"></div>
+                                    </div>`
+                                    $('form[name="login"]').prepend(layout)
+                                    } else if(e.success == true) {
+                                        location.reload(true)
+                                    }
+                            }).fail(err=> {
+                                console.log('erreur => ', err)
+                            })
+                        })
+                        $(document).on('click', '.app__flashes__close', ()=> {
+                                $('.app__flashes__error').fadeOut()
+                        })
+                    })
+                </script>
+            {% endblock %}

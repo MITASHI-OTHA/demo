@@ -1,0 +1,290 @@
+{% extends 'base.html.twig' %}
+{% set title = 'Bibliothèque' %}
+
+{% block body %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/style.css')}}/"/>
+        <style>
+            .container .row:first-child h6 {
+                margin-top: 3%
+            }
+            .texte {
+                background: #ddd;
+                padding: 10px;
+            }
+            ul {
+                list-style: none;
+                display: flex;
+                padding-left: 14px;
+            }
+           .list-it ul li {
+                display: inline;
+                text-align: center
+            }
+             .list-it ul li  div {
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                background: #e0e0e0;
+                display: flex
+            }
+            .list-it ul li:not(.first) {
+                margin-left: 3em;
+            }
+            .list-it ul li div svg {
+                margin: auto
+            }
+            .card {
+                width: 250px;
+                background: #fff;
+                padding: 0;
+            }
+            .isotop {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                margin-top: 51px;
+            }
+            .isotop .card-item {
+                margin-right: 3%
+            }
+            .caption {
+                 border-radius: 5px 5px 0 0;
+                 height: 159px;
+                 overflow: hidden
+           }
+            .card {
+                box-shadow: 3px -6px 6px 5px rgb(208 186 186 / 8%), 0 4px 8px 0 rgb(199 199 199 / 18%);
+                margin-bottom: 1rem
+            }
+           
+            .foot-card span {
+                font-size: 12px;
+            }
+            .card div:last-child {
+                padding: 11px;
+            }
+            .foot-card {
+                padding-left: 0 !important;
+            }
+             .card em {
+                font-size: 11px
+             }
+             .list-it ul li div:hover {
+                    background: #cccaca;
+                    transition: all .3s;
+                    cursor: pointer
+             }
+             .caption img {
+                 width: 100%
+             }
+             .foot-card img {
+                 width: 15px
+             }
+             section h1 {
+                 font-weight: 600;
+                 font-size: 26px
+             }
+        </style>
+    {% endblock %}
+
+    <div class="container">
+        <section>
+            <div class="row">
+                <div class="col-md-12 mt-5">
+                        <h1> Bibliothèque </h1>
+
+                        <h6> Filtres </h6>
+                        <div class="alert alert-secondary alert-warning alert-dismissible fade show" role="alert">
+                                 Vous pouvez choisir de fitrer les documents en fonction du type de fichier que vous recherchés (image, site web, pdf, docx...)
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        
+                </div>
+                <div class="row" style="margin-top: 5px;width: 100%">
+                        <div class="col-md-12 list-it">
+                            <ul>
+                                    <li class="first">
+                                        <button type="button" class="btn btn-danger all" onclick="fitrer('card-item')">Tous les documents</button>
+                                    </Li>
+                                    <li>
+                                        <div class="filter" data-filtre="document">
+                                                <i class="fas fa-file-alt"></i>
+                                        </div>
+                                    </Li>
+                                    <li>
+                                         <div class="filter" data-filtre="image">
+                                            <i class="fas fa-image"></i>
+                                        </div>
+                                    </Li>
+                                    <li>
+                                         <div class="filter" data-filtre="web">
+                                            <i class="fas fa-globe"></i>
+                                        </div>
+                                    </Li>
+                                     <li>
+                                         <div class="filter" data-filtre="video">
+                                            <i class="fas fa-file-video"></i>
+                                        </div>
+                                    </Li>
+                            </ul>
+                        </div>
+                </div>
+                <div class="isotop" data-isotope='{ "itemSelector": ".card-item" }'>
+                            <div class="card-item premier image">
+                                <div class="card">
+                                        <div class="caption d-flex justify-content-center align-items-center">
+                                            <img src="https://images.pexels.com/photos/2079246/pexels-photo-2079246.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260">
+                                        </div>
+                                        <div>
+                                            <h6> document #K8KDHJ </h6>
+                                            <p> Ajouté le 20 Juillet 2020 </p>
+                                            <em>250k</em>
+                                            <div class="foot-card">
+                                                <img src="{{asset('build/images/web/image.png')}}">
+                                                <span> Télecharger l'image </span>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="card-item document">
+                                <div class="card">
+                                        <div class="caption d-flex justify-content-center align-items-center">
+                                            <img src="{{ asset('build/images/web/ciyzens-folder.jpg') }}">
+                                        </div>
+                                        <div>
+                                            <h6> document #K8KDHJ </h6>
+                                            <p> Ajouté le 20 Juillet 2020 </p>
+                                            <em>250k</em>
+                                            <div class="foot-card">
+                                                <img src="{{asset('build/images/web/zip.png')}}">
+                                                <span> Télecharger le document </span>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="card-item video">
+                                <div class="card">
+                                    <div class="caption d-flex justify-content-center align-items-center">
+                                        <img src="{{ asset('build/images/web/video.jpg') }}">
+                                    </div>
+                                    <div>
+                                        <h6> document #K8KDHJ </h6>
+                                        <p> Ajouté le 20 Juillet 2020 </p>
+                                        <em>250k</em>
+                                        <div class="foot-card">
+                                            <img src="{{asset('build/images/web/play.png')}}">
+                                            <span> Télecharger le document </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                        
+                            </div>
+                            <div class="card-item document">
+                                <div class="card">
+                                       <div class="caption d-flex justify-content-center align-items-center">
+                                            <img src="{{ asset('build/images/web/zip-format.png') }}">
+                                       </div>
+                                       <div>
+                                            <h6> document #K8KDHJ </h6>
+                                            <p> Ajouté le 20 Juillet 2020 </p>
+                                            <em>250k</em>
+                                            <div class="foot-card">
+                                                <img src="{{asset('build/images/web/pdf.png')}}">
+                                                <span> Télecharger le document </span>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="card-item document">
+                                <div class="card">
+                                        <div class="caption d-flex justify-content-center align-items-center">
+                                            <img src="{{ asset('build/images/web/files.jpg') }}">
+                                        </div>
+                                        <div>
+                                            <h6> document #K8KDHJ </h6>
+                                            <p> Ajouté le 20 Juillet 2020 </p>
+                                            <em>250k</em>
+                                            <div class="foot-card">
+                                                <img src="{{asset('build/images/web/zip.png')}}">
+                                            <span> Télecharger le document </span>
+                                        </div>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="card-item web">
+                                <div class="card">
+                                    <div class="caption d-flex justify-content-center align-items-center">
+                                        <img src="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260">
+                                    </div>
+                                    <div>
+                                        <h6> document #K8KDHJ </h6>
+                                        <p> Ajouté le 20 Juillet 2020 </p>
+                                        <em>250k</em>
+                                        <div class="foot-card">
+                                                <img src="{{asset('build/images/web/world-wide-web.png')}}">
+                                                <span> Copier le lien </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="card-item document">
+                                <div class="card">
+                                    <div class="caption d-flex justify-content-center align-items-center">
+                                        <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260">
+                                    </div>
+                                    <div>
+                                        <h6> document #K8KDHJ </h6>
+                                        <p> Ajouté le 20 Juillet 2020 </p>
+                                        <em>250k</em>
+                                         <div class="foot-card">
+                                            <img src="{{asset('build/images/web/image.png')}}">
+                                            <span> Télecharger l'image </span>
+                                        </div>
+                                    </div>  
+                                </div>
+                                
+                            </div>
+                            <div class="card-item image">
+                                <div class="card">
+                                    <div class="caption d-flex justify-content-center align-items-center">
+                                        <img src="https://images.pexels.com/photos/279719/pexels-photo-279719.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260">
+                                    </div>
+                                    <div>
+                                        <h6> document #K8KDHJ </h6>
+                                        <p> Ajouté le 20 Juillet 2020 </p>
+                                        <em>250k</em>
+                                        <div class="foot-card">
+                                                <img src="{{asset('build/images/web/image.png')}}">
+                                                <span> Télecharger le document </span>
+                                        </div>
+                                    </div>  
+                                </div>
+                            </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+   
+        $(function () {
+            //$('.isotop').isotope({
+              //  itemSelector: '.card-item',
+                //layoutMode: 'fitRows'
+                //});
+            fitrer = (item)=> {
+                     $('.isotop').isotope({ filter: '.'+item })
+                }
+                $('.card').css('cursor', 'pointer')
+                $('.filter').on('click', function() {
+                    var filtre = $(this).data('filtre')
+                    fitrer(filtre)
+                } )
+
+                
+        })
+    </script>
+{% endblock %}

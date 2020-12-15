@@ -1,0 +1,21 @@
+{% block stylesheets %}
+    <style>
+        .d-flex {
+            display: flex
+        }
+        .m-auto {
+            margin: auto
+        }
+    </style>
+{% endblock %}
+{% block body %}
+  <div class="container">
+        <section>
+                <div class="row">
+                    <div class="col d-flex my-5">
+                        <img class="m-auto" src="{{ asset('build/images/static/error500.jpg') }}" width="50%">
+                    </div>
+                </div>
+        </section>
+  </div>
+{% endblock %}

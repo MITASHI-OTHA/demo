@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% set title = 'candidature' %}
+
+{% block body %}
+    <h3>Tous les Candidatures</h3>
+    {% if allcandidatures %}
+        {% for candidature in allcandidatures %}
+            <div class="card">
+                <p>{{ candidature.getName() }}</p>
+                {% if candidature.getName()|split('_')[0] == "candidaturelight" %}
+                    {% if candidature.getStatus() != 4 %}
+                        <button type="button" class="btn
+                    btn-outline-success w-25 m-2 float-right"
+                                name="validate" onclick="changeCandidatureStatus(2,
+                        {{ candidature.getId() }}, 'light')">Valider
+                        </button>
+                        <button type="button" class="btn btn-outline-danger w-25
+                        m-2 float-right" name="validate"
+                                onclick="get_response_candidature(3, {{ candidature.getId() }}, 'light')">
+                            refuser
+                        </button>
+                        <button type="button" class="btn btn-outline-info w-25
+                        m-2 float-right"
+                                name="validate" onclick="get_response_candidature(4,
+                        {{ candidature.getId() }}, 'light')">
+                            a revoir
+                        </button>
+
+                        <button type="button" class="btn btn-outline-info w-25
+                        m-2 float-right" name="validate">
+                            <a href="{{ path("GeneratePdfCandidature", {"candidature": candidature.getId(),
+                                "annonce": candidature.getAd()}) }}"> voir la candidature</a>
+                        </button>
+                    {% endif %}
+
+                {% else %}
+
+                    {% if candidature.getStatus() != 4 %}
+
+                        <button type="button" class="btn btn-outline-success w-25 m-2 float-right"
+                                name="validate" onclick="changeCandidatureStatus(2,
+                        {{ candidature.getId() }}, 'complet')">
+                            Valider
+                        </button>
+
+{#                        <button type="button" class="btn btn-outline-danger w-25#}
+{#                        m-2 float-right" name="validate" onclick="changeCandidatureStatus(3, {{#}
+{#                                candidature.getId() }}, 'complete')">#}
+{#                            refuser#}
+{#                        </button>#}
+                        <button type="button" onclick="get_response_candidature({{ candidature.getId()  }}, 3, 'complet')">refuser</button>
+
+                        <button type="button" class="btn btn-outline-info w-25
+                        m-2 float-right"
+                                name="validate" onclick="get_response_candidature(4,
+                        {{ candidature.getId() }}, 'complet')">
+                            a revoir
+                        </button>
+
+                        <button type="button" class="btn btn-outline-info w-25
+                        m-2 float-right" name="validate">
+                            <a href="{{ path("GeneratePdfCandidature", {annonce: id_annonce,
+                                candidature: candidature.getId()}) }}"> voir la candidature</a>
+                        </button>
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endfor %}
+        <div id="result"></div>
+    {% else %}
+        pas de candidature pour cette annonce
+    {% endif %}
+    {% block javascripts %}
+        <script>
+            function changeCandidatureStatus(value_status, id_candidature,
+                                             type) {
+                $.ajax(
+                    {
+                        method: "POST",
+                        url: "{{ path("ManageCandidature", {
+                            "annonce" : id_annonce
+                        }) }}",
+                        data: {
+                            "status": value_status,
+                            "candidature": id_candidature,
+                            "type": type,
+                        },
+                        dataType: "json",
+                        success: (response) => {
+                            console.log(response)
+                        }
+                    }
+                )
+            }
+
+            function get_response_candidature(id_candidature, status, $type) {
+                $.ajax({
+                        method: "GET",
+                        url: "{{ path("ReponseCandidature", {
+                            "annonce" : id_annonce
+                        }) }}",
+                        data: {
+                            "id_candidature": id_candidature,
+                            "status": status,
+                            "type": $type
+                        },
+                        success: (response) => {
+                            $("#result").append(response[0]);
+                        }
+                    }
+                )
+            }
+
+            function send_reponseCandidature(id_candidature, status, $type) {
+                $.ajax({
+                        method: "POST",
+                        url: "{{ path("ReponseCandidature", {
+                            "annonce" : id_annonce
+                        }) }}",
+                        data: {
+                            "Contents": document.forms["response_message_candidature"]["response_message_candidature_Contents"].value,
+                            "LogementActuel": document.forms["response_message_candidature"]["response_message_candidature_LogementActuel"].value,
+                            "LogementDesire": document.forms["response_message_candidature"]["response_message_candidature_LogementDesire"].value,
+                            "Acquereur": document.forms["response_message_candidature"]["response_message_candidature_Acquereur"].value,
+                            "Credits": document.forms["response_message_candidature"]["response_message_candidature_Credits"].value,
+                            "Motivation": document.forms["response_message_candidature"]["response_message_candidature_Motivation"].value,
+                            "id_candidature": id_candidature,
+                            "status": status,
+                            "type": $type
+                        },
+                        dataType: "json",
+                        success: (response) => {
+                        }
+                    }
+                )
+                //     console.log($("#form").serialize())
+                return false;
+            }
+        </script>
+    {% endblock %}
+{% endblock %}

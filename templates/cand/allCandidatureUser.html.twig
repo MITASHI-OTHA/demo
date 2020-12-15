@@ -1,0 +1,147 @@
+{% extends 'base.html.twig' %}
+
+{% set title = 'candidature' %}
+
+{% block body %}
+    <h3>Mes Candidatures</h3>
+    <hr class="m-0 bg-danger w-25 p-0 float-left">
+    <br>
+    <h5 class="border-bottom border-danger border-bottom w-25">Vous
+        avez {{ total }} candidature</h5>
+    {% if candidatures %}
+        {% for candidature in candidatures %}
+            {% if candidature.getVisibility() %}
+                <div class="card">
+                    <div class="card-title mw-100 bg-secondary"
+                         style="min-height: 100px">
+                        {{ candidature.id }}
+                    </div>
+                    <div class="card-body">
+                        <br>
+                        {{ candidature.getCreatedAt() | date("d/m/Y") }}
+
+                        {% if candidature.getStatus() == 0 %}
+                            {% if candidature.name |split("_")[0] == "candidature" %}
+
+                                <a class="text-black-50 text-decoration-none"
+                                   href="{{ path("EditCandidature", {"candidature": candidature.id}) }}">
+                                    editer
+                                </a>
+                            {% else %}
+                                <a class="text-black-50 text-decoration-none"
+                                   href="{{ path("EditCandidatureLight",
+                                       {"candidature": candidature.id}) }}">
+                                    editer
+                                </a>
+                            {% endif %}
+                        {% elseif candidature.getStatus() == 1 %}
+                            en cours de validation
+                        {% elseif candidature.getStatus() == 2 %}
+                            valider
+                            {% if candidature.name |split("_")[0] == "candidature" %}
+
+                                <button type="button" class="btn
+                            btn-outline-success"
+                                        id="ConfirmCandidature_{{ candidature.getId() }}"
+                                        onclick="confirm({{ candidature.getId
+                                            () }}, 5, 'complete')">
+                                    confirmer ma candidature
+                                </button>
+                                <button type="button" class="btn
+                            btn-outline-danger"
+                                        id="ConfirmCandidature_{{ candidature.getId() }}"
+                                        onclick="confirm({{ candidature.getId
+                                            () }}, 0, 'complete')">
+                                    annuler ma candidature
+                                </button>
+
+                            {% else %}
+
+                                <button type="button" class="btn
+                            btn-outline-success"
+                                        id="ConfirmCandidature_{{ candidature.getId() }}"
+                                        onclick="confirm({{ candidature.getId
+                                            () }}, 5, 'light')">
+                                    confirmer ma candidature
+                                </button>
+                                <button type="button" class="btn
+                            btn-outline-danger"
+                                        id="ConfirmCandidature_{{ candidature.getId() }}"
+                                        onclick="confirm({{ candidature.getId
+                                            () }}, 0, 'light')">
+                                    annuler ma candidature
+                                </button>
+
+                            {% endif %}
+                        {% elseif candidature.getStatus() == 3 %}
+                            refuser
+                        {% elseif candidature.getStatus() == 4 %}
+                            incomplet ou mal remplie
+                            {% if candidature.name |split("_")[0] == "candidature" %}
+
+                                <a class="text-black-50 text-decoration-none"
+                                   href="{{ path("EditCandidature", {"candidature": candidature.id}) }}">
+                                    editer
+                                </a>
+                            {% else %}
+                                <a class="text-black-50 text-decoration-none"
+                                   href="{{ path("EditCandidatureLight",
+                                       {"candidature": candidature.id}) }}">
+                                    editer
+                                </a>
+                            {% endif %}
+                        {% elseif candidature.getStatus() == 5 %}
+                            voir ma page communitaire
+                        {% endif %}
+                    </div>
+                </div>
+                <br>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <p>Aucune Candidature en Brouillons</p>
+    {% endif %}
+    <div class="btn">
+        <a href="{{ path('NewCandidatureLight', {
+            annonce: 6,
+        }) }}">
+            nouvelle candidature Ligth
+        </a>
+    </div>
+    <div class="btn button bg-primary">
+        <a class="text-dark" href="{{ path('NewCandidature', {
+            annonce: 6,
+        }) }}">nouvelle candidature</a>
+    </div>
+
+    <div class="btn btn-outline-secondary button">
+        <a class="text-dark" href="{{ path("ManageCandidature", {
+            "annonce": 1
+        }) }}">manager les candidature</a>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        function confirm(idCandidature, status, type) {
+            $.ajax(
+                {
+                    method: "POST",
+                    url: "{{ path("MesCandidatures") }}",
+                    data: {
+                        "candidature": idCandidature,
+                        "status": status,
+                        "type": type
+                    },
+                    dataType: "json",
+                    success: (response) => {
+                        alert(response);
+                    },
+                    errors: (response) => {
+                        alert(response);
+                    }
+                }
+            )
+        }
+    </script>
+{% endblock %}

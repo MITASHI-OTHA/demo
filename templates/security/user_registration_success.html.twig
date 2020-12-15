@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% set title = 'Inscription reussit' %}
+
+
+{% block body %}
+    <style>
+        .right-img-success {
+            background-size: contain;
+            background-position: center;
+            width: 100%;
+            height: 300px;
+            background-repeat: no-repeat;
+            margin: auto
+        }
+    </style>
+        <div class="container">
+            <div class="row mt-5">
+                    <div class="col-md-6">
+                        <div class="right-img-success" style="background-image: url({{asset('build/images/web/welcohome-congrate.d5ddd5ef.png')}}) ">
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div claxx="blk-text">
+                            <h3>Bravo! Inscription faîte</h3>
+                            <p>
+                                Vous avez reçu un mail à l’adresse
+                                cliquez sur le lien de confirmation qui vous
+                                a été envoyé pour valider votre inscription
+                            </p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+{% endblock %}

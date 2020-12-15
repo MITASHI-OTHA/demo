@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% set title = 'Récupérer l\'email' %}
+
+{% block body %}
+    <div class="d-flex flex-column align-items-center">
+        <div class="col-lg-4 col-md-6">
+            {% for alerte in app.flashes('success') %}
+                <div class="alert alert-info">{{ alerte | raw }}</div><br>
+            {% endfor %}
+
+            <div class="text-center">
+                <a href="{{ path('home') }}">
+                    <img src="{{ asset('images/static/logotype_lcz.svg') }}" alt="Logo LescityZens" width="170">
+                </a>
+            </div><br>
+            <p class="lost__password__tBlock bg-light p-3 rounded">
+                Veuillez saisir votre adresse de messagerie. Un lien permettant de créer
+                un nouveau mot de passe vous sera envoyé par e-mail.
+            </p><br>
+
+            <form action="{{ path('lost_password_redirect') }}" method="post">
+                <div class="form-group">
+                    <input type="text" name="email" value="" id="email" class="form-control mb-4" placeholder="Adresse email">
+                </div>
+
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btnSubmit mt-2">
+                        Générer un mot de passe
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

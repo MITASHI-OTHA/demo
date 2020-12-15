@@ -1,0 +1,515 @@
+{% extends 'base.html.twig' %}
+
+{% set title = 'Dépôt d\'annonce' %}
+
+{% form_theme form _self %}
+{% block stylesheets %}
+    <style>
+        h1, h2, h3, h4, h5 {
+            font-weight: bolder;
+        }
+        h4 {
+            color: #00BFA6;
+        }
+        legend, label:not(.form-check-label) {
+            font-weight: 600;
+        }
+        .custom-file-label::after {
+            font-weight: normal !important;
+        }
+        #ads_photo1, #ads_photo2, #ads_photo3 {
+            display: none;
+        }
+        .undo a {
+            color: #00BFA6;
+            font-size: 1.25em !important;
+            transition: ease .5s;
+        }
+
+        .undo a:hover {[Semantical Error]
+            color: rgb(0, 143, 124);
+        }
+
+        label[for="ads_typeProjet_parent_0"],
+        label[for="ads_typeProjet_parent_1"] {
+            margin-top: 3px;
+            margin-left: 3px;
+        }
+        #ads_dateLivraison {
+            padding-left: 20px;
+        }
+        .datepicker,
+        .table-condensed {
+            width: 330px;
+        }
+        .ads__images__block label:last-child {
+            margin-right: 0;
+        }
+        #preview__ad__images img {
+           width: 200px;
+        }
+        #ajoutDocumentViewer {
+           height: 250px;
+           display: none;
+        }
+        .ads__images__block label {
+            padding: 1.25em 1.65em;
+            margin-right: 1.5em;
+            color: #667d99;
+            font-size: .85em;
+            font-weight: 600;
+            border: 1px solid #ced4da;
+            cursor: pointer;
+            transition: ease .5s;
+        }
+        .ads__images__block label:hover {
+            border-color: #00BFA6;
+            color: #00BFA6;
+        }
+        .ads__images__block label i::before {
+            font-size: 48px;
+        }
+        .form-group {
+            margin-bottom: 1.5em;
+        }
+        .l__height {
+            margin: 2.5em 0 !important;
+        }
+    </style>
+
+{% endblock %}
+{% block body %}
+<section>
+    <div class="container">
+
+
+    
+    {{ form_start(form) }}
+
+        <h4 class="my-4">1. Les clés de l’opération</h4>
+        {{ form_row(form.name) }}
+        {{ form_row(form.typeProjet) }}
+        {{ form_row(form.typologie) }}
+        <div class="d-flex">
+            <div class="col-md-6 pl-0 pr-2">
+                {{ form_row(form.nbreLogementsTotal) }}
+            </div>
+            <div class="col-md-6 pr-0 pl-2">
+                {{ form_row(form.nbreLogementsDispo) }}
+            </div>
+        </div>
+        {{ form_row(form.typesLogementsDispo) }}
+        <div class="d-flex">
+            <div class="col-md-4 pl-0 pr-2">
+                <label for="ads_prix">Prix *</label>
+                <div class="form-group">
+                    {{ form_widget(form.prix) }}
+                    {{ form_errors(form.prix) }}
+                </div>
+            </div>
+            <div class="col-md-8 pr-0 pl-2">
+                {{ form_row(form.montage) }}
+            </div>
+        </div>
+        {{ form_row(form.etatAvancementProjet) }}
+        {{ form_row(form.dateLivraison) }}
+        {{ form_row(form.programmeGlobal) }}
+        <div class="d-flex">
+            <div class="col-md-6 pl-0 pr-2">
+                {{ form_row(form.servicesBiensMutualises) }}
+            </div>
+            <div class="col-md-6 pr-0 pl-2">
+                {{ form_row(form.espacesCommunsInterieurs) }}
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="col-md-6 pl-0 pr-2">
+                {{ form_row(form.espacesCommunsExterieurs) }}
+            </div>
+            <div class="col-md-6 pr-0 pl-2">
+                {{ form_row(form.espacesPrivesExterieurs) }}
+            </div>
+        </div>
+
+        <h4 class="my-4">2. Présentation du projet</h4>
+        {{ form_row(form.presentationProjet.presentationOperation) }}
+        <div class="d-flex">
+            <div class="col-md-3 pl-0 pr-2">
+                {{ form_row(form.presentationProjet.pays) }}
+            </div>
+            <div class="col-md-3 pr-0 pl-2 pr-2">
+                {{ form_row(form.presentationProjet.codePostal) }}
+            </div>
+            <div class="col-md-6 pr-0 pl-2">
+                {{ form_row(form.presentationProjet.ville) }}
+            </div>
+        </div>
+        {{ form_row(form.presentationProjet.adresse) }}
+        {{ form_row(form.presentationProjet.presentationCommodites) }}
+        {{ form_row(form.presentationProjet.presentationAmbitionsProjet) }}
+        
+        <!-- Ici, Intégration des images -->
+        <div id="preview__ad__images" class="d-flex align-items-center">
+            <span data-index="0"></span>
+            <span data-index="1"></span>
+            <span data-index="2"></span>
+        </div>
+        <div class="d-flex mb-4 ads__images__block">
+            <label class="rounded text-center" for="ads_photo1_file_file">
+                <i class="icon-camera"></i>
+                <div class="mt-1">Photo n°1</div>
+                <div class="mt-2">
+                    {{ form_errors(form.photo1.file) }}
+                </div>
+            </label>
+            <label class="rounded text-center" for="ads_photo2_file_file">
+                <i class="icon-camera"></i>
+                <div class="mt-1">Photo n°2</div>
+            </label>
+            <label class="rounded text-center" for="ads_photo3_file_file">
+                <i class="icon-camera"></i>
+                <div class="mt-1">Photo n°3</div>
+            </label>
+        </div>
+        {{ form_row(form.photo1) }}
+        {{ form_row(form.photo2) }}
+        {{ form_row(form.photo3) }}
+        <!-- Fin Intégration des images -->
+        {% if 1 > 2 %}
+            {{ form_row(form.enSavoirPlus) }}
+            {{ form_row(form.ajouterLien) }}
+
+            <label for="ads_ajouterDocument_file_file">Ajouter un document *</label><br>
+            <canvas id="ajoutDocumentViewer"></canvas>
+            {{ form_row(form.ajouterDocument) }}
+        {% endif %}
+        <div class="l__height"></div>
+        <h4 class="my-4">3. Acteurs de l’opération et contact</h4>
+        <h5 class="my-4">Qui sont les acteurs de cette opération ?</h5>
+
+        <h5 class="my-4">Acteur 1</h5>
+        {{ form_row(form.acteur1) }}
+
+        {{ form_row(form.actor) }}
+        <div class="l__height"></div>
+        <h5 class="my-4">Contact du modérateur de l’annonce</h5>
+        <div class="d-flex">
+            <div class="col-md-6 pl-0 pr-2">
+                <label for="ads_mailModerator">Email *</label>
+                <div class="input-group">
+                    {{ form_widget(form.mailModerator) }}
+                    {{ form_errors(form.mailModerator) }}
+                </div>
+            </div>
+            <div class="col-md-6 pr-0 pl-2">
+                <label for="ads_mailModerator">Téléphone</label>
+                {{ form_row(form.phoneModerator) }}
+            </div>
+        </div>
+
+        <h4 class="my-4">4. Gestion des candidatures</h4>
+        {{ form_row(form.modalitesCandidatureDesc) }}
+        {{ form_row(form.typeFormCandidature) }}
+
+    <div class="d-none">
+        {{ form_rest(form) }}
+    </div>
+        <div class="form-group">
+            <button type="submit" class="btn btnSubmit my-3">Déposer mon annonce !</button>
+        </div>
+    {{ form_end(form) }}
+</div>
+</section>
+{% endblock %}
+
+{% block _ads_actor_entry_row %}
+    <div id="entry_{{ id }}" class="d-flex">
+        <div class="w-100">
+            {{ form_row(form.name) }}
+            {{ form_row(form.role) }}
+            {{ form_row(form.description) }}
+            {{ form_row(form.image) }}
+        </div>
+        <div class="flex-shrink-1">
+            <button title="Supprimer cet acteur" type="button" class="btn btn-sm ml-4 btnSubmit delete__actor">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+{% endblock %}
+
+    {% block _ads_actor_row %}
+        {{ form_row(form) }}
+        <div class="form-group">
+            <button id="add__actor" type="button" class="btn btnSubmit">Ajouter un acteur</button>
+        </div>
+    {% endblock %}
+
+{% block javascripts %}
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <script>
+        $(function() 
+        {
+            function resetElements()
+            {
+                $('.form-error-icon').text('erreur !');
+
+                $('#ads_photo1, #ads_photo2, #ads_photo3').parent().css('display', 'none');
+
+                $('#ads_typeProjet').parent().css('marginBottom', 0);
+                $('#ads_dateLivraison select').addClass('form-control-sm');
+                
+                $('#ads_photo1_file_file').attr('accept', 'image/*');
+                $('#ads_photo2_file_file').attr('accept', 'image/*');
+                $('#ads_photo3_file_file').attr('accept', 'image/*');
+                $('#ads_acteur1_image_file_file').attr('accept', 'image/*');
+
+                $('#ads_prix').parent().addClass('input-group').prepend('<div class="input-group-prepend"><div class="input-group-text"><i class="fas fa-euro-sign"></i></div></div>');
+                $('#ads_mailModerator').parent().addClass('input-group').prepend('<div class="input-group-prepend"><div class="input-group-text"><i class="fab fa-telegram-plane"></i></div></div>');
+                $('#ads_phoneModerator').parent().addClass('input-group').prepend('<div class="input-group-prepend"><div class="input-group-text"><i class="fas fa-phone-alt"></i></div></div>');
+
+                $('#ads_acteur1_image').parent('fieldset').css('marginBottom', 0);
+                $('#ads_acteur1_image').children('fieldset').css('marginBottom', 0);
+            }
+            resetElements();
+
+            function showActeur1Image() 
+            {
+                $('#ads_acteur1_image_file_file').on('input', function (e) 
+                {
+                    $('.mb-4').remove();
+                    let reader = new FileReader();
+
+                    reader.onload = (e) => 
+                    {
+                        $(this).parent().before('<img src="' + e.target.result + '" class="w-25 mb-4">');
+                        $('.vich-image').addClass('text-center');
+                    }
+                    reader.readAsDataURL(e.target.files[0]);
+                });
+            }
+            showActeur1Image();
+
+            function showActorImages(index) 
+            {
+                $('#ads_actor input[type="file"]').eq(index).on('input', function (e) 
+                {
+                    $('.mb-3').eq(index).remove();
+                    let reader = new FileReader();
+
+                    reader.onload = (e) => 
+                    {
+                        $(this).parent().before('<img src="' + e.target.result + '" class="w-25 mb-3">');
+                        $('.vich-image').addClass('text-center');
+                    }
+                    reader.readAsDataURL(e.target.files[0]);
+                });
+            }
+
+            function isAutogrow() 
+            {
+                $('.is__autogrow').on('input', function() 
+                {
+                    this.style.overflow = 'hidden';
+                    this.style.height = 'auto';
+                    this.style.height = (this.scrollHeight) + 'px'; 
+                });
+
+            }
+            isAutogrow();
+
+            function addActor() 
+            {
+                $('#add__actor').click(function() 
+                {
+                    //Retrieving the numbers of future fields blocks to create
+                    let index = $('#ads_actor .d-flex').length;
+                    //Retrieving entry prototype
+                    let prototypeTemplate = $('#ads_actor').data('prototype').replace(/__name__/g, index);
+                    //Prototype template injected into the div
+                    $('#ads_actor').append(prototypeTemplate);
+                    // Handle delete actor action
+                    deleteActor(index);
+                    $('#ads_actor input[type="file"]').attr('accept', 'image/*');
+                    isAutogrow();
+                    showActorImages(index);
+                });
+            }
+            addActor();
+
+            function deleteActor(index) 
+            {
+                $('.delete__actor').click(function() 
+                {
+                    $(this).closest('#entry_ads_actor_'+ index +'').remove();
+                });
+            }
+            
+            function showAdImages() 
+            {
+                // Loaded via <script> tag, create shortcut to access PDF.js exports.
+                let pdfjsLib = window['pdfjs-dist/build/pdf'];
+                // The workerSrc property shall be specified.
+                pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
+
+                $('#ads_photo1_file_file').on('input', function(e) 
+                {
+                    let reader = new FileReader();
+                    let index = $('#preview__ad__images span[data-index="0"]');
+                    $('#preview__ad__images').removeClass('.mb-3');
+
+                    reader.onload = (e) => 
+                    {
+                        $(index).html('<img src="'+ e.target.result +'" class="mr-3">');
+                    }
+                    reader.readAsDataURL(e.target.files[0]);
+                    $('#preview__ad__images').addClass('mb-3');
+                });
+
+                $('#ads_photo2_file_file').on('input', function(e) 
+                {
+                    let reader = new FileReader();
+                    let index = $('#preview__ad__images span[data-index="1"]');
+                    $('#preview__ad__images').removeClass('.mb-3');
+
+                    reader.onload = (e) => 
+                    {
+                        $(index).html('<img src="'+ e.target.result +'" class="mr-3">');
+                    }
+                    reader.readAsDataURL(e.target.files[0]);
+                    $('#preview__ad__images').addClass('mb-3');
+                });
+
+                $('#ads_photo3_file_file').on('input', function(e) 
+                {
+                    let reader = new FileReader();
+                    let index = $('#preview__ad__images span[data-index="2"]');
+                    $('#preview__ad__images').removeClass('.mb-3');
+
+                    reader.onload = (e) => 
+                    {
+                        $(index).html('<img src="'+ e.target.result +'" class="mr-3">');
+                    }
+                    reader.readAsDataURL(e.target.files[0]);
+                    $('#preview__ad__images').addClass('mb-3');
+                });
+                
+                $('#ads_ajouterDocument_file_file').on('change', function(e) 
+                {
+                    $('.ads_ajouterDocument_').remove();
+                    $('#ajoutDocumentViewer').fadeOut();
+                    let reader = new FileReader();
+
+                    if(e.target.files[0].type === 'image/jpeg') 
+                    {
+                        reader.onload = (e) =>
+                        {
+                            $(this).closest('.vich-image').prepend('<img src="' + e.target.result + '" width="240" class="mb-3 ads_ajouterDocument_">');
+                        }
+                        reader.readAsDataURL(e.target.files[0]);
+                    } 
+                    else 
+                    {
+                        reader.onload = function()
+                        {
+                            let pdfData = new Uint8Array(this.result);
+                            let loadingTask = pdfjsLib.getDocument({ data: pdfData });
+
+                            loadingTask.promise.then(function (pdf) 
+                            {
+                                pdf.getPage(1).then((page) => 
+                                {
+                                    let viewport = page.getViewport({ scale: 1 });
+
+                                    // Prepare canvas using PDF page dimensions
+                                    let canvas = $('#ajoutDocumentViewer')[0];
+                                    let context = canvas.getContext('2d');
+                                    canvas.height = viewport.height;
+                                    canvas.width = viewport.width;
+
+                                    // Render PDF page into canvas context
+                                    let renderContext =
+                                    {
+                                        canvasContext: context,
+                                        viewport: viewport
+                                    };
+                                    let renderTask = page.render(renderContext);
+                                    renderTask.promise.then(() => 
+                                    {
+                                        $('#ajoutDocumentViewer').fadeIn();
+                                        console.log('Page rendered');
+                                    });
+                                });
+                            }, (reason) => { console.log(reason.error); });
+                        }
+                        reader.readAsArrayBuffer(e.target.files[0]);
+
+                    }
+                    
+                });
+            }
+            showAdImages();
+
+            function hydrateVilleField() 
+            {
+                $('#ads_presentationProjet_codePostal').on('blur', function() 
+                {
+                    $('.ville__dynamic').remove();
+                    $('.alert__cp__error').remove();
+                    $('#ads_presentationProjet_ville option').remove();
+                    
+                    if($(this).val() !== '') 
+                    {
+                        $.ajax(
+                        {
+                            method: 'GET',
+                            url: 'https://geo.api.gouv.fr/communes?codePostal='+ $(this).val() +'& format=json',
+                            dataType: 'json',
+                            headers: { 'X-Requested-With' : 'XMLHttpRequest' },
+                            success: (response) => 
+                            {
+                                if(response.length > 0) 
+                                {
+                                    $(response).each((key, value) => 
+                                    {
+                                        $('#ads_presentationProjet_ville').parent().after('<div class="form-check form-check-inline ville__dynamic"><input id="'+ key +'" type="radio" name="ville" class="form-check-input ville__dynamic__val" value="'+ value.nom +'"><label class="form-check-label" for="'+ key +'">'+ value.nom +'</label></div>');
+                                    });
+
+                                    $('.ville__dynamic__val').click(function() 
+                                    {
+                                        $('#ads_presentationProjet_ville').val($(this).val());
+                                        $('.ville__dynamic').remove();
+                                    });
+                                } 
+                                else 
+                                {
+                                    $('#ads_presentationProjet_codePostal').after('<div class="text-danger mt-2 alert__cp__error">Aucune ville ne correspond à <strong>"'+ $(this).val() +'"</strong></div>')
+                                }
+                                //console.log('bolok nos da patata caliente !');
+                                
+                            },
+                        });
+                    }
+                    
+                });
+            }
+            hydrateVilleField();
+
+            function showPromoParticipativeChild() 
+            {
+                $('#ads_typeProjet_child').hide();
+                
+                $('#ads_typeProjet_parent_1').on('input', () => 
+                {
+                    $('#ads_typeProjet_child').fadeIn();
+                });
+
+                $('#ads_typeProjet_parent_0').on('input', () => 
+                {
+                    $('#ads_typeProjet_child').fadeOut();
+                });
+            }
+            showPromoParticipativeChild();
+        });
+    </script>
+{% endblock %}

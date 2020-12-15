@@ -1,0 +1,155 @@
+{% extends 'base.html.twig' %}
+
+{% set title = 'Nous contacter' %}
+
+{% block stylesheets %}
+    <style>
+        form {
+            margin-top: 3em;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1 class="font-weight-bolder my-4 text-center">
+        Vous avez une question ? <br> Contactez-nous !
+    </h1>
+    {{ form_start(form) }}
+        <h5 class="font-weight-bolder my-4">Informations personnelles</h5>
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(form.role) }}
+            </div>
+            <div class="col-md-6">
+                <label for="contact_infos_email">E-mail *</label>
+                {{ form_row(form.email) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(form.nom) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.prenom) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-7">
+                {{ form_row(form.societe) }}
+            </div>
+            <div class="col-md-5">
+                <label for="contact_infos_telephone">Téléphone *</label>
+                {{ form_row(form.telephone) }}
+            </div>
+        </div>
+        
+        <h5 class="font-weight-bolder my-4">Votre demande concerne</h5>
+        <div class="row">
+            <div class="col-md-4">
+                {{ form_row(form.contactReason) }}
+            </div>
+            <div class="col-md-8">
+                {{ form_row(form.objet) }}
+            </div>
+        </div>
+
+        {{ form_row(form.message) }}
+
+        <div class="form-group">
+            <label for="contact_infos_file_file_file">Avez-vous un document à nous faire parvenir ?</label>
+            <div class="my-2">
+                <canvas id="contact__us__file__wiewer"></canvas>
+            </div>
+            {{ form_row(form.file) }}
+        </div>
+        
+    {{ form_rest(form) }}
+        <button type="submit" class="btn btnSubmit mb-4" id="submit_this">Envoyer !</button>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le5SbMZAAAAAGTWwVvyIW1T2WqAzj41uDk1GXVt"></script>
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    
+    <script>
+        grecaptcha.ready(function()
+        {
+            grecaptcha.execute('6Le5SbMZAAAAAGTWwVvyIW1T2WqAzj41uDk1GXVt', { action: 'contactinfo' }).then(function(token)
+            {
+                document.getElementById('contact_infos_recaptchaToken').value = token;
+            });
+        });
+
+        $(function() 
+        {
+            function resetElements() 
+            {
+                $('#contact_infos_email').parent().addClass('input-group').prepend('<div class="input-group-prepend"><div class="input-group-text"><i class="fas fa-paper-plane"></i></div></div>');
+                $('#contact_infos_telephone').parent().addClass('input-group').prepend('<div class="input-group-prepend"><div class="input-group-text"><i class="fas fa-phone-alt"></i></div></div>');
+            }
+            resetElements();
+
+            function addFiles() 
+            {
+                $('#contact_infos_file_file_file').on('change', function (e) 
+                {
+                    $('.contact_us_add_file').remove();
+                    $('#contact__us__file__wiewer').fadeOut();
+                    let reader = new FileReader();
+
+                    if (e.target.files[0].type === 'image/jpeg') 
+                    {
+                        reader.onload = (e) => 
+                        {
+                            $(this).closest('.vich-image').prepend('<img src="' + e.target.result + '" width="240" class="mb-3 contact_us_add_file">');
+                        }
+                        reader.readAsDataURL(e.target.files[0]);
+                    }
+                    else 
+                    {
+                        reader.onload = function () 
+                        {
+                            let pdfData = new Uint8Array(this.result);
+                            let loadingTask = pdfjsLib.getDocument({ data: pdfData });
+
+                            loadingTask.promise.then(function (pdf) 
+                            {
+                                pdf.getPage(1).then((page) => 
+                                {
+                                    let viewport = page.getViewport({ scale: 1 });
+
+                                    // Prepare canvas using PDF page dimensions
+                                    let canvas = $('#contact__us__file__wiewer')[0];
+                                    let context = canvas.getContext('2d');
+                                    canvas.height = viewport.height;
+                                    canvas.width = viewport.width;
+
+                                    // Render PDF page into canvas context
+                                    let renderContext =
+                                    {
+                                        canvasContext: context,
+                                        viewport: viewport
+                                    };
+                                    let renderTask = page.render(renderContext);
+                                    renderTask.promise.then(() => 
+                                    {
+                                        $('#contact__us__file__wiewer').fadeIn();
+                                        console.log('Page rendered');
+                                    });
+                                });
+                            }, (reason) => { console.log(reason.error); });
+                        }
+                        reader.readAsArrayBuffer(e.target.files[0]);
+
+                    }
+
+                });
+            }
+            addFiles();
+
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'espace/base.html.twig' %}
+{% set title = 'Espace collaboratif' %}
+    {% block stylesheets %}
+        <style>
+            .h-title h1 {
+                font-size: 30px;
+                font-weight: 600;
+                margin: 0;
+            }
+        </style>
+    {% endblock %}
+{% block body %}
+{{ render(path("header")) }}
+    <div class="container">
+            <div class="row my-4">
+                <div class="col-md-12 h-title">
+                    <h1>
+                        Ajouter un évément
+                    </h1>
+                </div>
+                <div class="col-md-12 my-4">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"> Titre de l'évément </label>
+                                    <input type="text" class="form-control" id="InputTitre" aria-describedby="TitrelHelp" placeholder="Exemple: Journée d'intégration">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                <label for="exampleInputEmail1"> Choissir la date </label>
+                                    <div>
+                                        <input type='text' class="form-control datepicker"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                <label for="exampleInputEmail1"> Choissir l'heure  de début </label>
+                                    <div>
+                                        <input type='text' class="form-control timepicker"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                <label for="exampleInputEmail1"> Choissir la date de fin</label>
+                                    <div>
+                                        <input type='text' class="form-control datepicker"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                <label for="exampleInputEmail1"> Choissir le lieu </label>
+                                    <div>
+                                        <input type='text' class="form-control" placeholder="exemple Paris"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Description</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                                </div>
+                            </div>
+                            <div class="col">
+                                    <button type="submit" class="btn btn-primary btnSubmit p-8"> Publier <i class="fas fa-paper-plane"></i> </button>
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+         $(function () {
+             $('.datepicker').pickadate({
+                monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mail', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
+                monthsShort: ['Jan', 'Fev', 'Mas', 'Avr', 'Mai', 'Jun', 'Jui', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'],
+                weekdaysFull: ['Dimanche', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Lundi'],
+                weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+                today: 'Aujourd\'hui',
+                clear: 'Effacer',
+                close: 'Fermer',
+                format: 'dd mmmm yyyy',
+                editable: true,
+                min: new Date()
+             })
+            $('.timepicker').pickatime({
+                clear: 'Effacer',
+                format: 'H:i',
+                formatLabel: undefined,
+                formatSubmit: undefined,
+                hiddenPrefix: undefined,
+                hiddenSuffix: '_submit',
+                editable: true,
+                // Methode lorsque la fenetre se ferme
+                onClose: function(e) {
+                    console.log('Closed now ', e)
+                },
+                // Methode lorsque l'utilisateur a choisir l'heure
+                onRender: function(e) {
+                    console.log('render now ', e)
+                }
+            })
+         });
+      </script>
+{% endblock %}

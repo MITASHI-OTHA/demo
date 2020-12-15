@@ -1,0 +1,82 @@
+@startuml
+
+abstract class AbstractList
+abstract AbstractCollection
+interface List
+interface Collection
+
+List <|-- AbstractList
+Collection <|-- AbstractCollection
+
+Collection <|-- List
+AbstractCollection <|--- AbstractList
+AbstractList <|-- ArrayList
+
+class ArrayList {
+Object[] elementData
+size()
+}
+
+enum TimeUnit {
+DAYS
+HOURS
+MINUTES
+}
+
+@enduml
+
+@startuml
+
+    class User {
+        - id: int
+        - name_user: text
+        - abonnement: object[]
+        ----Method----
+        {method} + get_abonnement()
+        {method} + add_abonnement()
+        {method} + remove_abonnement()
+    }
+
+    class abonnement {
+        - id: int
+        - name: text
+        - createdAt: DateTime
+        - packages: Object[]
+        ----Method----
+        {method} + get_name()
+        {method} + set_name(name)
+    }
+
+
+    package Abonnement <<frame>>{
+        note left: annonce
+
+        note right: EspaceCollaboratif
+
+        note left: MiseEnAvant
+    }
+
+   package PackageAnnonce <<frame>>{
+        class 1
+        class 2
+        class 3
+   }
+
+   package PackageEspaceCollaboratif <<frame>>{
+        class 1
+        class 2
+        class 3
+   }
+
+   package PackageMiseEnAvant <<frame>>{
+        class 1
+        class 2
+        class 3
+   }
+
+   PackageAnnonce ---> annonce
+   PackageEspaceCollaboratif ---> EspaceCollaboratif
+   PackageMiseEnAvant ---> MiseEnAvant
+   abonnement "many"---> "one" User
+   abonnement -> Abonnement
+@enduml

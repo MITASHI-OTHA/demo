@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% set title = 'candidature' %}
+
+{% block body %}
+    <img src="{{ asset('/build/images/static/logotype_welcoom.svg') }}" alt="Logo Welcoom" width="150">
+    <div class="example-wrapper">
+        {{ form_start(form) }}
+        {{ form_widget(form, {'attr': {'class': 'border-5 m-2'}}) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

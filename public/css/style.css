@@ -1,0 +1,123 @@
+h1 {
+    position: relative;
+    font-size: 33px;
+    font-weight: 600
+}
+h1:not(.modal-title):after {
+    position: absolute;
+    content: '';
+    height: 5px;
+    width: 50px;
+    background-color: #53c0b5;
+    bottom: -9px;
+    left: 0;
+}
+.container section {
+    margin-top: 5%
+}
+.card {
+    padding: 11px;
+    margin-bottom: 3em
+}
+.caption {
+    height: 150px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+}
+.cand-descpt {
+    display: grid
+}
+.cand-descpt ul {
+    list-style: none;
+    display: inline
+}
+.cand-descpt ul li:first-child {
+    border-right: 3px solid rgb(0 191 166);
+    padding-right: 11px;
+    color: #53c0b5;
+}
+
+.card ul li:not(.log) {
+    padding-left: 11px;
+}
+.cand-descpt>div:first-child {
+display: flex;
+}
+.cand-descpt .fa-calendar-day {
+font-size: 16px;
+color: #ddd
+}
+.cand-descpt div span {
+font-size: 12px;
+padding-left: 10px;
+}
+.col-info {
+background: #E7EDF3;
+width: 80%;
+margin-top: 31px;
+padding: 13px;
+border-radius: 5px;
+}
+.col-info p {
+ 
+ font-size: 13px;
+}
+.footer-card {
+ display: flex;
+padding-top: 15px;
+}
+.card:hover {
+-webkit-box-shadow: 0 -1px 4px 0 rgba(26,26,26,.08), 0 4px 8px 0 rgba(26,26,26,.12);
+box-shadow: 0 -1px 4px 0 rgba(26,26,26,.08), 0 4px 8px 0 rgba(26,26,26,.12);
+cursor: default
+}
+.fa-trash {
+position: absolute;
+right: 26px;
+top: 0;
+color: #9a9a9a;
+cursor: pointer
+}
+.fa-trash:hover {
+ color: #7b7979;
+ transition: color .3s
+}
+.footer-card>div:first-child span:hover {
+ text-decoration: underline;
+ cursor: pointer
+}
+.col-info.accept {
+ background-color: rgba(0, 191, 166, 0.21)
+}
+.col-info.accept h4 {
+font-size: 20px;
+}
+
+.col-info.incomplet {
+background-color: rgba(255, 160, 49, 0.24)
+}
+.col-info.incomplet p {
+color: #DF4949;
+font-size: 13px;
+font-weight: 600
+}
+.col-info.incomplet ul {
+list-style: none
+}
+.col-info.incomplet ul li {
+display: block;
+padding-left: 0;
+font-size: 14px;
+line-height: 23px;
+}
+.col-info>div button:last-child {
+ margin-left: 20px;
+}
+.cand-descpt ul:nth-of-type(1) li:nth-of-type(2)  {
+font-size: initial;
+color: rgb(55, 57, 66) !important;
+font-weight: 600;
+}

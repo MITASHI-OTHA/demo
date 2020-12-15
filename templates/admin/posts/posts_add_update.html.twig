@@ -1,0 +1,187 @@
+{% extends 'base.html.twig' %}
+
+{% set title = 'Création d\'un post' %}
+
+{% block stylesheets %}
+    <style>
+        .undo a {
+            color: #00BFA6;
+            font-size: 1.25em !important;
+            transition: ease .5s;
+        }
+        .undo a:hover {
+            color: rgb(0, 143, 124);
+        }
+        #post_images {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        #post_images .d-flex:last-child {
+            margin-right: 0;
+        }
+        #post_images .d-flex {
+            margin-right: 1em;
+            width: 32%;
+        }
+    </style>
+{% endblock %}
+
+{% form_theme form _self %}
+
+{% block body %}
+
+    <div class="my-4 undo">
+        <a href="{{ path('posts_list') }}">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+    
+    {% if action != 'update' %}
+        <h2 class="text-center font-weight-bold mb-4">Créer un post</h2>
+    {% else %}
+        <h2 class="text-center font-weight-bold mb-4">Modifier un post</h2>
+    {% endif %}
+
+    {{ form_start(form) }}
+
+    {{ form_rest(form) }}
+
+    {% if action != 'update' %}
+        <div class="form-group">
+            <button type="submit" class="btn btnSubmit my-3 w-100">Publier votre post !</button>
+        </div>
+    {% else %}
+        <div class="form-group">
+            <button type="submit" class="btn btnSubmit my-3 w-100">Modifier votre post !</button>
+        </div>
+    {% endif %}
+    {{ form_end(form) }}
+{% endblock %}
+
+{# Collection image  #}
+{% block _post_images_entry_row %}
+    <div id="entry_{{ id }}" class="d-flex">
+        <div class="w-100">
+            {{ form_row(form.file) }}
+        </div>
+        <div class="flex-shrink-1">
+            <button title="Supprimer cette image" type="button" class="btn btn-sm ml-4 btnDanger delete__post__image">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block _post_images_row %}
+    {{ form_row(form) }}
+    <div class="form-group mt-4">
+        <div class="mb-4">
+            <em class="font-weight-bolder text_grey">Ici, vous pouvez ajouter une image !</em>
+        </div>
+        <button id="add__post__image" type="button" class="btn btnSubmit">Ajouter une image</button>
+    </div>
+{% endblock %}
+{# Collection image  #}
+
+{# Collection contenu  #}
+{% block _post_contents_entry_row %}
+    {{ form_widget(form) }}
+{% endblock %}
+
+{% block _post_contents_entry_widget %}
+    <div id="entry_{{ id }}" class="d-flex my-4">
+        <div class="w-100">
+            <div class="form-group">
+                {{ form_widget(form.subTitle) }}
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.content) }}
+            </div>
+        </div>
+        <div class="flex-shrink-1">
+            <button title="Supprimer ce contenu" type="button" class="btn btn-sm ml-4 btnDanger delete__post__content">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block _post_contents_widget %}
+    {{ form_widget(form) }}
+    <div class="form-group mt-4">
+        <div class="mb-4">
+            <em class="font-weight-bolder text_grey">Ici, vous pouvez ajouter du contenu !</em>
+        </div>
+        <button id="add__post__content" type="button" class="btn btnSubmit">Ajouter un contenu</button>
+    </div>
+{% endblock %}
+{# Collection contenu  #}
+
+{% block javascripts %}
+    <script>
+        $(function () 
+        {
+            function showPostImages(index) 
+            {
+                $('#post_images input[type="file"]').eq(index).on('input', function (e) 
+                {
+                    $('.mb-3').eq(index).remove();
+                    let reader = new FileReader();
+
+                    reader.onload = (e) => 
+                    {
+                        $(this).parent().before('<img src="' + e.target.result + '" class="w-100 mb-3">');
+                        $('.vich-image').addClass('text-right');
+                    }
+                    reader.readAsDataURL(e.target.files[0]);
+                });
+            }
+            
+            function addImage()
+            {
+                $('#add__post__image').click(function() 
+                {
+                    let index = $('#post_images .d-flex').length;
+                    let template = $('#post_images').data('prototype').replace(/__name__/g, index);
+
+                    $('#post_images').append(template);
+                    
+                    removeImage(index);
+                    showPostImages(index);
+                });
+            }
+            addImage();
+
+            function removeImage(index)
+            {
+                $('.delete__post__image').click(function() 
+                {
+                    $(this).closest('#entry_post_images_'+ index).remove();
+                });
+            }
+
+            function addContent()
+            {
+                $('#add__post__content').click(function() 
+                {
+                    let index = $('#post_contents .d-flex').length;
+                    let template = $('#post_contents').data('prototype').replace(/__name__/g, index);
+
+                    $('#post_contents').append(template);
+
+                    removeContent(index);
+                });
+            }
+            addContent();
+
+            function removeContent(index)
+            {
+                $('.delete__post__content').click(function() 
+                {
+                    $(this).closest('#entry_post_contents_'+ index).remove();
+                });
+            }
+        });
+    </script>
+{% endblock %}

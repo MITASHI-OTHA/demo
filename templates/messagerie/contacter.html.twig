@@ -1,0 +1,186 @@
+{% extends 'base.html.twig' %}
+
+{% set title = 'contacter' %}
+    
+{% block body %}
+<style>
+    .container section {
+        margin-top: 5%
+    }
+    .card {
+            padding: 23px;
+    }
+ 
+    .__first div:nth-of-type(1) {
+        position: relative;
+        display: flex;
+        margin-top: 6px;
+    }
+     .__first div:nth-of-type(1) span {
+        padding-left: 8px;
+        font-size: 10px;
+    }
+    .__first>div:nth-of-type(1):after {
+        position: absolute;
+        content: '';
+        height: 2px;
+        width: 21px;
+        background-color: #a2a2a2;
+        transform: rotate(34deg);
+        left: -1px;
+        top: 6px;
+    }
+    .row .card:nth-of-type(1) p {
+         font-size: 10px;
+         margin-top: 19px
+    }
+    .fa-bullhorn {
+        color: #a2a2a2;
+        font-size: 14px;
+    }
+    .card:hover {
+        -webkit-box-shadow: 0 -1px 4px 0 rgba(26,26,26,.08), 0 4px 8px 0 rgba(26,26,26,.12);
+        box-shadow: 0 -1px 4px 0 rgba(26,26,26,.08), 0 4px 8px 0 rgba(26,26,26,.12);
+    }
+    .caption-picture {
+        height: 90px;
+        width: 90px;
+        border-radius: 5px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .bnt-author {
+        margin-top: 14px;
+        display: inline-flex
+    }
+    .bnt-author button {
+        font-size: 10px !important;
+    }
+    .bnt-author button:first-child {
+        background: #ff000017 !important;
+        color: #ff0000 !important;
+        border: 1px dotted #ed1fff;
+        font-family: Montserrat-semibold;
+    }
+    .bnt-author button:last-child {
+        font-size: 10px !important;
+        margin-left: 11px !important;
+    }
+    .success-msg>div{
+        padding-top: 11px;
+        padding-bottom: 31px;
+    }
+    .success-msg div.__success p:first-child {
+        font-family: 'Montserrat-semibold';
+    }
+    .__success__txt {
+        display: flex
+    }
+    .__success__txt p {
+        padding-left: 41px;
+        font-size: 13px;
+        padding-right: 480px;
+        text-align: justify;
+    }
+    .__btn_success {
+        display: inline-flex;
+        margin-top: 31px;
+        font-family: "Montserrat-semibold";
+    }
+    .__btn_success button {
+        font-size: 12px;
+    }
+    .__btn_success button:last-child {
+       margin-left: 23px;
+    }
+    .success-msg {
+        display:none
+    }
+</style>
+   <div class="container">
+        <section>
+                <div class="row">
+                    <div class="col-md-12 success-msg animated animate__bounceIn">
+                        <div class="row">
+                            <div class="col-md-12 __success">
+                                <p>Votre message a bien été envoyé.</p>
+                            </div>
+                            <div class="col-md-12 __success__txt">
+                                <div>
+                                    <img src="{{ asset('build/images/web/direct.png') }}" width="50px">
+                                </div>
+                                <p>
+                                    Il s’affichera dans quelques instants dans votre messagerie. Simple et rapide, elle vous permet d’échanger avec les acheteurs et vendeurs du boncoin.
+                                </p>
+                            </div>
+                            <div class="col-md-12 __btn_success">
+                                <a href="{{path('messagerie')}}"><button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Acceder à la messagerie</button></a>
+                                <button type="button" class="btn btn-outline-primary" data-toggle="button" aria-pressed="false" autocomplete="off"> Retour au projet </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card __first">
+                            <h6 style="margin-bottom: 0;"> Envoyez un message à Guy Hawkins </h6>
+                            <div>
+                                <i class="fas fa-bullhorn"></i>
+                                <span>Refuse tout type de démarchage commercial</span>
+                            </div>
+                            <div class="form-group" style="margin-top: 21px">
+                                <label for="exampleFormControlTextarea1">Votre message</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="7"></textarea>
+                            </div>
+                            <button type="button" class="btn btn-primary btn-sm"> Envoyer </button>
+                            <p>
+                                Me renseigner sur les finalités du traitement de mes données personnelles, les destinataires, le responsable de traitement, les durées de conservation, les coordonnées du DPO et mes droits.
+                            </p>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-md-3">
+                                        <div class="caption-picture" style="background-image: url({{ asset('build/images/web/pexels-jeffrey-reed-769772.jpg') }})">
+
+                                        </div>
+                                </div>
+                                <div style="display: grid;">
+                                        <h4> Guy Hawkins </h4>
+                                        <span> CEO, Web Agency </span>
+                                        <div class="bnt-author">
+                                            <button type="button" class="btn btn-primary btn-tiny" data-toggle="button" aria-pressed="false" autocomplete="off" data-info="0600000000"> <i class="fas fa-phone-alt"></i> Afficher le numéro </button>
+                                            <button type="button" class="btn btn-light btn-tiny" data-toggle="button" aria-pressed="false" autocomplete="off" data-info="xxx@gmail.com"> <i class="fas fa-at"></i> Afficher l'émail</button>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </div>
+    {# Modal #}
+    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="modal-info">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content" style="padding: 34px;">
+                
+            </div>
+        </div>
+    </div>
+        {% block javascripts %}
+            <script>
+                $(function() {
+                    $('.bnt-author button').on('click', function() {
+                            var info = $(this).data('info')
+                            $('.modal-content').html('<h3 style="text-align: center">'+info+'</h3>')
+                            $('#modal-info').modal('show')
+                    })
+                    $('.__first button').on('click', ()=> {
+                        $('.success-msg').css('display', 'block')
+                    })
+                })
+            </script>
+        {% endblock %}
+    
+{% endblock %}

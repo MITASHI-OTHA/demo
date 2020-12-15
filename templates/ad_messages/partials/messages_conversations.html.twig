@@ -1,0 +1,57 @@
+<div class="d-flex mb-4">
+    <h6 class="flex-shrink">
+        {{ ad.author == app.user ? ad.author.prenom : author.prenom }}
+    </h6>
+    <div class="w-100 d-flex justify-content-end">
+        <div class="mr-3 text-right">
+            <p class="mb-1">{{ ad.name | u.truncate(25, '...', false) }}</p>
+            <strong class="text-success">
+                {{ ad.prix | format_currency('EUR', locale='fr') }}
+            </strong>
+        </div>
+        <div class="">
+            <img src="{{ asset('build/images/web/ads/'~ ad.photo1.name) }}" alt="{{ ad.name }}" class="rounded"
+                width="85.33">
+        </div>
+        <div class="ml-2">
+            <button style="color: #667d99;" class="btn">
+                <i class="fas fa-ellipsis-v"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div style="font-size:12px;" class="my-4 bg__danger__light">
+    <div class="font-weight-bolder">Pour discuter en sécurité, restez sur la messagerie</div>
+
+    <div class="text-secondary my-1">
+        Ici nous garantissons la sécurité de vos échanges alors soyez prudents lorsqu'un utilisateur vous demande votre
+        email / téléphone !
+    </div>
+
+    <a href="" class="text-danger font-weight-bolder">
+        En savoir plus
+    </a>
+</div>
+{#{ dump(messages) }#}
+{% for message in messages %}
+    {% if message.sender != app.user %}
+        <div class="my-4">
+            <div class="text-secondary text-center mb-2 message__send__at" style="font-size:12px; font-weight:500; opacity:.6;">
+                {{ message.sendAt | format_datetime(locale='fr') }}
+            </div>
+            <div class="bg__success__light other__user__bubble">
+                {{ message.content }}{#| line_break_content#}
+            </div>
+        </div>
+    {% else %}
+        <div class="my-4">
+            <div class="text-secondary text-center mb-2 message__send__at" style="font-size:12px; font-weight:500; opacity:.6;">
+                {{ message.sendAt | format_datetime(locale='fr') }}
+            </div>
+            <div class="bg__secondary__light app__user__bubble">
+                {{ message.content }}{#| line_break_content#}
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}

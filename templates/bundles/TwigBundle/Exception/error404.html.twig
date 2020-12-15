@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% set title = 'Erreur' %}
+{% block body %}
+  <div class="container">
+        <section>
+                <div class="row">
+                    <div class="col d-flex my-5">
+                        <img class="m-auto" src="{{ asset('build/images/static/image404.png') }}" width="50%">
+                    </div>
+                    <div class="col-sm-12 d-flex">
+                        <a href="{{ path('home') }}" class="btn btn-primary btnSubmit m-auto"> Revenir à l'accueil </a>
+                    </div>
+                </div>
+        </section>
+  </div>
+{% endblock %}

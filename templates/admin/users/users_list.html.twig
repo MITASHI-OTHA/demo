@@ -1,0 +1,111 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set title = 'Liste des utilisateurs' %}
+
+{% block stylesheets %}
+    <style>
+        table {
+            font-size: 0.85em;
+        }
+        .action a {
+            color: inherit;
+            font-size: 1em !important;
+            transition: ease .5s;
+        }
+        .action:hover a {
+            color: #00BFA6;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="d-flex my-4">
+        <h4 class="flex-grow-1 font-weight-bold">Gestion des utilisateurs</h4>
+        <div class="flex-shrink-1">
+            <a class="btn btnSubmit" href="{{ path('add_user') }}">Ajouter un utilisateur</a>
+        </div>
+    </div><br>
+
+    {% if null != users %}
+        <table class="table table-responsive table-hover">
+            <thead>
+                <tr>
+                    <th class="align-baseline" scope="col">#</th>
+                    <th class="align-baseline" scope="col">Pseudo</th>
+                    <th class="align-baseline" scope="col">Prénom</th>
+                    <th class="align-baseline" scope="col">Nom</th>
+                    <th class="align-baseline" scope="col">Email</th>
+                    <th class="align-baseline" scope="col">Civilité</th>
+                    <th class="align-baseline" scope="col">Abonné(e) Newsletter</th>
+                    <th class="align-baseline" scope="col">Rôle</th>
+                    <th class="align-baseline" scope="col">Date d'inscription</th>
+                    <th class="align-baseline" scope="col">Dernière connexion</th>
+                    <th class="align-baseline" scope="col">Dernière activité</th>
+                    <th class="align-baseline" scope="col">Connecté(e)</th>
+                    <th class="align-baseline" scope="col" colspan="2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, user in users %}
+                    <tr>
+                        <th scope="row">{{ key + 1 }}</th>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.prenom }}</td>
+                        <td>{{ user.nom }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.civilite != 'm' ? 'Madame' : 'Monsieur' }}</td>
+                        <td>{{ user.abonneNewsletter != 0 ? '<span class="badge badgeSuccess">Oui</span>' : '<span class="badge badgeDanger">Non</span>' }}</td>
+                        <td>
+                            {% for role in user.userRoles %}
+                                {% if role.name == 'ROLE_ADMIN' %}
+                                    Administrateur
+                                {% elseif role.name == 'ROLE_PROJECT_MANAGER' %}
+                                    Chef de projet
+                                {% elseif role.name == 'ROLE_CANDIDAT' %}
+                                    Candidat au projet
+                                {% else %}
+                                    Utilisateur
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>{{ user.registrationDate | date('d/m/Y') }}</td>
+                        <td>{{ user.lastLogin | date('d/m/Y à H: i') | replace({':' : 'h'}) }} </td>
+                        <td>{{ user.lastActivityAt | date('d/m/Y à H: i') | replace({':' : 'h'}) }} </td>
+                        <td>{{ user.isConnected != 0 ? '<span class="badge badgeSuccess">Oui</span>' : '<span class="badge badgeDanger">Non</span>' }}</td>
+                        <td class="action">
+                            <a class="edit__user" href="{{ path('update_user', { 'user' : user.id }) }}">
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
+                        </td>
+                        <td class="action">
+                            <a class="delete__user" href="{{ path('delete_user', { 'user' : user.id }) }}">
+                                <i class="far fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(function() 
+        {
+            function confirmAction() 
+            {
+                $('.edit__user').click(() => 
+                {
+                    return confirm('Êtes-vous certain de vouloir modifier les informations de cet utilisateur ?');
+                });
+
+                $('.delete__user').click(() => 
+                {
+                    return confirm('Attention, zone dangereuse !!! Êtes-vous certain de vouloir supprimer cet utilisateur de votre base de données ?');
+                });
+            }
+            confirmAction();
+        });
+    </script>
+{% endblock %}

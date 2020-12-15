@@ -1,0 +1,31 @@
+{
+    "devDependencies": {
+        "@fortawesome/fontawesome-free": "^5.13.0",
+        "@symfony/webpack-encore": "^0.30.2",
+        "bootstrap": "^4.5.0",
+        "core-js": "^3.0.0",
+        "jquery": "^3.5.1",
+        "popper.js": "^1.16.1",
+        "regenerator-runtime": "^0.13.2",
+        "webpack-notifier": "^1.8.0"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production --progress"
+    },
+    "dependencies": {
+        "animate.css": "^4.1.0",
+        "axios": "^0.19.2",
+        "boostrap": "^2.0.0",
+        "bootstrap-datepicker": "^1.9.0",
+        "chart.js": "^2.9.3",
+        "bootstrap-slider": "^11.0.2",
+        "ckeditor": "^4.12.1",
+        "copy-webpack-plugin": "^6.0.3",
+        "cropper": "^4.1.0"
+    }
+}

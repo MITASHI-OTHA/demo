@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% set title = 'Inscription' %}
+
+{% block stylesheets %}
+    <style>
+        .undo a {
+            color: #00BFA6;
+            font-size: 1.25em !important;
+            transition: ease .5s;
+        }
+        .undo a:hover {
+            color: rgb(0, 143, 124);
+        }
+        #user_abonneNewsletter label, #user_userRoles label {
+            margin-top: 3px;
+            margin-left: 3px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <div class="my-4 undo">
+        <a href="{{ path('users_list') }}">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+    {{ form_start(form) }}
+        {% if action != 'update' %}
+            <h2 class="text-center font-weight-bold">Inscription</h2>
+        {% else %}
+            <h2 class="text-center font-weight-bold">Modifier les infos de l'utilisateur</h2>
+        {% endif %}
+
+        {{ form_row(form.civilite) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.prenom) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.email) }}
+
+        {% if action != 'update' %}
+            {{ form_row(form.password) }}
+            {{ form_row(form.abonneNewsletter) }}
+
+            <div class="d-flex">
+                {{ form_row(form.cguAccepted) }}
+                <label for="registration_cguAccepted">* En soumettant ce formulaire, j'ai lu et j’accepte les <a href="#">Conditions d’utilisation</a> de Welcoom.</label>
+            </div>
+        {% endif %}
+        
+        {{ form_rest(form) }}
+
+        {% if action != 'update' %}
+            <button class="btn btnSubmit">S'inscrire !</button>
+        {% else %}
+            <button class="btn btnSubmit">Modifier !</button>
+        {% endif %}
+    {{ form_end(form) }}
+    <br>
+
+    <!-- Modal -->
+    <div class="modal fade" id="avatarModal" tabindex="-1" role="dialog" aria-labelledby="avatarModalTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title title" id="avatarModalTitle">Téléverser et recadrer ma photo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body avatar__cropper__modal">
+                    <img src="" id="avatar__cropper__js" alt="">
+                </div>
+                <div class="modal-footer">
+                    <div class="col text-center">
+                        <button id="crop__save__js" type="button" class="btn btnSubmit px-3">
+                            Recadrer et enregistrer !
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(function() 
+        {
+            $('label[for="user_userRoles_0_name"]').text('Rôle');
+        });
+    </script>
+{% endblock %}

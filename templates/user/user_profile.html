@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% set title = 'Profile de l\'utilisateur' %}
+
+{% block body %}
+
+    <div class="my-4">
+        {{ form_start(form) }}
+        {{ form_rest(form) }}
+            <button type="submit" class="btn btnSubmit">Modifier !</button>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(function() 
+        {
+            function showCity() 
+            {
+                $('#profile_userContactInfos_pays option[value="250"]').attr('selected', 'selected');
+
+                const apiUrl = 'https://geo.api.gouv.fr/communes?codePostal=';
+                const format = '&format=json';
+                
+                $('#profile_userContactInfos_codePostal').on('blur', function() 
+                {
+                    $('#profile_userContactInfos_ville option').remove();
+                    $('.alert__cp').remove();
+
+                    $.ajax(
+                    {
+                        method: 'GET',
+                        url: apiUrl + $(this).val() + format,
+                        dataType: 'json',
+                        headers: { 'X-Requested-With': 'XMLHttpRequest' },
+                        success: (response) =>
+                        {
+                            if(response.length > 0) 
+                            {
+                                $(response).each(function(key, value) 
+                                {
+                                    $('#profile_userContactInfos_ville').append('<option>'+ value.nom +'</option>');
+                                    console.log(value.nom);
+                                });
+                            } 
+                            else 
+                            {
+                                $(this).after('<div class="mt-2 text-danger alert__cp">Aucune ville ne correspond à ce code postal : <strong>"'+ $(this).val() +'"</strong></div>');
+                            }
+                        },
+                    });
+                });
+                
+            }
+            showCity();
+        });
+    </script>
+{% endblock %}

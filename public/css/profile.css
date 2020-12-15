@@ -1,0 +1,200 @@
+.profil-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    position: relative
+}
+.profil-picture .fa-pen-square {
+    position: absolute;
+    right: 10px;
+    bottom: 8px;
+    color: #1d1c1c;
+    font-size: 21px;
+    cursor: pointer
+}
+.profil-picture img {
+    width: 150px
+}
+
+a:hover {
+    text-decoration: none
+}
+.col-profil-active {
+    padding: 6px;
+    padding-left: 11px;
+    border-left: 4px solid red;
+    background: #8080800d;
+    margin-top: 17px;
+    width: 58%;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer
+}
+ .col-profil-active:hover {
+     background: #8080801c;
+ }
+.col-profil-active>div {
+    display: flex;
+}
+.col-profil-active>div svg, .col-profil-active>div span {
+    margin: auto;
+    margin-left: 0
+}
+.col-profil-active>div svg {
+    margin: auto;
+    margin-left: 0;
+    margin-right: 13px;
+}
+.card {
+    padding: 24px;
+    border-radius: 7px;
+}
+.card p {
+    font-size: 12px;
+}
+h5 {
+    position: relative
+}
+h5:not(.modal-title):after {
+    position: absolute;
+    content: '';
+    height: 5px;
+    width: 20px;
+    background-color: #54c0a7;
+    bottom: -4px;
+    left: 0;
+}
+section ul, .col-visibilite ul {
+    list-style: none
+}
+.col-cvivlite ul li, .col-visibilite ul li {
+    display: inline 
+}
+.form-check-inline>.form-check:first-child {
+    padding-left: 0px
+}
+.col-visibilite ul li:first-child {
+    flex: 1
+}
+.col-visibilite ul {
+    padding-left: 0;
+}
+.col-visibilite ul li .custom-control {
+    float: right
+}
+.col-set-visibility {
+    margin-top: 30px
+}
+.col-set-visibility div {
+    margin-bottom: 10px
+}
+.col-card-notification .card {
+    height: 120px;
+    width: 100%
+}
+
+
+.flip-card {
+    background-color: transparent;
+    perspective: 1000px;
+    }
+.flip-card .card {
+padding: 0;
+background-color: transparent;
+}
+
+.flip-card-inner {
+position: relative;
+width: 100%;
+height: 100%;
+transition: transform 0.6s;
+transform-style: preserve-3d;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+transform: rotateY(-180deg);
+}
+
+.flip-card-front, .flip-card-back {
+border-radius: 8px;
+position: absolute;
+width: 100%;
+height: 100%;
+-webkit-backface-visibility: hidden;
+backface-visibility: hidden;
+padding: 4px;
+}
+.flip-card-front {
+color: black;
+}
+
+.flip-card-front p {
+margin-top: 20px;
+font-size: 13px;
+}
+.flip-card-back {
+transform: rotateY(180deg);
+}
+.lip-card-back ul {
+list-style: none
+}
+.lip-card-back ul li {
+display: inline
+}
+.col-card-notification .col-md-6 {
+margin-bottom: 17px 
+}
+.container hr {
+width: 65%;
+float: left;
+}
+.danger-col {
+display: grid;
+margin-top: 50%;
+}
+.danger-col>div {
+display: flex;
+padding-bottom: 31px;
+border-top: 1px dotted #ddd;
+padding-top: 11px;
+}
+.danger-col svg {
+font-size: 30px;
+color: #983200;
+}
+label.visiblity {
+font-size: 12px;
+font-family: 'montserrat-semibold';
+color: #171515;
+padding-bottom: 6px;
+}
+.f-l {
+float: right
+}
+.form-civility label {
+font-size: 12px;
+font-family: 'montserrat-semibold';
+}
+.form-civility .col-md-6 {
+padding-bottom: 20px;
+}
+.form-civility input::placeholder {
+font-size: 10px;
+margin-top: 0;
+padding-top: 0
+}
+.input-group-append:hover {
+cursor: pointer
+}
+.alert-primary {
+margin-bottom: 0;
+margin-top: 14px
+}
+.container a {
+color: rgb(55, 57, 66);
+}

@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+{% set title = 'Mes favoris' %}
+
+{% block body %}
+    {% block stylesheets %}
+         <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
+        <style>
+            .container .row:first-child h6 {
+                margin-top: 3%
+            }
+            .card {
+                width: 70%
+            }
+            .fa-heart {
+                font-size: 25px;
+                color: #53c0b5;
+            }
+            .btn-outline-primary:hover {
+                background-color: #b9fff8 !important;
+                border-color: #4dffed !important;
+                color: #40b389 !important;
+            }
+            .footer-card button {
+                float: right
+            }
+            .caption {
+                height: 200px;
+                width: 100%;
+                overflow: hidden;
+            }
+             .caption img {
+                 width: 100%
+             }
+        </style>
+    {% endblock %}
+        <div class="container">
+                <section>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1> Mes favoris </h1>
+                                <h6> Retrouvez vos projets sauvegardés sur tous vos appareils </h6>
+                                <p> Si l’annonce n’est plus active sur le site, elle disparaîtra automatiquement de votre sélection. </p>
+                            </div>
+                        </div>
+                        <div class="modal" tabindex="-1" id="deleteFavoris">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Supprimer le favoris</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Souhaitez-vous supprimer ce favoris ?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                        <button type="button" class="btn btn-danger">Supprimer</button>
+                                    </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="row" style="margin-top: 21px">
+                                <div class="col-md-12"> 
+                        {# bouclez les candidatures enregistrées #}
+                                    <div class="card">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                        <div class="caption d-flex justify-content-center align-items-center">
+                                                            <img src="https://images.pexels.com/photos/212185/pexels-photo-212185.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)">
+                                                        </div>
+                                                </div>
+                                                <div class="col-md-8" style="position: relative">
+                                                        <i class="fas fa-trash"></i>
+                                                        <div class="cand-descpt">
+                                                            <h3> Oasis la Geriais </h3>
+                                                            <ul>
+                                                                <li class="log"><i class="fas fa-door-open"></i> 3/5 logements disponibles</li>
+                                                                <li>2500€/m2</li>
+                                                            </ul>
+                                                            <div style="display: flex;margin-top: 7px;">
+                                                                <i class="fas fa-calendar-day"></i>
+                                                                <span> Sauvegardé le 05/08/2020 </span>
+                                                            </div>
+                                                        </div>
+                                                      
+                                                        <div class='footer-card'>
+                                                           
+                                                            
+                                                          
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            {# fin #}
+                                    </div>
+                                    <div class="col-md-12"> 
+                        {# bouclez les candidatures enregistrées #}
+                                    <div class="card">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                        <div class="caption justify-content-center align-items-center">
+                                                            <img src="https://images.pexels.com/photos/4675158/pexels-photo-4675158.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                                                        </div>
+                                                </div>
+                                                <div class="col-md-8" style="position: relative">
+                                                        <i class="fas fa-trash"></i>
+                                                        <div class="cand-descpt">
+                                                            <h3> Le Pre des Hauts Bois </h3>
+                                                            <ul>
+                                                                <li class="log"><i class="fas fa-door-open"></i> 3/5 logements disponibles</li>
+                                                                <li>2500€/m2</li>
+                                                            </ul>
+                                                            <div style="display: flex;margin-top: 7px;">
+                                                                <i class="fas fa-calendar-day"></i>
+                                                                <span> Sauvegardé le 05/08/2020 </span>
+                                                            </div>
+                                                        </div>
+                                                      
+                                                        <div class='footer-card'>
+                                                            <div style="flex: 1;padding-top: 5px">
+                                                            
+                                                            
+                                                        </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                        {# fin #}
+                            </div>
+
+                        </div>
+                </section>
+        </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(function(){
+            $('.fa-trash').on('click',()=> {
+                $('#deleteFavoris').modal('show')
+            })
+        })
+    </script>
+{% endblock %}

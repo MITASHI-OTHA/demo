@@ -1,0 +1,21 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        welcoom_image:
+            uri_prefix: /images/web
+            upload_destination: '%kernel.project_dir%/assets/images/web'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        ads_image:
+            uri_prefix: /images/web/ads
+            upload_destination: '%kernel.project_dir%/assets/images/web/ads'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true

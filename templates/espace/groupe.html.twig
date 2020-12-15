@@ -1,0 +1,260 @@
+{% extends 'espace/base.html.twig' %}
+{% set title = 'Le groupe' %}
+{% block stylesheets %}
+    <style>
+        .img-thumbnail {
+            height: 200px;
+            overflow: hidden
+        }
+        .img-thumbnail img {
+            width: 100%
+        }
+        .head-content-card h1 {
+            font-size: 17px
+        }
+        .head-content-card a {
+            font-size: 13px;
+            color: var(--blue);
+        }
+        .head-content-card p {
+            font-size: 13px;
+        }
+        .card-member {
+            border-bottom: 3px solid red;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            box-shadow: 0 -1px 4px 0 rgba(26,26,26,.08), 0 4px 8px 0 rgba(26,26,26,.12);
+            -webkit-box-shadow: 0 -1px 4px 0 rgba(26,26,26,.08), 0 4px 8px 0 rgba(26,26,26,.12);
+        }
+        .col-md-3 {
+            margin-top: 30px
+        }
+        a:hover {
+            text-decoration: none
+        }
+    </style>
+{% endblock %}
+{% block body %}
+{{ render(path("header")) }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <h2> Le groupe </h2>
+            </div>
+        </div>
+        <div class="row mt-3">
+                <div class="col-md-3  wow fadeInDown">
+                    <div class="card-member px-0">
+                        <div class="img-thumbnail d-flex justify-content-center align-items-center p-0">
+                            <img src="https://images.pexels.com/photos/3211476/pexels-photo-3211476.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260">
+                        </div>
+                        <div class="d-flex align-content-between flex-wrap px-3">
+                                <div class="head-content-card">
+                                        <h1 class="mt-2"> François DUBOIS </h1>
+                                        <p class="mt-2">
+                                            Est aliqua ipsum consectetur do ex do. Consequat adipisicing nostrud eiusmod ipsum dolore sit fugiat. Magna est sint veniam fugiat labore Lorem enim ex id qui.
+                                        </p>
+                                </div>
+                                <div class="foot-content-card mb-2">
+                                    <a href="{{ path('membre') }}">
+                                        Voir le profil
+                                    </a>
+                                </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                {# Itération #}
+                    <div class="col-md-3  wow fadeInDown">
+                        <div class="card-member px-0">
+                            <div class="img-thumbnail d-flex justify-content-center align-items-center p-0">
+                                <img src="https://images.pexels.com/photos/3525908/pexels-photo-3525908.jpeg?auto=compress&cs=tinysrgb&h=650&w=940">
+                            </div>
+                            <div class="d-flex align-content-between flex-wrap px-3">
+                                    <div class="head-content-card">
+                                            <h1 class="mt-2"> Marc BOYER </h1>
+                                            <p class="mt-2">
+                                                Est aliqua ipsum consectetur do ex do. Consequat adipisicing nostrud eiusmod ipsum dolore sit fugiat. Magna est sint veniam fugiat labore Lorem enim ex id qui.
+                                            </p>
+                                    </div>
+                                    <div class="foot-content-card mb-2">
+                                        <a href="{{ path('membre') }}">
+                                            Voir le profil
+                                        </a>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="col-md-3  wow fadeInDown">
+                            <div class="card-member px-0">
+                                <div class="img-thumbnail d-flex justify-content-center align-items-center p-0">
+                                    <img src="https://images.pexels.com/photos/2419574/pexels-photo-2419574.jpeg?auto=compress&cs=tinysrgb&h=650&w=940">
+                                </div>
+                                <div class="d-flex align-content-between flex-wrap px-3">
+                                        <div class="head-content-card">
+                                                <h1 class="mt-2"> Marie CURIE </h1>
+                                                <p class="mt-2">
+                                                    Est aliqua ipsum consectetur do ex do. Consequat adipisicing nostrud eiusmod ipsum dolore sit fugiat. Magna est sint veniam fugiat labore Lorem enim ex id qui.
+                                                </p>
+                                        </div>
+                                        <div class="foot-content-card mb-2">
+                                            <a href="{{ path('membre') }}">
+                                                Voir le profil
+                                            </a>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3  wow fadeInDown">
+                            <div class="card-member px-0">
+                                <div class="img-thumbnail d-flex justify-content-center align-items-center p-0">
+                                    <img src="https://images.pexels.com/photos/654690/pexels-photo-654690.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                                </div>
+                                <div class="d-flex align-content-between flex-wrap px-3">
+                                        <div class="head-content-card">
+                                                <h1 class="mt-2"> Jeanne DARC </h1>
+                                                <p class="mt-2">
+                                                    Est aliqua ipsum consectetur do ex do. Consequat adipisicing nostrud eiusmod ipsum dolore sit fugiat. Magna est sint veniam fugiat labore Lorem enim ex id qui.
+                                                </p>
+                                        </div>
+                                        <div class="foot-content-card mb-2">
+                                            <a href="{{ path('membre') }}">
+                                                Voir le profil
+                                            </a>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                {# fin #}
+
+                {# itérations (2ème ligne) #}
+                    <div class="col-md-3 wow fadeInDown">
+                    <div class="card-member px-0">
+                        <div class="img-thumbnail d-flex justify-content-center align-items-center p-0">
+                            <img src="https://images.pexels.com/photos/3936894/pexels-photo-3936894.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500">
+                        </div>
+                        <div class="d-flex align-content-between flex-wrap px-3">
+                                <div class="head-content-card">
+                                        <h1 class="mt-2"> ELODIE BEDEL </h1>
+                                        <p class="mt-2">
+                                            Est aliqua ipsum consectetur do ex do. Consequat adipisicing nostrud eiusmod ipsum dolore sit fugiat. Magna est sint veniam fugiat labore Lorem enim ex id qui.
+                                        </p>
+                                </div>
+                                <div class="foot-content-card mb-2">
+                                    <a href="{{ path('membre') }}">
+                                        Voir le profil
+                                    </a>
+                                </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                {# Itération #}
+                    <div class="col-md-3 wow fadeInDown">
+                        <div class="card-member px-0">
+                            <div class="img-thumbnail d-flex justify-content-center align-items-center p-0">
+                                <img src="https://images.pexels.com/photos/5042302/pexels-photo-5042302.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                            </div>
+                            <div class="d-flex align-content-between flex-wrap px-3">
+                                    <div class="head-content-card">
+                                            <h1 class="mt-2"> Jéremie CHUN </h1>
+                                            <p class="mt-2">
+                                                Est aliqua ipsum consectetur do ex do. Consequat adipisicing nostrud eiusmod ipsum dolore sit fugiat. Magna est sint veniam fugiat labore Lorem enim ex id qui.
+                                            </p>
+                                    </div>
+                                    <div class="foot-content-card mb-2">
+                                        <a href="{{ path('membre') }}">
+                                            Voir le profil
+                                        </a>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="col-md-3 wow fadeInDown">
+                            <div class="card-member px-0">
+                                <div class="img-thumbnail d-flex justify-content-center align-items-center p-0">
+                                    <img src="https://images.pexels.com/photos/4687219/pexels-photo-4687219.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                                </div>
+                                <div class="d-flex align-content-between flex-wrap px-3">
+                                        <div class="head-content-card">
+                                                <h1 class="mt-2"> Marie DO </h1>
+                                                <p class="mt-2">
+                                                    Est aliqua ipsum consectetur do ex do. Consequat adipisicing nostrud eiusmod ipsum dolore sit fugiat. Magna est sint veniam fugiat labore Lorem enim ex id qui.
+                                                </p>
+                                        </div>
+                                        <div class="foot-content-card mb-2">
+                                           <a href="{{ path('membre') }}">
+                                                Voir le profil
+                                            </a>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 wow fadeInDown">
+                            <div class="card-member px-0">
+                                <div class="img-thumbnail d-flex justify-content-center align-items-center p-0">
+                                    <img src="https://images.pexels.com/photos/2380794/pexels-photo-2380794.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500">
+                                </div>
+                                <div class="d-flex align-content-between flex-wrap px-3">
+                                        <div class="head-content-card">
+                                                <h1 class="mt-2"> Fontaine GAILLAR </h1>
+                                                <p class="mt-2">
+                                                    Est aliqua ipsum consectetur do ex do. Consequat adipisicing nostrud eiusmod ipsum dolore sit fugiat. Magna est sint veniam fugiat labore Lorem enim ex id qui.
+                                                </p>
+                                        </div>
+                                        <div class="foot-content-card mb-2">
+                                            <a href="{{ path('membre') }}">
+                                                Voir le profil
+                                            </a>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                {# fin #}
+                <div class="col-md-12 mt-5 d-flex justify-content-center">
+                    <nav aria-label="...">
+                        <ul class="pagination">
+                            <li class="page-item disabled">
+                            <span class="page-link">Precèdent</span>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item active">
+                            <span class="page-link">
+                                2
+                                <span class="sr-only">(current)</span>
+                            </span>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                            <li class="page-item"><a class="page-link" href="#">6</a></li>
+                            <li class="page-item"><a class="page-link" href="#">7</a></li>
+                            <li class="page-item">
+                            <a class="page-link" href="#">Suivant</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                {#  #}
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+            $(function() {
+                wow = new WOW(
+                    {
+                        animateClass: 'animated',
+                        callback:     function(box) {
+                        
+                        }
+                    }
+                    );
+                wow.init();
+            })
+    </script>
+{% endblock %}

@@ -1,0 +1,171 @@
+{% extends 'base.html.twig' %}
+
+{% set title = 'Inscription' %}
+
+
+{% block body %}
+     <style>
+        .form-group {
+            margin-bottom: 1.5em;
+        }
+        .right-image-sign-up {
+            background-position: center;
+            background-size: 100%;
+            width: 70%;
+            height: 100%;
+            background-repeat: no-repeat;
+            margin: auto;
+        } 
+        #registration_typeAccount .form-check:first-child, #registration_civilite .form-check:first-child {
+                padding-left: 0;
+        }
+        .blk-form-ps {
+            display: flex
+        }
+        .blk-form-ps .form-group {
+            width: 50%
+        }
+        .blk-form-ps .form-group:first-child {
+            padding-right: 2%;
+        }
+        .blk-form-ps .form-group:last-child {
+            padding-left: 2%;
+        }
+        section .container {
+            margin-top: 3% !important;
+        }
+        label[for=registration_cguAccepted], label[for=registration_abonneNewsletter]  {
+            font-size: 12px;
+        }
+        label[for=registration_cguAccepted] a {
+            color: rgba(18, 170, 255, 1) !important
+        }
+    </style>
+    <div class="container">
+        <div class="row mt-5">
+                <div class="col-md-6">
+                    <h2 class="font-weight-bolder my-4">Créer un compte</h2><br>
+                    
+                    {{ form_start(form) }}
+                          
+                        <div class="row">
+                            <div class="form-group col-md-12 pr-2 mb-0">
+                                {{ form_row(form.typeAccount) }}
+                            </div>
+                            <div class="form-group col-md-12 pr-2 mb-0">
+                                {{ form_row(form.civilite) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4 pr-2 mb-0">
+                                {{ form_row(form.nom) }}
+                            </div>
+                            <div class="form-group col-md-4 pl-2 mb-0">
+                                {{ form_row(form.prenom) }}
+                            </div>
+                            <div class="form-group col-md-4 pl-2 mb-0">
+                                {{ form_row(form.username) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ form_row(form.email) }}
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="confirmation" class="required">Confirmation Email</label>
+                                                                    <input id="confirmation" type="email" class="form-control" placeholder="confirmez le mot de passe *" required="true">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 blk-form-ps">
+                                {{ form_row(form.password) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ form_row(form.abonneNewsletter) }}
+                            </div>
+                            <div class="col-md-12">
+                                {{ form_row(form.recaptchaToken) }}
+                            </div>
+
+                        </div>
+                        
+                        <div class="d-flex">
+                        {{ form_row(form.cguAccepted) }}
+                         <label for="registration_cguAccepted"> En soumettant ce formulaire, j'ai lu et j’accepte les <a href="#">Conditions d’utilisation</a> de Welcohome.</label> 
+                        </div>
+                    {{ form_rest(form) }}
+                        <button class="btn btnSubmit my-4 w-100">S'inscrire !</button>
+                    {{ form_end(form) }}
+                </div>
+                <div class="col-md-6">
+                    <div class="right-image-sign-up" style="background-image: url({{asset('build/images/web/welcohome-inscription.png')}}) ">
+                    </div>
+                </div>
+            </div>
+    </div>
+    
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le5SbMZAAAAAGTWwVvyIW1T2WqAzj41uDk1GXVt"></script>
+
+    <script>
+        grecaptcha.ready(function()
+        {
+            grecaptcha.execute('6Le5SbMZAAAAAGTWwVvyIW1T2WqAzj41uDk1GXVt', { action: 'contactinfo' }).then(function(token)
+            {
+                document.getElementById('contact_infos_recaptchaToken').value = token;
+            });
+        });
+
+        $(function() 
+        {
+            function initializeElements() 
+            {
+                $('#registration_password_first').parent().css('position', 'relative');
+                $('#registration_password_first').parent().append('<button type="button" id="mdp__register__show" class="btn m-0 p-0"><i class= "fas fa-eye"></i></button><button type="button" id="mdp__register__hide" class="btn m-0 p-0"><i class="fas fa-eye-slash"></i></button>');
+
+                $('#mdp__register__show').click(function() 
+                {
+                    $(this).siblings('#registration_password_first').attr('type', 'text');
+                    $(this).fadeOut();
+                    $('#mdp__register__hide').fadeIn();
+                });
+
+                $('#mdp__register__hide').click(function() 
+                {
+                    $(this).siblings('#registration_password_first').attr('type', 'password');
+                    $(this).fadeOut();
+                    $('#mdp__register__show').fadeIn();
+                });
+
+                $('#registration_password_second').parent().css('position', 'relative');
+                $('#registration_password_second').parent().append('<button type="button" id="mdp__register__show2" class="btn m-0 p-0"><i class= "fas fa-eye"></i></button><button type="button" id="mdp__register__hide2" class="btn m-0 p-0"><i class="fas fa-eye-slash"></i></button>');
+
+                $('#mdp__register__show2').click(function() 
+                {
+                    $(this).siblings('#registration_password_second').attr('type', 'text');
+                    $(this).fadeOut();
+                    $('#mdp__register__hide2').fadeIn();
+                });
+
+                $('#mdp__register__hide2').click(function() 
+                {
+                    $(this).siblings('#registration_password_second').attr('type', 'password');
+                    $(this).fadeOut();
+                    $('#mdp__register__show2').fadeIn();
+                });
+            }
+            initializeElements();
+
+        });
+
+    </script>
+{% endblock %}

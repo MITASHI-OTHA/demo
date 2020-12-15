@@ -1,0 +1,9 @@
+{% form_theme form _self %}
+
+
+<div class="example-wrapper" id="ResponseForm">
+    {{ form_start(form) }}
+    {{ form_row(form) }}
+    <input type="submit" name="valider" class="btn btn-success mr-5" value="Valider" onclick="send_reponseCandidature({{  candidature}} , {{  status  }}, '{{ type  }}')">
+    {{ form_end(form) }}
+</div>

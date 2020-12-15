@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% set title = 'Page projet' %}
+
+{% block stylesheets %}
+    <style>
+        
+    </style>
+{% endblock %}
+
+{% block body %}
+    {% if null != ad %}
+        <h1>{{ ad.name }}</h1>
+        <p>{{ ad.presentationProjet.presentationOperation }}</p>
+        <div class="form-group">
+            <a href="{{ path('contact_ad_author', { 'ad' : ad.id, 'slug' : ad.slug }) }}" class="btnPrimary btn">
+                Contacter le chef de projet
+            </a>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(function() 
+        {
+
+        });
+    </script>
+{% endblock %}

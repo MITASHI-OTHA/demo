@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="shortcut icon" href="{{ asset('images/static/shortcut_icon.svg') }}">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/> 
+        <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/flickity.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/emojify.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/classic.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/classic.time.css') }}">
+         <link rel="stylesheet" href="{{ asset('css/default.date.css') }}">
+          <!--[if IE]>
+              <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <!-- Encore CSS -->
+        {{ encore_entry_link_tags('app') }}
+        {% block stylesheets %}{% endblock %}
+        <!-- Google font -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        
+        <!-- Encore JS -->
+        {{ encore_entry_script_tags('app') }}
+        <style>
+          body 
+          {
+              font-family: 'Montserrat' !important, 'sans-serif';
+          }
+          a:hover {
+            text-decoration: none
+          }
+          .masq {
+            display: none !important;
+          }
+          .clone {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            background: black;
+            z-index: 11;
+            transition: all ease-in .8s
+          }
+        </style>
+        <title>{{ title }}</title>
+    </head>
+    <body>
+        {# Barre de navigation #}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex menus">
+            <div class="d-flex justify-content-between w-100">
+                      <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
+                          <a class="navbar-brand" href="{{path('home')}}" style="font-weight: 600;color: #54c0a7 !important"> Welcooom Office </a>
+                      </div>
+                <div>
+                    <ul class="nav justify-content-end">
+                        <li class="nav-item">
+                          <i class="ico3-home"></i>
+                            <a class="nav-link" href="{{path('espace')}}">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                        <i class="ico2-group"></i>
+                            <a class="nav-link" href="{{path('groupe')}}">Le groupe</a>
+                        </li>
+                        <li class="nav-item">
+                          <i class="ico3-calendar">
+                            
+                          </i>
+                            <a class="nav-link" href="{{ path('calendrier') }}"> Calendrier</a>
+                        </li>
+                        {% set link = 'login' %}
+                        {% if app.user %}
+                            {% set link = 'candidature' %}
+                              {% if  app.user.getTypeAccount != 'Habitant' %}
+                                  {% set link = 'annonces' %}
+                              {% endif %}
+                      {% endif %}
+                 
+                        <li class="nav-item">
+                            <i class="ico3-book">
+                            </i>
+                            <a class="nav-link" href="{{path('bibliotheques')}}"> Bibliothèque </a>
+                        </li>
+                        <li class="nav-item">
+                            <i class="ico3-forum">
+                            </i>
+                            <a class="nav-link" href="{{path('forum')}}"> Forum </a>
+                        </li>
+                        <li class="nav-item">
+                            <i class="icon-message_vector_Plan-de-travail-1">
+                            </i>
+                            <a class="nav-link" href="{{ path('_messagerie') }}"> Messageries </a>
+                        </li>
+                      {# faire une condition pour afficher le menus de connexion #}
+                      {% if  app.user %}
+                      {# Ce block c'est une fois le user connecté #}
+                     
+                        <li class="nav-item loger" data-type={{ app.user.getTypeAccount }}>
+                              <i class="icon-user"></i>
+                              <a class="nav-link" href="#"> {{app.user.username}} </a>
+                          </li>
+                        {% else %}
+                          <li class="nav-item login">
+                              <i class="icon-user"></i>
+                              <a class="nav-link" href="#">Se connecter</a>
+                          </li>
+                        {% endif %}
+                        {#  #}
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+       {# popin mobile #}
+           <div class="screen-mobil justify-content-center align-items-center" style="display: none">
+              <p class="text-centeres text-center" style="color: #217ff6;font-size: 25px;font-weight: 600;padding-bottom: 2rem;"> App Welcooom en construction  </p>
+              <img src="{{ asset('build/images/static/gsf-illustration2.svg') }}">
+              <p class="text-centeres mt-3 mb-3 text-center" style="color: #fff"> Nous travaillons actuelement à adapter le site sur vos supports mobiles. Pour le moment consultez le site sur votre ordinateur.  </p>
+          </div>
+
+       {#  #}
+{# fin #}
+
+        <div class="container position-relative">
+            {# Popin alert groupe #}
+            {% if link == 'espace' %}
+                <div class="popin-alert-group animate__animated animate__infinite">
+                      <div class="position-relative">
+                          <i class="fas fa-times position-absolute"></i>
+                          <p>
+                            Felicitation! Vous faîtes desormais parti de l'espace collaboratif <b>Oasis la Geriais</b>.
+                            Cliquer sur ce onglet pour visiter votre espace
+                          </p>
+                      </div>
+                  </div>
+            {% endif %}
+              
+
+            {# fin #}
+             <div class="menus-user">
+                  <ul>
+                      <li><a href="{{path('profil')}}"> Mon profil </a></li>
+                      <li><a href="{{path('logout')}}"> Se deconnecter </a></li>
+                  </ul>
+            </div>
+            {% if title not in ['login'] %}
+                {% for alerte in app.flashes('success') %}
+                    <div class="app__flashes__success">
+						{{ alerte | raw }}
+						    <div class="app__flashes__close"></div>
+                <br>
+					</div>
+                {% endfor %}
+                
+                {% for alerte in app.flashes('errors') %}
+                    <div class="app__flashes__error">
+						{{ alerte | raw }}
+						<div class="app__flashes__close"></div>
+            <br>
+					</div>
+                {% endfor %}
+            
+            {% endif %}
+      </div>
+      {# block de connexion #}
+          <div class="pop-up-connexion ">
+               {{ render(controller("App\\Controller\\HomeController::loginform")) }}
+          </div>
+        {# fin #}
+          {% block body %}{% endblock %}
+            
+        <!-- Footer -->
+<footer class="page-footer font-small unique-color-dark">
+  <div class="container text-center text-md-left">
+    <div class="row" style="padding-top: 1rem !important;">
+      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+        <h6 style="color: #53c0b5;" class="text-uppercase font-weight-bold">Welcooom</h6>
+        <p>
+            1<sup>er</sup> site d'annonces immobilières dédié aux projets d'habitat participatif
+        </p>
+      </div>
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+    <!-- Liens -->
+    <h6 class="text-uppercase font-weight-bold"> À propos </h6>
+       
+            <p>
+                <a href="#!"> Qui sommes nous ?</a>
+            </p>
+             <p>
+                <a href="{{ path('contact') }}"> Nous contacter </a>
+            </p>
+           
+      </div>
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+        <!-- Liens -->
+    <h6 class="text-uppercase font-weight-bold" style="white-space: nowrap;"> Des questions ? </h6>
+        
+        <p>
+          <a href="{{path('contact')}}"> FAQ </a>
+        </p>
+        <p>
+          <a href="#!"> Aide </a>
+        </p>
+    </div>
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+        <h6 class="text-uppercase font-weight-bold">Contact</h6>
+          <ul class="list-unstyled list-inline">
+            <li class="list-inline-item">
+              <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </li>
+         
+          </ul>
+        <p>
+          Deux fois par semaine, des projets des conseils dans votre boite mail
+        </p>
+        <form class="input-group">
+          <input type="text" class="form-control form-control-sm h-auto" placeholder="votre email"
+            aria-label="Your email" aria-describedby="basic-addon2">
+          <div class="input-group-append" style="overflow: hidden">
+            <button class="btn btnSubmit btn-sm btn-outline-white my-0 btn-abn" type="button">Abonnez-vous</button>
+          </div>
+        </form>
+        <br>
+        <p>
+          Vous pouvez vous désabonner à tout moment. On n'est pas susceptibles, promis. Pour en savoir plus sur notre politique de protection des données, <a href="#">cliquez-ici</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">
+    © {{  'now'|date('Y') }} Copyright: LesCityzens
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+        <script src=" {{ asset('js/bootstrap-slider.min.js ') }}"></script>
+        <script src=" {{ asset('js/isotope2.pkgd.min.js ') }}"></script>
+         <script src=" {{ asset('js/flickity.pkgd.min.js ') }}"></script>
+         <script src="{{ asset('js/picker.js') }}"></script>
+         <script src="{{ asset('js/picker.time.js') }}"></script>
+         <script src="{{ asset('js/picker.date.js') }}"></script>
+          <script src="{{ asset('js/wow.js') }}"></script>
+         
+        {% block javascripts %}{% endblock %}
+         <script>
+            $(function() {
+              //
+              var header = $("nav.menus")
+              var clone = header.before(header.clone().addClass("clone masq"))
+              $(".clone").slideUp()
+              $(window).scroll(function(){
+                console.log($(this).scrollTop())
+                    if($(this).scrollTop() > 100) {
+                      $(".clone").slideDown().removeClass('masq')
+                    } else {
+                      $(".clone").slideUp().addClass('masq')
+                    }
+              })
+              //
+              setTimeout(()=>{
+                $('.popin-alert-group').addClass('tada-alert').show()
+              }, 2000)
+                 $('.popin-alert-group').on('mouseenter', function() {
+                     $(this).removeClass('tada-alert')
+                 }).on('mouseleave', function() {
+                     $(this).addClass('tada-alert')
+                 })
+          $('.popin-alert-group svg').click(()=> {
+                 $('.popin-alert-group').hide()
+          })
+              //Popin mobile
+                let detect = function detectMob() {
+                        const toMatch = [
+                            /Android/i,
+                            /webOS/i,
+                            /iPhone/i,
+                            /iPad/i,
+                            /iPod/i,
+                            /BlackBerry/i,
+                            /Windows Phone/i
+                        ];
+                    
+                        return toMatch.some((toMatchItem) => {
+                            return navigator.userAgent.match(toMatchItem);
+                        });
+                    }
+                    if(detect()) {
+                        $('.screen-mobil').addClass('popin')
+                        $('body, html').css('overflow-x', 'hidden')
+                    }
+              //
+                var type = $('.loger').data('type')
+                  if(type && type != 'Habitant') {
+                        $('.nav.justify-content-end li:nth-of-type(1),.nav.justify-content-end li:nth-of-type(3)').remove()
+                         $('.mes-candidatures').text('Mes annonces')
+                  }
+                $('.login').on('click', function() {
+                  $('.pop-up-connexion')
+                  .addClass('user__actions__toggle')
+                })
+                $('.closed').on('click', ()=> {
+                  $('.pop-up-connexion').removeClass('user__actions__toggle')
+                } )
+                $('body').on('click', function() {
+                     $('.menus-user').css('display', 'none')
+                })
+                 $('.menus-user, .loger').on('click', function($e) {
+                   $e.stopPropagation()
+                 })
+                $('.loger').on('click', ()=> {
+                    $('.menus-user').is(':hidden')?$('.menus-user').show():$('.menus-user').hide()
+                   
+                })
+            })
+          </script>
+    </body>
+</html>

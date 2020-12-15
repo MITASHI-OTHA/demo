@@ -1,0 +1,114 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set title = 'Liste des posts' %}
+
+{% block stylesheets %}
+<style>
+    table {
+        font-size: 0.85em;
+    }
+
+    .action a {
+        color: inherit;
+        font-size: 1em !important;
+        transition: ease .5s;
+    }
+
+    .action:hover a {
+        color: #00BFA6;
+    }
+    h1 {
+        font-size: 1.65em;
+        color: #667d99;
+    }
+    .stamp__no__results {
+        color: #407bff;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+    <div class="d-flex my-4">
+        <h4 class="flex-grow-1 font-weight-bold">Gestion des posts</h4>
+        <div class="flex-shrink-1">
+            <a class="btn btnSubmit" href="{{ path('posts_add') }}">Ajouter un post</a>
+        </div>
+    </div><br>
+
+    {% if null != posts %}
+        <table class="table table-responsive table-hover">
+            <thead>
+                <tr>
+                    <th class="align-baseline" scope="col">#</th>
+                    <th class="align-baseline" scope="col">Titre</th>
+                    <th class="align-baseline" scope="col">Chapeau</th>
+                    <th class="align-baseline" scope="col">Contenu</th>
+                    <th class="align-baseline" scope="col">Catégorie</th>
+                    <th class="align-baseline" scope="col">Slug</th>
+                    <th class="align-baseline" scope="col">Crée le</th>
+                    <th class="align-baseline" scope="col">Mis à jour le</th>
+                    <th class="align-baseline" scope="col" colspan="2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, post in posts %}
+                <tr>
+                    <th scope="row">{{ key + 1 }}</th>
+                    <td>{{ post.name | u.truncate(50, '...', false) }}</td>
+                    <td>{{ post.chapeau | u.truncate(45, '...', false) | raw }}</td>
+                    <td>
+                        {% for content in post.contents %}
+                            {% if loop.first %}
+                                {{ content.subTitle | u.truncate(50, '...', false) | raw }}
+                            {% endif %}
+                        {% endfor %}
+
+                    </td>
+                    <td>{{ post.category.name | capitalize }}</td>
+                    <td>{{ post.slug }}</td>
+                    <td>{{ post.createdAt | date('d/m/Y à H: i') | replace({':' : 'h'}) }} </td>
+                    <td>{{ null != post.updatedAt ? post.updatedAt | date('d/m/Y à H: i') | replace({':' : 'h'}) : 'Aucune mis à jour effectuée' }} </td>
+                    <td class="action">
+                        <a class="edit__post" href="{{ path('posts_update', { 'post' : post.id }) }}">
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>
+                    </td>
+                    <td class="action">
+                        <a class="delete__post" href="{{ path('posts_delete', { 'post' : post.id }) }}">
+                            <i class="far fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="d-flex flex-column align-items-center justify-content-center">
+            <h1 class="font-weight-bolder m-0">Désolé ! Il n'existe aucun post pour l'instant... <span class="stamp__no__results">Veuillez en ajouter !</span> </h1>
+            <div class="w-50">
+                <img src="{{ asset('build/images/static/no_results.svg') }}" alt="no result" class="img-fluid">
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(function () 
+        {
+            function confirmAction() 
+            {
+                $('.edit__post').click(() => 
+                {
+                    return confirm('Êtes-vous certain de vouloir modifier les informations de cet post ?');
+                });
+
+                $('.delete__post').click(() => 
+                {
+                    return confirm('Attention, zone dangereuse !!! Êtes-vous certain de vouloir supprimer cet post de votre base de données ?');
+                });
+            }
+            confirmAction();
+        });
+    </script>
+{% endblock %}

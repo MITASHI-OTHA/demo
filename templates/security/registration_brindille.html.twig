@@ -1,0 +1,137 @@
+{% apply inline_css %}
+
+<style>
+h2 {
+     font-size: 22px;
+}
+    h2, h3 {
+        font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+        font-weight: 500;
+        color: #4f545c;
+        letter-spacing: 0.27px;
+        margin-bottom: 1ex
+    }
+    h3 {
+     font-size: 19px;
+     margin-bottom: 1ex
+}
+    .mailBlock {
+        width: 100%;
+        margin: 1em auto;
+        padding: 40px 0;
+        background-color: #f9f9f9;
+        margin-top: 0;
+        padding-top: 0;
+    }
+
+    .subjectMail {
+        color: #737f8d;
+        font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+        font-size: 16px;
+        line-height: 26px;
+        text-align: left;
+    }
+
+    .mailhead {
+        width: 75%;
+        padding: 3.5em;
+        margin: 0 auto;
+        background-color: #fff;
+    }
+
+    .email {
+        font-size: 20px;
+    }
+
+    .img {
+        margin: 0 auto 2em auto;
+        margin-bottom: 40px;
+    }
+
+    .centrer {
+        text-align: left;
+    }
+
+    button {
+        font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+        border-radius: 5px;
+        border: none;
+        padding: 1em 1.2em;
+        text-decoration: none;
+        letter-spacing: 0.6px;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: left;
+        background-color: rgb(0, 215, 186);
+    }
+
+    button a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    button:hover {
+        background-color: rgb(172, 40, 89);
+    }
+
+    i {
+        margin-right: 8px;
+    }
+
+    p,
+    a {
+        text-align: center;
+    }
+
+    p img {
+        margin-right: 8px;
+    }
+    img {
+        width: 100%
+    }
+    .centrer.img {
+        position: relative
+    }
+    #_h1 {
+        position: absolute !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: auto;
+        color: #fff;
+        font-size: 2em;
+    }
+</style>
+
+<div class="mailBlock">
+    <div class="centrer img">
+    {# {{ email.image('@images/wel.png') }} #} 
+        <img class="centrer" src="https://welcooom.lescityzens.fr/build/images/static/wel.619c5b34.png" alt="banniere entete" width="160" title="banniere entete">
+    </div>
+    <div class="mailhead">
+        <h2> Votre compte Welcohome a été créé </h2>
+        <h3>Bonjour  {{ user.username }},</h3>
+
+        <p class="subjectMail">
+        Félicitations ! Votre compte a été créé avec succès. 
+        <br>
+        Bienvenue sur Welcooom, le site qui fait matcher l’habitat participatif.
+        <br>
+        Une dernière action pour finaliser l’activation de votre compte, cliquez sur le lien ci-dessous pour confirmer votre adresse e-mail : 
+        </p>
+        <br>
+        <div class="centrer">
+            <button type="button">
+                <a href="{{ url }}">Confirmer mon adresse e-mail</a>
+            </button>
+        </div>
+        <br>
+        <br>
+        <p class="subjectMail">
+            À très bientôt, 
+            <br>
+            L’équipe Welcooome 
+        </p>
+    </div>
+</div>
+
+{% endapply %}

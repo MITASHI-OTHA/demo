@@ -1,0 +1,84 @@
+{% block stylesheets %}
+    <style>
+        .d-flex {
+            display: flex
+        }
+        .m-auto {
+            margin: auto
+        }
+        .btn-sm {
+            background: #4fb386;
+            border: none;
+            padding: 0.5rem;
+            color: #fff;
+            border-radius: 2px;
+            margin-top: 1em;
+            font-size: 15px;
+        }
+        .btn-sm:hover {
+          background: #58a281;
+          transition: ease .5s;
+          cursor: pointer
+        }
+        .btnSubmit {
+          padding: .5em 1em;
+          background-color: rgb(0 191 166);
+          color: #fff;
+          font-weight: 600;
+          font-size: 0.9em;
+          letter-spacing: .7px;
+          position: relative;
+          cursor: pointer;
+          overflow: hidden;
+          z-index: 1;
+          -webkit-transition: ease .5s;
+          -o-transition: ease .5s;
+          transition: ease .5s;
+}
+.btn {
+    font-weight: 600 !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+.btn-primary:hover {
+    border-color: #53c0b5 !important;
+}
+.btnSubmit:hover {
+    color: #fff;
+}
+.btnSubmit::before {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgb(0, 215, 186);
+    z-index: -1;
+    -webkit-transition: ease .5s;
+    -o-transition: ease .5s;
+    transition: ease .5s;
+}
+.btnSubmit:hover::before {
+    width: 100%;
+}
+a {
+  text-decoration: none
+}
+    </style>
+{% endblock %}
+{% block body %}
+  <div class="container">
+        <section>
+                <div class="row">
+                    <div class="col d-flex my-5">
+                        <img class="m-auto" src="{{ asset('build/images/static/error403.jpg') }}" width="50%">
+                    </div>
+                    <div class="col d-flex">
+                         <a href="{{ path('home') }}" class="btn-sm btn btn-primary btnSubmit m-auto"> Revenir à l'accueil </a>
+                    </div>
+                </div>
+        </section>
+  </div>
+{% endblock %}

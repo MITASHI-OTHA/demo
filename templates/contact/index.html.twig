@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+{% set title = 'Contactez-nous' %}
+{% block stylesheets %}
+    <style>
+        .container section {
+            margin-top: 5%
+        }
+        form {
+            padding-right: 30%;
+        }
+        form h4 {
+            font-weight: 600
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="container">
+    <section>
+        <form>
+            <div class="row">
+                <div class="col-md-12" style="padding-bottom: 5%">
+                    <h4> Contactez-nous </h4>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1"> Je suis </label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>Porteur de projet</option>
+                            <option>Futur habitant</option>
+                            <option>Autre</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                </div>
+                <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input type="email" class="form-control" id="nom">
+                        </div>
+                </div>
+                <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nom">Prénom</label>
+                            <input type="text" class="form-control" id="prenom">
+                        </div>
+                </div>
+                 <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nom">Societé</label>
+                            <input type="text" class="form-control" id="societe">
+                        </div>
+                </div>
+                <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="tel">Téléphone</label>
+                            <input type="tel" class="form-control" id="tel">
+                        </div>
+                </div>
+                <div class="col-md-12">
+                        <div class="form-group">
+                        <label for="exampleFormControlSelect1"> Je vous contact pour </label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>J’ai une question... </option>
+                            <option> J’ai un problème technique...  </option>
+                            <option> J’ai une proposition... </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <p style="font-size: 13px;">
+                            Décrivez ici votre demande. Soyez le plus précis possible, 
+                            cela facilitera une action rapide de nos équipes. Si votre 
+                            demande concerne un projet en particulier, pensez à 
+                            nous en communiquer la référence exacte. Si votre 
+                            demande concerne un problème technique, n’hésitez 
+                            pas à nous envoyer une capture d’écran ou tout autre
+                            document qui pourrait faciliter la compréhension du 
+                            problème par notre équipe d’assistance
+                        </p>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                </div>
+                <div  class="col-md-12">
+                    <button type="button" class="btn btn-primary btn-sm">Envoyer</button>
+                </div>
+        </form>
+        
+    </section>
+    
+</div>
+{% endblock %}

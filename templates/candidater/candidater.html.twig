@@ -1,0 +1,795 @@
+{% extends 'base.html.twig' %}
+{% set title = 'Candidater' %}
+{% form_theme form _self %}
+{% block stylesheets %}
+    <style>
+    .line-steps {
+    margin-top: 3em
+    }
+    .lines-dotted {
+    position: relative;
+    width: 50%;
+    height: 1px;
+    background-color: #ddd;
+    }
+    .lines-dotted ul {
+    position: absolute;
+    left: -3px;
+    right: 0;
+    list-style: none;
+    top: -24px;
+    margin-left: 0;
+    padding-left: 0px;
+    display: flex;
+    flex-wrap: inherit;
+    }
+    .lines-dotted ul li {
+    display: inline;
+    cursor: pointer
+    }
+    .lines-dotted ul li div {
+    width: 50px;
+    height: 50px;
+    background:#e7edf3;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #667d99;
+    font-weight: 500
+    }
+    .actives font {
+        color: #fff !important
+    }
+    .lines-dotted ul li:not(.first-li) {
+    margin-left: 60px
+    }
+    section h5 {
+    position: relative
+    }
+    section h5::after  {
+        position: absolute;
+        content: '';
+        height: 5px;
+        width: 23px;
+        background-color: #02d0b5;
+        bottom: -10px;
+        left: 0;
+    }
+    .parent-slider-coulis {
+        width: 500px;
+        background-color: grey;
+        height: 350px;
+        overflow-y: hidden;
+        overflow: hidden;
+    }
+    .slid-carousel {
+        background: yellow;
+        width: fit-content;
+        margin: 11px;
+        display: flex;
+    }
+    .item-child-carousel {
+        width: 468px;
+        margin: 11px;
+        background: aqua;
+        height: 300px;
+    }
+    .panel {
+        background: #E7EDF3;
+        margin-top: 27px;
+        width: 50%;
+        border-radius: 5px;
+        font-size: .85rem;
+    }
+    .panel p {
+    font-size: 13px;
+    }
+    .form-group>.form-group:first-child, .form-check-inline>.form-check:first-child {
+    padding-left: 0;
+    }
+    .tap-pane {
+    text-align: justify;
+    }
+    .type-fy>div {
+    position: relative
+    }
+    .type-fy>div>svg {
+        position: absolute;
+        right: -20px;
+        top: 40px;
+        cursor: pointer
+    }
+    .custom-p {
+    margin-bottom: 3px;
+    margin-top: 11px;
+    }
+    .add-co-btn {
+        margin-top: 1em;
+        background-color: #2CF6DC !important;
+        color: #026A64 !important;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        font-size: 14px;
+        padding-bottom: 10px;
+    }
+    .infos-autre {
+        padding: 7px;
+        border: 1px dotted #FF0707;
+        width: 50%;
+    }
+    .infos-autre p {
+    text-align: justify;
+    font-size: 13px;
+    }
+    .cr-e-txt {
+    padding: 5px;
+    color: #993700;
+    background: #FFE3D7;
+    width: 50%;
+    border-radius: 5px;
+    }
+    .cr-e-txt p {
+    font-size: 13px;
+    }
+    .table-bordered thead th, .table-bordered thead td {
+    font-family:'Montserrat-semibold';
+    font-size: 12px;
+    }
+    .table-bordered th, .table-bordered td {
+    font-size: 12px;
+    }
+    td input {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    border: none;
+    }
+    td input:focus {
+    outline: none;
+    }
+    .lab-cgu {
+    margin-top: 17px;
+    padding-left: 11px;
+    }
+    .actives {
+    background: #00d0b5 !important;
+    border: 4px solid #00d0b5;
+    color: #fff !important;
+    }
+    .ml-38 {
+    margin-left: 38%
+    }
+    #candidature_logementDesire_type {
+    display: flex;
+    column-gap: 15px;
+    }
+    .col-form-label {
+     font-size: 17px;
+    }
+    #candidature_acquereur_financiaryProfessionalSituation_statusEmploi {
+      display: flex;
+      column-gap: 19px;
+    }
+    .fa-question-circle {
+      font-size: 13px;
+    }
+    label[for=candidature_acquereur_financiaryProfessionalSituation_apportPersonnel], label[for$=financiaryProfessionalSituation_autresRevenus], label[for$=financiaryProfessionalSituation_apportPersonnel] {
+        padding-bottom: 11px;
+        padding-top: calc(0.375rem + 1px);
+        margin-bottom: 0;
+    }
+    input[id=candidature_acquereur_financiaryProfessionalSituation_autresRevenus] {
+        width: 50% !important
+    }
+    div[id^=candidature_acquereurs_] {
+        display: flex;
+       column-gap: 19px;
+    }
+    label[for$=financiaryProfessionalSituation_salaireMoyen], label[for$=financiaryProfessionalSituation_avisImposition] {
+        display: none
+    }
+    div[id^=entry_candidature_acquereurs] {
+        padding-top: 15px;
+        border-top: 1px dotted #ddd;
+        margin-top: 11px;
+    }
+    .add-co {
+        font-weight: 600;
+    }
+    .table th, .table td {
+        vertical-align: middle;
+    }
+    .table-credit {
+        display: none
+    }
+    .deleteCredits {
+        font-size: 15px;
+        cursor: pointer
+    }
+    .deleteCredits:active {
+        transform: scale(1.3)
+    }
+    .enregistrer {
+        margin-top: 1em;
+    }
+    .Credits.prototype{
+        white-space: nowrap;
+    }
+    #addCredit:focus {
+        outline: none
+    }
+    </style>
+{% endblock %}
+{% block body %}
+
+    <section>
+        <div class="container">
+            <h1>Candidater</h1>
+            {# La barre des étapes du formulaire commence ici #}
+            <div class="line-steps">
+                    <div class="lines-dotted">
+                        <ul class="nav" id="myTab" role="tablist">
+                            <li class="first-li nav-item">
+                                <div class="actives" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
+                                    1
+                                </div>
+                                
+                            </li>
+                            <li id="profile-tab nav-item">
+                                <div  data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">
+                                    2
+                                </div>
+                                
+                            </li>
+                            <li id="contact-tab nav-item">
+                                <div  data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="true">
+                                    3
+                                </div>
+                                
+                            </li>
+                            <li id="finance-tab nav-item">
+                                <div  data-toggle="tab" href="#finance" role="tab" aria-controls="finance" aria-selected="true">
+                                    4
+                                </div>
+                                
+                            </li>
+                            <li id="interet-tab nav-item">
+                                <div  data-toggle="tab" href="#interet" role="tab" aria-controls="interet" aria-selected="true">
+                                    5
+                                </div>
+                            </li>
+                            <li id="interet-tab nav-item">
+                                <div  data-toggle="tab" href="#cgu" role="tab" aria-controls="cgu" aria-selected="true">
+                                    6
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+            </div>
+            {# fin #}
+            <div class="row form-candidate" style="margin-top: 5em">
+                {{ form_start(form) }}
+                    <div class="col-md-9">
+                        <div class="tab-content" id="myTabContent">
+                            {# TAB1 -----CONSIGNES____________ #}
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h5> Consignes </h5>
+                                    <p class="pt-4 text-justify" style="font-size: 14px;">
+                                        Ce formulaire vaut dossier de candidature. Seuls les formulaires complétés intégralement et validés à la fin seront transmis au chef de projet et étudiés.
+                                        
+                        
+                                         Les champs signalés par un astérisque (*) sont obligatoires. Ce formulaire est composé de 5 étapes. 
+                                         
+                                         <br>
+                                         <br>
+                                        Vous pouvez modifier vos informations autant de fois que vous le souhaitez, tant que le formulaire n'a pas été transmis. <br>
+                                            <br>
+                                        Pour soumettre votre candidature, n’oubliez pas de cliquer sur le bouton « Transmettre ma candidature ». 
+                                        <br>
+                                        <br>
+                                        Pour toute question sur le projet, veuillez contacter le porteur de projet via la page projet ou l’onglet messagerie de votre espace personnel. <br><br>
+
+                                        Si vous rencontrez un problème technique, vous pouvez contacter le support informatique à l’adresse contact@lescityzens.fr. 
+                                    </p>
+                                    <button type="button" class="btn btn-primary" style="float: right" data-next="profile">Continuer <i class="fas fa-arrow-right"></i> </button>
+                            </div>
+                        {# TAB2-------------------MON LOGEMENT--------------------- #}
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <h5> Mon logement actuel et mon projet </h5>
+                                    <div class="panel p-3">
+                                            Tant que le questionnaire n'a pas été intégralement complété et transmis, vous pouvez à tout moment modifier les champs renseignés. Pensez à enregistrer avant de quitter le questionnaire. 
+                                    </div>
+                                    
+                                        <div class="form-group" style="margin-top: 2em">
+                                            <div class="form-group col-md-12 pr-2 mb-0">
+                                                
+                                                        {{form_row(form.LogementActuel.types)}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                {{form_row(form.LogementActuel.statuts)}}
+                                               
+                                            </div>
+                                            
+                                             <div class="col-md-4 type-fy">
+                                                {{ form_row(form.LogementActuel.taille) }}
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group" >
+                                            <div class="form-group col-md-12 pr-2 mb-0">
+                                                <fieldset class="form-group">
+                                                    <h6 class="col-form-label required">Type de logement actuel recherché* :</h6>
+                                                        {{ form_row(form.logementDesire.type) }}
+
+                                                 
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                        {# Surface souhaité #}
+                                        <section>
+                                            <h6> Surfaces souhaitées* </h6>
+                                            <div class="row mt-3">
+                                                    <div class="col-md-4">
+                                                        {{ form_row(form.logementDesire.surface_min) }}
+                                                       
+                                                    </div>
+                                                    
+                                                    <div class="col-md-4 type-fy">
+                                                        {{ form_row(form.logementDesire.surface_max) }}
+                                                        
+                                                    </div>
+                                                </div> 
+                                        </section>
+                                        <section class="mt-3">
+                                            <h6> L’enveloppe maximum que vous êtes prêt à mettre* </h6>
+                                            <div class="row mt-3">
+                                                    <div class="col-md-4">
+                                                    
+                                                     {{ form_row(form.logementDesire.enveloppe_max) }}
+                                                        
+                                                    </div>
+                                                    
+                                                   
+                                                </div> 
+                                        </section>
+                                        <div>
+                                            <button type="button" class="btn btnSubmit" style="margin-top: 1em;color: #fff" data-prev="home"> <i class="fas fa-arrow-left mr-1"></i>Precedent</button>
+
+                                            <button type="button" class="btn ml-2 btnSubmit" style="margin-top: 1em" data-next="contact">Continuer<i class="fas fa-arrow-right ml-1"></i> </button>
+                                             <a href="#" class="btn btnSubmitBlue enregistrer ml-2"> <i class="fas fa-save mr-1"></i>Enregistrer </a>
+                                        </div>
+                                         
+                                    </div>
+                        {#-------- Mon ménage tab-3 ------------#}
+                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                     <h5> Mon menage </h5>
+                                    <div class="panel p-3">
+                                            Tant que le questionnaire n'a pas été intégralement complété et transmis, vous pouvez à tout moment modifier les champs renseignés. Pensez à enregistrer avant de quitter le questionnaire. 
+                                    </div>
+                                    <section>
+                                        <div style="margin-top: 2em">
+                                                    <div class="col-md-12 pr-2 mb-0">
+                                                        <fieldset class="form-group">
+                                                                    {{ form_row(form.acquereur.gender) }}
+                                                        </fieldset>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                {{ form_row(form.acquereur.lastname) }}
+                                                            </div>
+                                                            <div class="col-md-6 type-fy">
+                                                                {{ form_row(form.acquereur.firstname) }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                {{ form_row(form.acquereur.date_anniversaire) }}
+                                                            </div>
+                                                            <div class="col-md-6 type-fy">
+                                                                {{ form_row(form.acquereur.code_postal) }}
+                                                            </div>
+                                                            <div class="col-md-6 type-fy">
+                                                                {{ form_row(form.acquereur.ville) }}
+                                                            </div>
+                                                            <div class="col-md-6 type-fy">
+                                                                {{ form_row(form.acquereur.addresse) }}
+                                                            </div>
+                                                            <div class="col-md-6 type-fy">
+                                                                    {{ form_row(form.acquereur.pays) }}
+                                                            </div>
+                                                            <div class="col-md-6 type-fy">
+                                                                {{ form_row(form.acquereur.tel_mobile) }}
+                                                              
+                                                            </div>
+                                                            <div class="col-md-6 type-fy">
+                                                                {{ form_row(form.acquereur.tel_fixe) }}
+                                                              
+                                                            </div>
+                                                            <div class="col-md-6 type-fy">
+                                                                {{ form_row(form.acquereur.tel_professional) }}
+                                                               
+                                                            </div>
+                                                            <div class="col-md-6 type-fy">
+                                                                 {{ form_row(form.acquereur.email) }}
+                                                              
+                                                            </div>
+                                                        </div> 
+                                                    </div>
+                                                    {# Co-acquereur #}
+                                                   
+                                                     {# situation familiale #}
+                                               <div>
+                                                    <button type="button" class="btn btnSubmit" style="margin-top: 1em;color: #fff" data-prev="profile"><i class="fas fa-arrow-left mr-1"></i>Precedent</button>
+
+                                                    <button type="button" class="btn btnSubmit ml-2" style="margin-top: 1em;" data-next="finance">Continuer<i class="fas fa-arrow-right ml-1"></i></button>
+                                                    <a href="#" class="btn btnSubmitBlue enregistrer ml-2"><i class="fas fa-save mr-1"></i>Enregistrer </a>
+                                                </div>
+                                    </section>
+                            </div>
+                        {# fin ménage #}
+                        {# ------------ FINANCE---------------- tab-4 #}
+                             <div class="tab-pane fade" id="finance" role="tabpanel" aria-labelledby="finance">
+                                    <h5>Ma situation professionnelle et financière</h5>
+                                    <div class="panel p-3">
+                                            Tant que le questionnaire n'a pas été intégralement complété et transmis, vous pouvez à tout moment modifier les champs renseignés. Pensez à enregistrer avant de quitter le questionnaire. 
+                                    </div>
+                                    <br>
+                                            {{ form_row(form.acquereur.financiaryProfessionalSituation.statusEmploi) }}
+                                                <div class="row">
+                                                        {# ----------------------------- #}
+                                                        <div class="col-md-6">
+                                                            <h6 class="col-form-label required" style="padding-bottom: 11px">Acquéreur- Salaire mensuel moyen * <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="(total annuel net primes incluses divisé par 12"></i></h6>
+                                                            {{ form_row(form.acquereur.financiaryProfessionalSituation.salaireMoyen) }}
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            {{ form_row(form.acquereur.financiaryProfessionalSituation.apportPersonnel) }}
+                                                        </div>
+                                                </div>
+                                                        {# ----------------------------- #}
+                                                        <fieldset>
+                                                                <h6 class="col-form-label required" style="padding-bottom: 11px">Acquéreur- Revenus imposables* <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="(revenu fiscal de référence tel qu’indiqué sur votre avis d’imposition après l’abattement de 10 %)*"></i></h6>
+                                                                {{ form_row(form.acquereur.financiaryProfessionalSituation.avisImposition) }}
+                                                        </fieldset>
+                                                        
+                                                        {# ----------------------------- #}
+                                                        
+                                                            <h6 class="col-form-label required" style="padding-bottom: 11px">Autre revenus mensuel (facultatif) </h6>
+                                                            <div class="panel p-3">
+                                                                    Additionnez les montants mensuels de vos autres sources de revenus 
+                                                                    (prestations familiales, pensions, rentes, revenus fonciers, etc.). 
+                                                                    Exemple : si vous êtes propriétaire d’un logement pour lequel vous 
+                                                                    percevez un loyer de 500 € et que la CAF vous verse des aides à 
+                                                                    hauteur de 150 € par mois, écrivez “650”
+                                                              
+                                                            </div>
+                                                            <fieldset class="mt-3 ">
+                                                                {{ form_row(form.acquereur.financiaryProfessionalSituation.autresRevenus) }}
+                                                            </fieldset>
+                                                            <div class="autre-revenu"></div>
+                                                        <br>
+                                                        
+                                                        {# ----------------------------- #}
+                                                        <fieldset class="table-credit">
+                                                            <h6 class="col-form-label required mt-3" style="padding-bottom: 11px"> Crédit en cours (facultatif) </h6>
+                                                            <div class="panel p-3">
+                                                                    Indiquez pour chacun la date de début (jj/mm/aaaa), la date de fin (jj/mm/aaaa) et le montant des mensualités (en €).
+                                                            </div>
+                                                            <table class="table table-bordered  mt-5">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th scope="col"></th>
+                                                                            <th scope="col">DATE DE DEBUT (jj/mm/aaaa)</th>
+                                                                            <th scope="col">DATE DE FIN (jj/mm/aaaa)</th>
+                                                                            <th scope="col">MENSUALITE (€)</th>
+                                                                            <th scope="col"> Action </th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                       {# espace d'ajouté d'un nouveau crédit #}
+                                                                    </tbody>
+                                                                </table> 
+                                                        </fieldset>
+                                                        
+                                                        <br>
+                                                        
+                                                            
+                                                            <div id="add_credit"></div>
+                                                            {# ____________________ #}
+                                                        <div class="mt-5">
+                                                            <button type="button" class="btn btnSubmit" style="margin-top: 1em;color: #fff" data-prev="contact"><i class="fas fa-arrow-left mr-1"></i>Precedent</button>
+
+                                                            <button type="button" class="btn btnSubmit ml-2" data-next="interet" style='margin-top: 1em;'> Suivant <i class="fas fa-arrow-right ml-1"></i></button>
+                                                            <a href="#" class="btn btnSubmitBlue enregistrer ml-2"> <i class="fas fa-save mr-1"></i> Enregistrer </a>
+                                                        </div>
+                                                    </div>
+                            {# -------------MON INTERET POUR L'HABT. --------------5 #}
+                             <div class="tab-pane fade" id="interet" role="tabpanel" aria-labelledby="profile-tab">
+                                    <h5>Mon intérêt pour l’habitat participatif</h5>
+                                    <div class="panel p-3">
+                                            Tant que le questionnaire n'a pas été intégralement complété et transmis, vous pouvez à tout moment modifier les champs renseignés. Pensez à enregistrer avant de quitter le questionnaire. 
+                                    </div>
+                                    <br>
+                                        {{ form_row(form.motivationParticipation.motivation) }}
+
+                                        {{ form_row(form.motivationParticipation.vie_quartier) }}
+
+                                        {{ form_row(form.motivationParticipation.echange_mutualisation) }}
+
+                                         {{ form_row(form.motivationParticipation.connaissance_annonce) }}
+                                    <br>
+                                        <div class="mt-5">
+                                            <button type="button" class="btn btnSubmit" style="margin-top: 1em;color: #fff" data-prev="finance"><i class="fas fa-arrow-left mr-1"></i>Precedent</button>
+
+                                            <button type="button" class="btn btnSubmit ml-2" data-next="cgu" style='margin-top: 1em;'> Suivant <i class="fas fa-arrow-right ml-1"></i></button>
+                                            <a href="#" class="btn btnSubmitBlue enregistrer ml-2"> <i class="fas fa-save mr-1"></i> Enregistrer </a>
+                                        </div>
+                                    </div>
+                                    {# fin #}
+                                    {# ------------- TAB-6 CGU --------------5 #}
+                             <div class="tab-pane fade" id="cgu" role="tabpanel" aria-labelledby="cgu">
+                                        <h5>Validation de ma candidature</h5>
+                                    <div class="panel p-3" style="width: auto">
+                                        <p>
+                                            Attention : en cliquant sur « Transmettre ma candidature », vous validez cette dernière et ne pourrez plus revenir sur ce formulaire pour modifier vos informations. Si malgré votre vigilance vous deviez apportez des modifications ultérieures, merci de prendre contact avec l’équipe de LesCityZens via l’adresse candidatures@lescityzens.fr. 
+                                        </p>
+                                    </div>
+                                    <br>
+                                        <fieldset class="form-group">
+                                                
+                                                 {{ form_row(form.checks) }}
+                                        </fieldset>
+                                        <div>
+                                            <button type="button" class="btn btn-danger" style="margin-top: 1em;color: #fff" data-prev="interet"><i class="fas fa-arrow-left"></i> Precedent</button>
+
+                                            <button type="button" class="btn btn-primary ml-2" style='margin-top: 1em'> Transmettre ma candidature </button>
+                                        </div>
+                                    </div>
+                             </div>
+                        </div>   
+                    </div>
+                {{ form_end(form) }}
+               
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{#                 ajout des Acquereur            #}
+         
+                        {% block _candidature_acquereurs_entry_row %}
+                            <div id="entry_{{ id }}" class="d-flex Personne mt-5 ">
+                                <div class="row">
+                                    <div class="col add-co">
+                                        <p> Co Acquéreur </p>
+                                    </div>
+                                    <div class="col-md-12">
+                                            {{ form_row(form.gender, {'label': 'Civilité*'}) }}
+                                    </div>
+                                     <div class="col-md-6">
+                                            {{ form_row(form.lastname, {'label': 'Nom*'}) }}
+                                    </div>
+                                    <div class="col-md-6">
+                                            {{ form_row(form.firstname, {'label': 'Prénom*'}) }}
+                                    </div>
+                                    <div class="col-md-6">
+                                            {{ form_row(form.date_anniversaire, {'label': 'date anniversaire'}) }}
+                                    </div>
+                                    <div class="col-md-6">
+                                            {{ form_row(form.code_postal, {'label': 'Code postal*'}) }}
+                                    </div>
+                                    <div class="col-md-6">
+                                            {{ form_row(form.ville, {'label': 'Ville*'}) }}
+                                    </div>
+                                    <div class="col-md-6">
+                                            {{ form_row(form.addresse, {'label': 'Addresse'}) }}
+                                    </div>
+                                    <div class="col-md-6">
+                                            {{ form_row(form.pays, {'label': 'Pays'}) }}
+                                    </div>
+                                   <div class="col-md-6">
+                                            {{ form_row(form.tel_mobile, {'label': 'Téléphone portable*'}) }}
+                                   </div>
+                                    <div class="col-md-6">
+                                            {{ form_row(form.tel_fixe, {'label': 'Téléphone du domicile*'}) }}
+                                    </div>
+                                    <div class="col-md-6">
+                                            {{ form_row(form.tel_professional, {'label': 'Téléphone professionnel*'}) }}
+                                    </div>
+                                    <div class="col-md-12">
+                                            {{ form_row(form.email, {'label': 'E-mail'}) }}
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{ form_row(form.financiaryProfessionalSituation.statusEmploi) }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="col-form-label required" style="padding-bottom: 11px">Acquéreur- Salaire mensuel moyen * <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="(total annuel net primes incluses divisé par 12"></i></h6>
+                                        {{ form_row(form.financiaryProfessionalSituation.salaireMoyen) }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{ form_row(form.financiaryProfessionalSituation.apportPersonnel) }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="col-form-label required" style="padding-bottom: 11px">Acquéreur- Revenus imposables* <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="(revenu fiscal de référence tel qu’indiqué sur votre avis d’imposition après l’abattement de 10 %)*"></i></h6>
+                                        {{ form_row(form.financiaryProfessionalSituation.avisImposition) }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{ form_row(form.financiaryProfessionalSituation.autresRevenus) }}
+                                    </div>
+                                </div>
+                                <div class="flex-shrink-1">
+                                    <button type="button" class="btn btn-danger deletePersonne btn-sm"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                        {% endblock %}
+                        {% block _candidature_acquereurs_row %}
+                            {{ form_row(form) }}
+                            <button type="button" id="addPersonne" class="btn btnSubmit" data-next="contact"><i class="fas fa-plus"></i> ajouter un acquereur</button>
+                        {% endblock %}
+                    {#  #}
+                    {#                 ajout des Crédits              #}
+                        {% block _candidature_credits_entry_row %}
+                            <tr id="entry_{{ id }}" class="Credits prototype">
+                                <th scope="row"> CREDIT </th>
+                                <td>
+                                    {{ form_row(form.begin) }}
+                                </td>
+                                <td>
+                                    {{ form_row(form.end) }}
+                                </td>
+                                <td>
+                                    {{ form_row(form.payementMois) }}
+                                </td>
+                                <td class="text-center">
+                                    <i class="far fa-trash-alt deleteCredits" title="supprimer ce credit"></i>
+                                </td>
+                            </tr>
+                        {% endblock %}
+                    {% block _candidature_credits_row %}
+                        {{ form_row(form) }}
+                        <button type="button" id="addCredit" class="btnSubmitOutline"> <i class="fas fa-plus"></i>  ajouter un crédits</button>
+                    {% endblock %}
+{% block javascripts %}
+     <script>
+            $(function(){
+                // rajout d'une personne a charge pour l'acquereur
+                    $('#addPersonne').click( () => {
+                        let acquereur = $("#candidature_acquereurs");
+                        let datepicker = $('.js-datepicker');
+                        let index = $(".Personne").length;
+                        let template = acquereur.data("prototype").replace(/__name__/g, index);
+                        //acquereur.append(template);
+                        $('.autre-revenu').prepend(template)
+                        datepicker.datepicker(
+                            {
+                                language: 'fr',
+                                autoclose: true,
+                                todayHighlight: true,
+                            });
+
+                        datepicker.attr('placeholder', 'jour / mois / année');
+
+                        delPersonne(index);
+                         $('[data-toggle="tooltip"]').tooltip()
+                    });
+                    // suppression d'un acquereur
+                    function delPersonne(index) {
+                        $(".deletePersonne").click(function () {
+                            $(this).closest("#entry_candidature_acquereurs_" + index).remove();
+                        });
+                    }
+                    // rajout d'un credit pour l'acquereur
+            $("#addCredit").click(function() {
+                let index = $(".table-credit tbody .Credits").length;
+                let template = $("#candidature_credits").data("prototype").replace(/__name__/g, index)
+                
+                $('.table-credit').css('display', 'block')
+                $('tbody').append(template)
+                 $("#entry_candidature_credits_"+index).find('th[scope="row"]').text("CREDIT "+ parseInt(index + 1))
+                $("#entry_candidature_credits_"+index).find(".deleteCredits").attr('data-index', index)
+                $('.js-datepicker').datepicker({
+                        language: 'fr',
+                        autoclose: true,
+                        todayHighlight: true,
+                });
+                    console.log($(".table-credit tbody .Credits").length)
+                $('.js-datepicker').attr('placeholder', 'jour / mois / année');
+            });
+
+            // suppresion d'un credit pour le coacquereur
+                $(document).on("click", ".deleteCredits", function () {
+                    var index = $(this).data('index')
+                    $(this).closest("#entry_candidature_credits_" + index).remove();
+                    if($(".table-credit tbody .Credits").length <= 0) {
+                        $('.table-credit').css('display', 'none')
+                    }
+                    console.log($(".table-credit tbody .Credits").length)
+                });
+
+            //get info api
+            $(document).on("onfocusout","#candidature_acquereur_code_postal", function () {
+                let code_postal = $("#candidature_acquereur_code_postal").val()
+                $(".div_ville_check").remove();
+
+                $.get("https://geo.api.gouv.fr/communes?codePostal=" + code_postal + "&fields=nom&format=json&geometry=centre", function (reponse) {
+                    if (reponse.length > 0) {
+                        document.forms["candidature"]["candidature[acquereur][ville]"].value = reponse[0]["nom"];
+
+                        $(reponse).each((indice, element) => {
+
+                            $("#candidature_acquereur_ville").parent().after(
+                                "<div class=\"form-check div_ville_check  form-check-inline\">\n" +
+                                "  <input class=\"form-check-input ville_check\" type=\"radio\" id=" + indice + " value=" + element.nom + ">\n" +
+                                "  <label class=\"form-check-label\" for=" + indice + ">" + element.nom + "</label>\n" +
+                                "</div>"
+                            );
+
+                        });
+
+                        $(".ville_check").click(function () {
+                            $("#candidature_acquereur_ville").val($(this).val());
+                            $(".div_ville_check").remove();
+                        });
+
+                    } else {
+                        $("#candidature_acquereur_code_postal").after(
+                            "<div class='text-danger'> aucune ville ne correspond à " +
+                            "<strong> \" "+ $("#candidature_acquereur_code_postal").val() +" \"</strong>"+
+                            "</div>"
+                        );
+                    }
+                });
+
+            });
+
+
+            //display input
+            $('#candidature_LogementActuel_statuts_3').on('input', function () {
+                $(".autresStatus").remove();
+                $(this).parent().append(
+                    '<div class="form-check form-check-inline">' +
+                    '<input type="text" class="form-check-input autresStatus">' +
+                    '</div>'
+                );
+                $(".autresStatus").focus()
+            });
+
+            $('#candidature_LogementActuel_statuts input[type="radio"]').not($("#candidature_LogementActuel_statuts_3")).on('input', function () {
+                $(".autresStatus").fadeOut();
+            });
+        
+            //
+                    $('.form-candidate button:not(.add-co-btn)').on('click', function() {
+                        let $slid = $(this).data()
+                        if($slid.next) {
+                            $("div[aria-controls="+$slid.next).click()
+                        } else {
+                            $("div[aria-controls="+$slid.prev).click()
+                        }
+                        
+                    })
+                    $('.btn-danger').on('click', function() {
+                        $("div[aria-controls="+$(this).data('prev')).click()
+                    } )
+                    $('[data-toggle="tooltip"]').tooltip()
+                    $('.date').datepicker({
+                        language: 'fr'
+                    })
+                    // Activer la button courant
+                    $('#myTab li>div').on('click',function() {
+                        var el = $(this)
+                        $('#myTab li>div').removeClass('actives')
+                        el.addClass("actives")
+                        window.scroll(0, 0);
+                    })
+                    $add_aq = $('#addPersonne')
+                    $add_aq.appendTo('.autre-revenu')
+
+                    $add_credit = $('#addCredit')
+                    $add_credit.appendTo('#add_credit')
+                    $('label[for="candidature_acquereur_financiaryProfessionalSituation_salaireMoyen"], label[for="candidature_acquereur_financiaryProfessionalSituation_avisImposition"], label[for="candidature_acquereur_financiaryProfessionalSituation_autresRevenus"]').hide()
+        
+        })
+                
+       
+    </script>
+{% endblock %}

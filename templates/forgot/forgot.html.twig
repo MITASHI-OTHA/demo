@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% set title = 'mot de passe perdu ?' %}
+
+{% block body %}
+<style>
+    section {
+        margin-top: 10%
+    }
+    .text-password-retrieve {
+        display: none
+    }
+    .visibled {
+        display: block
+    }
+</style>
+<div class="container">
+    <section>
+        <div class="row">
+                <div class="col-md-6">
+                        
+                        <div class="text-password-retrieve visibled">
+                            <h2>  Mot de passe oublié ? </h2>
+                            <p>
+                                Vous avez oublié votre mot de passe ? Ne vous inquiétez pas cela nous arrive aussi ;) 
+                                Nous allons vous envoyer la marche à suivre par e-mail.
+                            </p>
+                        </div>
+                       <div class="text-password-retrieve">
+                            <h2>  C’est dans la boite ! </h2>
+                            <p>
+                                Un e-mail contenant le lien de validation pour réinitialiser votre mot de passe vient de vous être envoyé. Veuillez cliquer sur ce lien pour finaliser la réinitialisation de votre mot de passe
+                            </p>
+                       </div>
+
+                        <form>
+                            <div class="form-group">
+                                <label for="user-email">Email*</label>
+                                <input type="email" class="form-control" id="user-email" placeholder="Votre email" style="width: 50%">
+                                <br>
+                                <a href="#" class="btn btn-primary btn-tiny bnt-renitialize" role="button" aria-pressed="true">Réinitialiser mon mot de passe</a>
+                            </div>
+                        </form>
+                </div>
+                <div class="col-md-6">
+                    <div style="display: flex">
+                        <img src="{{ asset('build/images/web/cityzens-forgot-page.png') }}" style="margin: auto;width: 479px">
+                    </div>
+                </div>
+        </div>
+    </section>
+
+
+</div>
+{% endblock %}
+    {% block javascripts %}
+        <script>
+            //window.addEventListener
+                    $(function() {
+                        $('.bnt-renitialize').on('click', function($e) {
+                            $e.preventDefault()
+                            $(".text-password-retrieve").each(function() {
+                                console.log($(this).hasClass('visibled'))
+                                $(this).hasClass('visibled')?$(this).removeClass('visibled'):$(this).addClass('visibled')
+                            })
+                        } )
+                    })
+            </script>
+    {% endblock %}
