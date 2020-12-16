@@ -223,7 +223,7 @@ class HomeController extends AbstractController
      */
     public function membre() {
       
-        return $this->render('espace/profile.html.twig',
+        return $this->render('espace/user-profile.html.twig',
         [
            
         ]);

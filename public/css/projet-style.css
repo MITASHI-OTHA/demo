@@ -236,15 +236,11 @@ margin-top: 15px
 }
 .min-author {
     border-radius: 50%;
-    width: 70px;
-    height: 70px;
     margin: auto;
     overflow: hidden;
-    background: #e7edf338;
-    display: flex;
 }
 .min-author img {
-    width: 70px
+    width: 125px
 }
 .event {
     background-color: #fff;
@@ -455,7 +451,7 @@ transform: scale(1.2)
     margin-bottom: 1rem;
 }
  .vignettes-parent .thumbnail-image img {
-    width: 220px;
+    width: 100%;
  }
 .sliders .thumbnail-image img {
     width: 200px;
@@ -538,7 +534,7 @@ a:hover {
 .fixed {
     position: fixed;
     display: block;
-    bottom: 6vh;
+    inset: 59px auto auto 60%;
     width: 32%;
 }
 .absolute {
@@ -546,6 +542,7 @@ a:hover {
     width: 100% !important;
     left: 10vh;
     right: 0;
+    bottom: 0;
 }
 .event-detail p {
     font-size: 11px;

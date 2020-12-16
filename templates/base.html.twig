@@ -170,7 +170,7 @@
       </div>
       {# block de connexion #}
           <div class="pop-up-connexion ">
-               {{ render(controller("App\\Controller\\HomeController::loginform")) }}
+            {{ render(path("loginform")) }}
           </div>
         {# fin #}
           {% block body %}{% endblock %}

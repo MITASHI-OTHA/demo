@@ -10,10 +10,11 @@
         <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
         <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
         <link rel="stylesheet" href="{{ asset('css/flickity.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/emojify.css') }}">
         <link rel="stylesheet" href="{{ asset('css/classic.css') }}">
         <link rel="stylesheet" href="{{ asset('css/classic.time.css') }}">
-         <link rel="stylesheet" href="{{ asset('css/default.date.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/default.date.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/slick.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/slick-theme.css') }}">
           <!--[if IE]>
               <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
@@ -142,7 +143,7 @@
             {# fin #}
              <div class="menus-user">
                   <ul>
-                      <li><a href="{{path('profil')}}"> Mon profil </a></li>
+                      <li><a href="{{path('me')}}"> Mon profil </a></li>
                       <li><a href="{{path('logout')}}"> Se deconnecter </a></li>
                   </ul>
             </div>
@@ -252,12 +253,12 @@
 <!-- Footer -->
         <script src=" {{ asset('js/bootstrap-slider.min.js ') }}"></script>
         <script src=" {{ asset('js/isotope2.pkgd.min.js ') }}"></script>
-         <script src=" {{ asset('js/flickity.pkgd.min.js ') }}"></script>
-         <script src="{{ asset('js/picker.js') }}"></script>
-         <script src="{{ asset('js/picker.time.js') }}"></script>
-         <script src="{{ asset('js/picker.date.js') }}"></script>
-          <script src="{{ asset('js/wow.js') }}"></script>
-         
+        <script src=" {{ asset('js/flickity.pkgd.min.js ') }}"></script>
+        <script src="{{ asset('js/picker.js') }}"></script>
+        <script src="{{ asset('js/picker.time.js') }}"></script>
+        <script src="{{ asset('js/picker.date.js') }}"></script>
+        <script src="{{ asset('js/wow.js') }}"></script>
+         <script src="{{ asset('js/slick.js') }}"></script>
         {% block javascripts %}{% endblock %}
          <script>
             $(function() {

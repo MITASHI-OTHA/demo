@@ -381,6 +381,12 @@ class __TwigTemplate_b0442364cbec460ec92244aac57e074490d2f4771089f34b641bde1a127
         // line 243
         echo "                    </div>
         </section>
+
+                        <div class=\"slicks\">
+                            <div>your content</div>
+                            <div>your content</div>
+                            <div>your content</div>
+                        </div>
     </div>
 </section>
     
@@ -393,7 +399,7 @@ class __TwigTemplate_b0442364cbec460ec92244aac57e074490d2f4771089f34b641bde1a127
 
     }
 
-    // line 249
+    // line 255
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -403,9 +409,12 @@ class __TwigTemplate_b0442364cbec460ec92244aac57e074490d2f4771089f34b641bde1a127
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 250
+        // line 256
         echo "    <script>
         \$(function() {
+              \$('.slicks').slick({
+          
+      })
             \$(document).on('click', '.fa-heart', function() {
                 \$(this).hasClass('favoris')?\$(this).removeClass('favoris'):\$(this).addClass('favoris')
             } )
@@ -432,7 +441,7 @@ class __TwigTemplate_b0442364cbec460ec92244aac57e074490d2f4771089f34b641bde1a127
 
     public function getDebugInfo()
     {
-        return array (  407 => 250,  397 => 249,  382 => 243,  361 => 224,  337 => 203,  313 => 182,  289 => 161,  265 => 140,  241 => 119,  219 => 100,  211 => 95,  206 => 93,  185 => 75,  177 => 70,  172 => 68,  168 => 66,  166 => 65,  146 => 47,  138 => 42,  133 => 40,  129 => 38,  122 => 32,  117 => 30,  113 => 27,  103 => 26,  73 => 4,  63 => 3,  52 => 1,  50 => 2,  37 => 1,);
+        return array (  413 => 256,  403 => 255,  382 => 243,  361 => 224,  337 => 203,  313 => 182,  289 => 161,  265 => 140,  241 => 119,  219 => 100,  211 => 95,  206 => 93,  185 => 75,  177 => 70,  172 => 68,  168 => 66,  166 => 65,  146 => 47,  138 => 42,  133 => 40,  129 => 38,  122 => 32,  117 => 30,  113 => 27,  103 => 26,  73 => 4,  63 => 3,  52 => 1,  50 => 2,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -681,6 +690,12 @@ class __TwigTemplate_b0442364cbec460ec92244aac57e074490d2f4771089f34b641bde1a127
                         {# fin exemples #}
                     </div>
         </section>
+
+                        <div class=\"slicks\">
+                            <div>your content</div>
+                            <div>your content</div>
+                            <div>your content</div>
+                        </div>
     </div>
 </section>
     
@@ -688,6 +703,9 @@ class __TwigTemplate_b0442364cbec460ec92244aac57e074490d2f4771089f34b641bde1a127
 {% block javascripts %}
     <script>
         \$(function() {
+              \$('.slicks').slick({
+          
+      })
             \$(document).on('click', '.fa-heart', function() {
                 \$(this).hasClass('favoris')?\$(this).removeClass('favoris'):\$(this).addClass('favoris')
             } )

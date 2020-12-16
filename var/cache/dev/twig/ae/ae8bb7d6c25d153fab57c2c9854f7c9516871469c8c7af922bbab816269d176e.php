@@ -355,9 +355,10 @@ class __TwigTemplate_d176324defcd93b57b5f542b2a1d935a73fe26efbcd305c9320ffbd0367
                             </li>
                         </ul>
                     </nav>
+
                 </div>
                 ";
-        // line 243
+        // line 244
         echo "        </div>
     </div>
 ";
@@ -369,7 +370,7 @@ class __TwigTemplate_d176324defcd93b57b5f542b2a1d935a73fe26efbcd305c9320ffbd0367
 
     }
 
-    // line 246
+    // line 247
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -379,8 +380,9 @@ class __TwigTemplate_d176324defcd93b57b5f542b2a1d935a73fe26efbcd305c9320ffbd0367
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 247
+        // line 248
         echo "    <script>
+      
             \$(function() {
                 wow = new WOW(
                     {
@@ -414,7 +416,7 @@ class __TwigTemplate_d176324defcd93b57b5f542b2a1d935a73fe26efbcd305c9320ffbd0367
 
     public function getDebugInfo()
     {
-        return array (  383 => 247,  373 => 246,  361 => 243,  335 => 218,  325 => 210,  301 => 189,  277 => 168,  262 => 155,  251 => 146,  236 => 133,  233 => 131,  223 => 123,  199 => 102,  175 => 81,  160 => 68,  149 => 59,  125 => 38,  115 => 37,  73 => 4,  63 => 3,  52 => 1,  50 => 2,  37 => 1,);
+        return array (  384 => 248,  374 => 247,  362 => 244,  335 => 218,  325 => 210,  301 => 189,  277 => 168,  262 => 155,  251 => 146,  236 => 133,  233 => 131,  223 => 123,  199 => 102,  175 => 81,  160 => 68,  149 => 59,  125 => 38,  115 => 37,  73 => 4,  63 => 3,  52 => 1,  50 => 2,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -659,6 +661,7 @@ class __TwigTemplate_d176324defcd93b57b5f542b2a1d935a73fe26efbcd305c9320ffbd0367
                             </li>
                         </ul>
                     </nav>
+
                 </div>
                 {#  #}
         </div>
@@ -666,6 +669,7 @@ class __TwigTemplate_d176324defcd93b57b5f542b2a1d935a73fe26efbcd305c9320ffbd0367
 {% endblock %}
 {% block javascripts %}
     <script>
+      
             \$(function() {
                 wow = new WOW(
                     {

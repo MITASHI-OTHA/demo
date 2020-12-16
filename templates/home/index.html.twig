@@ -248,10 +248,8 @@
 {% endblock %}
 {% block javascripts %}
     <script>
-        $(function() {
             $(document).on('click', '.fa-heart', function() {
                 $(this).hasClass('favoris')?$(this).removeClass('favoris'):$(this).addClass('favoris')
             } )
-        })
     </script>
 {% endblock %}

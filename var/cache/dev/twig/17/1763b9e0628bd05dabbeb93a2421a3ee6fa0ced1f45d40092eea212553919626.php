@@ -138,25 +138,24 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
                                     
                                     <div class=\"row group-list-detail\">
                                             <div class=\"col-md-6\">
-                                            
                                                 <ul class=\"list-unstyled list-inline first d-flex\">
-                                                            <li class=\"list-inline-item facebook\">
-                                                                <div>
-                                                                        <i class=\"fab fa-facebook-f\"></i>
-                                                                </div>
-                                                            </li>
-                                                            <li class=\"list-inline-item\">
-                                                                <div>
-                                                                        <i class=\"fab fa-whatsapp\"></i>
-                                                                </div>
-                                                            </li>
-                                                            <li class=\"list-inline-item\">
-                                                                <div>
-                                                                        <i class=\"fab fa-twitter\"></i>
-                                                                </div>
-                                                                
-                                                            </li>
-                                                        </ul>
+                                                    <li class=\"list-inline-item facebook\">
+                                                        <div>
+                                                                <i class=\"fab fa-facebook-f\"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li class=\"list-inline-item\">
+                                                        <div>
+                                                                <i class=\"fab fa-whatsapp\"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li class=\"list-inline-item\">
+                                                        <div>
+                                                                <i class=\"fab fa-twitter\"></i>
+                                                        </div>
+                                                        
+                                                    </li>
+                                                </ul>
                                             </div>
                                             
                                             <div class=\"col-md-5\">
@@ -170,76 +169,85 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
                                             </div>
                                         </div>
                                     </div>
+                                   
                                     <div class=\"col-md-11\">
-                                    <div id=\"carouselExampleIndicators\" class=\"carousel slide\" data-ride=\"carousel\">
-                                        <ol class=\"carousel-indicators\">
-                                            <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"0\" class=\"active\"></li>
-                                            <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"1\"></li>
-                                            <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"2\"></li>
-                                        </ol>
-                                        <div class=\"carousel-inner\">
-                                            <div class=\"carousel-item active\">
-                                                <img class=\"d-block w-100\" src=\"";
-        // line 92
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/VillagePenfeld.0c0d76a1.png"), "html", null, true);
+                                     ";
+        // line 85
+        echo "                                        <div id=\"carouselExampleIndicators\" class=\"carousel slide\" data-ride=\"carousel\">
+                                            <ol class=\"carousel-indicators\">
+                                                <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"0\" class=\"active\"></li>
+                                                <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"1\"></li>
+                                                <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"2\"></li>
+                                            </ol>
+                                            <div class=\"carousel-inner\">
+                                                <div class=\"carousel-item active\">
+                                                    <img class=\"d-block w-100\" src=\"";
+        // line 93
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/K&+_NEOLIA_VUE-03.jpg"), "html", null, true);
         echo "\" alt=\"First slide\">
-                                            </div>
-                                            <div class=\"carousel-item\">
-                                                <img class=\"d-block w-100\" src=\"";
-        // line 95
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/habitat-participatif-domaine-des-possibles-le-22-09-2020-pho_4940749.0d585c4d.jpeg"), "html", null, true);
+                                                </div>
+                                                <div class=\"carousel-item\">
+                                                    <img class=\"d-block w-100\" src=\"";
+        // line 96
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/K&+_NEOLIA_VUE-05.jpg"), "html", null, true);
         echo "\" alt=\"Second slide\">
-                                            </div>
-                                            <div class=\"carousel-item\">
-                                                <img class=\"d-block w-100\" src=\"";
-        // line 98
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/cpuig.1608285c.jpg"), "html", null, true);
+                                                </div>
+                                                <div class=\"carousel-item\">
+                                                    <img class=\"d-block w-100\" src=\"";
+        // line 99
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/K&+-NEOLIA-VUE-04.jpg"), "html", null, true);
         echo "\" alt=\"Third slide\">
-                                            </div>
-                                            <div class=\"carousel-item\">
-                                                <img class=\"d-block w-100\" src=\"";
-        // line 101
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/unnamed-2.a4c8bc21.jpg"), "html", null, true);
+                                                </div>
+                                                <div class=\"carousel-item\">
+                                                    <img class=\"d-block w-100\" src=\"";
+        // line 102
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/photo-sat-st-ferjeux_sm.jpg"), "html", null, true);
         echo "\" alt=\"Third slide\">
+                                                </div>
                                             </div>
+                                            <a class=\"carousel-control-prev\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"prev\">
+                                                <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>
+                                                <span class=\"sr-only\">Previous</span>
+                                            </a>
+                                            <a class=\"carousel-control-next\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"next\">
+                                                <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>
+                                                <span class=\"sr-only\">Next</span>
+                                            </a>
                                         </div>
-                                        <a class=\"carousel-control-prev\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"prev\">
-                                            <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>
-                                            <span class=\"sr-only\">Previous</span>
-                                        </a>
-                                        <a class=\"carousel-control-next\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"next\">
-                                            <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>
-                                            <span class=\"sr-only\">Next</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class=\"col-md-11 text-center d-flex align-items-center vignettes-parent justify-content-center\">
-                                    <div class=\"thumbnail-image d-flex justify-content-center align-items-center list-inline-item\" data-item=\"0\">
-                                        <img src=\"";
-        // line 116
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/VillagePenfeld.0c0d76a1.png"), "html", null, true);
-        echo "\">
-                                    </div>
-                                    <div class=\"thumbnail-image d-flex justify-content-center align-items-center list-inline-item\" data-item=\"1\">
-                                        <img src=\"";
+                                         ";
+        // line 115
+        echo "                                    </div>
+                                     ";
+        // line 117
+        echo "                                    <div class=\"col-md-11 text-center d-flex align-items-center vignettes-parent justify-content-center\">
+                                        <div class=\"thumbnail-image d-flex justify-content-center align-items-center list-inline-item\" data-item=\"0\">
+                                            <img src=\"";
         // line 119
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/habitat-participatif-domaine-des-possibles-le-22-09-2020-pho_4940749.0d585c4d.jpeg"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/K&+_NEOLIA_VUE-03.jpg"), "html", null, true);
         echo "\">
-                                    </div>
-                                    <div class=\"thumbnail-image d-flex justify-content-center align-items-center list-inline-item\" data-item=\"2\">
-                                        <img src=\"";
+                                        </div>
+                                        <div class=\"thumbnail-image d-flex justify-content-center align-items-center list-inline-item\" data-item=\"1\">
+                                            <img src=\"";
         // line 122
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/cpuig.1608285c.jpg"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/K&+_NEOLIA_VUE-05.jpg"), "html", null, true);
         echo "\">
-                                    </div>
-                                    <div class=\"thumbnail-image d-flex justify-content-center align-items-center list-inline-item\" data-item=\"3\">
-                                        <img src=\"";
+                                        </div>
+                                        <div class=\"thumbnail-image d-flex justify-content-center align-items-center list-inline-item\" data-item=\"2\">
+                                            <img src=\"";
         // line 125
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/unnamed-2.a4c8bc21.jpg"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/K&+-NEOLIA-VUE-04.jpg"), "html", null, true);
         echo "\">
+                                        </div>
+                                        <div class=\"thumbnail-image d-flex justify-content-center align-items-center list-inline-item\" data-item=\"3\">
+                                            <img src=\"";
+        // line 128
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/photo-sat-st-ferjeux_sm.jpg"), "html", null, true);
+        echo "\">
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                    ";
+        // line 132
+        echo "                            </div>
 
                             <div class=\"row group-projet mt-4\">
                                 <div class=\"col-md-7 col-all-detail\">
@@ -400,7 +408,7 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
                                             <h5 style=\"color: #667D99;font-weight: 600\"> EN SAVOIR PLUS </h5>
                                             <ul>
                                                 <li> <a href=\"";
-        // line 288
+        // line 292
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("docs/Catalog-Artistes-Festillésime41-Prog2012.pdf"), "html", null, true);
         echo "\" target=\"blank\"> maquette de présentation.pdf </a></li>
                                                 <li> <a href=\"Catalog-Artistes-Festillésime41-Prog2012.pdf\" target=\"blank\"> lescityzens.com </a></li>
@@ -422,7 +430,7 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
                                                             <div class=\"d-flex justify-content-center\">
                                                                 <div class=\"d-flex justify-content-center align-items-center\">
                                                                     <img src=\"";
-        // line 307
+        // line 311
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/neolia.jpg"), "html", null, true);
         echo "\" class=\"w-100 img-fluid \">
                                                                 </div>
@@ -437,7 +445,7 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
                                                             <div class=\"d-flex justify-content-center\">
                                                                 <div class=\"d-flex justify-content-center align-items-center\">
                                                                     <img src=\"";
-        // line 319
+        // line 323
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/logotype_lcz.svg"), "html", null, true);
         echo "\" class=\"w-100 img-fluid \">
                                                                 </div>
@@ -452,7 +460,7 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
                                                             <div class=\"d-flex justify-content-center\">
                                                                 <div class=\"d-flex justify-content-center align-items-center\">
                                                                     <img src=\"";
-        // line 331
+        // line 335
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/ketPlus.png"), "html", null, true);
         echo "\" class=\"w-100 img-fluid\">
                                                                 </div>
@@ -466,7 +474,7 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
                                                 </div>
                                         </div>
                                         ";
-        // line 343
+        // line 347
         echo "                                        <h3 style=\"margin-top: 40px\"> Les ambitions du projet et la démarche participative </h3>
                                         <div class=\"col-key-rejoindre\">
                                             <p>
@@ -478,7 +486,7 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
                                             </p>
 
                                         ";
-        // line 354
+        // line 358
         echo "                                        <h6 style=\"margin-top: 40px\"> Le mot des architectes : </h6>
                                         
                                             <p>
@@ -511,7 +519,7 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
                                             </p>
                                         </div>
                                         <a href=\"";
-        // line 385
+        // line 389
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("candidater");
         echo "\" class=\"btn btnSubmit btn-lg\" role=\"button\" aria-disabled=\"false\" id=\"btnCand\">Candidater</a>
                                 </div>
@@ -521,13 +529,13 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
                                             <div class=\"blk-author-detail text-center\">
                                                 <div class=\"min-author\">
                                                     <img src=\"";
-        // line 392
+        // line 396
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/logotype_lcz.svg"), "html", null, true);
         echo "\">
                                                 </div>
-                                                    <h5 class=\"mt-3 mb-0\"> LesCityZens </h5>
-                                                <a href=\"";
-        // line 395
+                                                    ";
+        // line 399
+        echo "                                                <a href=\"";
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("contact_ad_author");
         echo "\" class=\"btn btnPrimary btn-sm w-100 ml-l3 mr-3 mt-3\">Contacter</a>
                                                 <div class=\"blk-phone\">
@@ -535,16 +543,16 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
                                                     <button class=\"btn btnSubmitBlue btn-sm btn-author ml-l3 mr-3 mt-3 w-100\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\" data-info=\"0600000000\"> Afficher le numéro de téléphone </button>
                                                     </div>
                                                 </div>
-                                                <p style=\"margin-top: 1rem;font-size: 12px\">
-                                                    Des questions ? Envie d'en savoir plus ? Venez en discuter avec nous !
+                                                <p style=\"margin-top: 1rem;font-size: 13px\">
+                                                    Des questions ? Envie d'en savoir plus ? <br> Venez en discuter avec nous !
                                                 </p>
                                             </div>
                                             ";
-        // line 406
+        // line 410
         echo "
                                             <div class=\"blk-event text-center\">
                                             ";
-        // line 409
+        // line 413
         echo "                                                   <div class=\"slicks\">
                                                         <div class=\"event p-4  position-relative\">
                                                             <div class=\"d-flex\">
@@ -607,7 +615,7 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
                                                    
                                                  
                                                         ";
-        // line 471
+        // line 475
         echo "                                                    <a href=\"";
         echo "\"  class=\"btn btnSubmitOutline w-100 mt-3\">
                                                         <i class=\"icon-simulation_vector greyturc\"></i>
@@ -615,7 +623,7 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
                                                         </a>
                                                         
                                                         <a href=\"";
-        // line 476
+        // line 480
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("candidater");
         echo "\"  class=\"btn btnSubmit w-100 mt-3\">
                                                             <i class=\"mr-2 fas fa-edit\"></i>
@@ -633,7 +641,7 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
                     </section>
     
     ";
-        // line 492
+        // line 496
         echo "    <div class=\"modal fade bd-example-modal-sm\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"mySmallModalLabel\" aria-hidden=\"true\" id=\"modal-info\">
         
     </div>
@@ -714,7 +722,7 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
 
     }
 
-    // line 565
+    // line 569
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -724,7 +732,7 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 566
+        // line 570
         echo "            <script>
             \$(function () {
                 const top = document.getElementById('btnCand')
@@ -810,7 +818,7 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
 
             var busIcon = new L.Icon({
                 iconUrl: \"";
-        // line 650
+        // line 654
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/images/static/house.svg"), "html", null, true);
         echo "\",
                 iconSize: [50, 50],
@@ -853,7 +861,7 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
                            \$('#blk-author').removeClass('fixed')
                        }
                         if(scroll >= top.offsetTop) {
-                            \$('#blk-author').addClass('absolute')
+                            \$('#blk-author').addClass('absolute').removeClass('fixed')
                         }
                     });
                 })
@@ -879,7 +887,7 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
 
     public function getDebugInfo()
     {
-        return array (  814 => 650,  728 => 566,  718 => 565,  637 => 492,  619 => 476,  611 => 471,  548 => 409,  544 => 406,  531 => 395,  525 => 392,  515 => 385,  482 => 354,  470 => 343,  456 => 331,  441 => 319,  426 => 307,  404 => 288,  238 => 125,  232 => 122,  226 => 119,  220 => 116,  202 => 101,  196 => 98,  190 => 95,  184 => 92,  119 => 30,  116 => 29,  106 => 28,  73 => 6,  63 => 5,  52 => 1,  50 => 3,  37 => 1,);
+        return array (  822 => 654,  736 => 570,  726 => 569,  645 => 496,  627 => 480,  619 => 475,  556 => 413,  552 => 410,  538 => 399,  533 => 396,  523 => 389,  490 => 358,  478 => 347,  464 => 335,  449 => 323,  434 => 311,  412 => 292,  250 => 132,  244 => 128,  238 => 125,  232 => 122,  226 => 119,  222 => 117,  219 => 115,  204 => 102,  198 => 99,  192 => 96,  186 => 93,  176 => 85,  119 => 30,  116 => 29,  106 => 28,  73 => 6,  63 => 5,  52 => 1,  50 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -934,25 +942,24 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
                                     
                                     <div class=\"row group-list-detail\">
                                             <div class=\"col-md-6\">
-                                            
                                                 <ul class=\"list-unstyled list-inline first d-flex\">
-                                                            <li class=\"list-inline-item facebook\">
-                                                                <div>
-                                                                        <i class=\"fab fa-facebook-f\"></i>
-                                                                </div>
-                                                            </li>
-                                                            <li class=\"list-inline-item\">
-                                                                <div>
-                                                                        <i class=\"fab fa-whatsapp\"></i>
-                                                                </div>
-                                                            </li>
-                                                            <li class=\"list-inline-item\">
-                                                                <div>
-                                                                        <i class=\"fab fa-twitter\"></i>
-                                                                </div>
-                                                                
-                                                            </li>
-                                                        </ul>
+                                                    <li class=\"list-inline-item facebook\">
+                                                        <div>
+                                                                <i class=\"fab fa-facebook-f\"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li class=\"list-inline-item\">
+                                                        <div>
+                                                                <i class=\"fab fa-whatsapp\"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li class=\"list-inline-item\">
+                                                        <div>
+                                                                <i class=\"fab fa-twitter\"></i>
+                                                        </div>
+                                                        
+                                                    </li>
+                                                </ul>
                                             </div>
                                             
                                             <div class=\"col-md-5\">
@@ -966,51 +973,56 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
                                             </div>
                                         </div>
                                     </div>
+                                   
                                     <div class=\"col-md-11\">
-                                    <div id=\"carouselExampleIndicators\" class=\"carousel slide\" data-ride=\"carousel\">
-                                        <ol class=\"carousel-indicators\">
-                                            <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"0\" class=\"active\"></li>
-                                            <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"1\"></li>
-                                            <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"2\"></li>
-                                        </ol>
-                                        <div class=\"carousel-inner\">
-                                            <div class=\"carousel-item active\">
-                                                <img class=\"d-block w-100\" src=\"{{ asset('build/images/static/VillagePenfeld.0c0d76a1.png') }}\" alt=\"First slide\">
+                                     {# __________CAROUSEL DE PHOTOS__________ #}
+                                        <div id=\"carouselExampleIndicators\" class=\"carousel slide\" data-ride=\"carousel\">
+                                            <ol class=\"carousel-indicators\">
+                                                <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"0\" class=\"active\"></li>
+                                                <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"1\"></li>
+                                                <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"2\"></li>
+                                            </ol>
+                                            <div class=\"carousel-inner\">
+                                                <div class=\"carousel-item active\">
+                                                    <img class=\"d-block w-100\" src=\"{{ asset('build/images/static/K&+_NEOLIA_VUE-03.jpg') }}\" alt=\"First slide\">
+                                                </div>
+                                                <div class=\"carousel-item\">
+                                                    <img class=\"d-block w-100\" src=\"{{ asset('build/images/static/K&+_NEOLIA_VUE-05.jpg') }}\" alt=\"Second slide\">
+                                                </div>
+                                                <div class=\"carousel-item\">
+                                                    <img class=\"d-block w-100\" src=\"{{ asset('build/images/static/K&+-NEOLIA-VUE-04.jpg') }}\" alt=\"Third slide\">
+                                                </div>
+                                                <div class=\"carousel-item\">
+                                                    <img class=\"d-block w-100\" src=\"{{ asset('build/images/static/photo-sat-st-ferjeux_sm.jpg') }}\" alt=\"Third slide\">
+                                                </div>
                                             </div>
-                                            <div class=\"carousel-item\">
-                                                <img class=\"d-block w-100\" src=\"{{ asset('build/images/static/habitat-participatif-domaine-des-possibles-le-22-09-2020-pho_4940749.0d585c4d.jpeg') }}\" alt=\"Second slide\">
-                                            </div>
-                                            <div class=\"carousel-item\">
-                                                <img class=\"d-block w-100\" src=\"{{ asset('build/images/static/cpuig.1608285c.jpg') }}\" alt=\"Third slide\">
-                                            </div>
-                                            <div class=\"carousel-item\">
-                                                <img class=\"d-block w-100\" src=\"{{ asset('build/images/static/unnamed-2.a4c8bc21.jpg') }}\" alt=\"Third slide\">
-                                            </div>
+                                            <a class=\"carousel-control-prev\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"prev\">
+                                                <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>
+                                                <span class=\"sr-only\">Previous</span>
+                                            </a>
+                                            <a class=\"carousel-control-next\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"next\">
+                                                <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>
+                                                <span class=\"sr-only\">Next</span>
+                                            </a>
                                         </div>
-                                        <a class=\"carousel-control-prev\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"prev\">
-                                            <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>
-                                            <span class=\"sr-only\">Previous</span>
-                                        </a>
-                                        <a class=\"carousel-control-next\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"next\">
-                                            <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>
-                                            <span class=\"sr-only\">Next</span>
-                                        </a>
+                                         {# __________FIN__________ #}
                                     </div>
-                                </div>
-                                <div class=\"col-md-11 text-center d-flex align-items-center vignettes-parent justify-content-center\">
-                                    <div class=\"thumbnail-image d-flex justify-content-center align-items-center list-inline-item\" data-item=\"0\">
-                                        <img src=\"{{ asset('build/images/static/VillagePenfeld.0c0d76a1.png') }}\">
+                                     {# __________MINIATURE DE PHOTOS__________ #}
+                                    <div class=\"col-md-11 text-center d-flex align-items-center vignettes-parent justify-content-center\">
+                                        <div class=\"thumbnail-image d-flex justify-content-center align-items-center list-inline-item\" data-item=\"0\">
+                                            <img src=\"{{ asset('build/images/static/K&+_NEOLIA_VUE-03.jpg') }}\">
+                                        </div>
+                                        <div class=\"thumbnail-image d-flex justify-content-center align-items-center list-inline-item\" data-item=\"1\">
+                                            <img src=\"{{ asset('build/images/static/K&+_NEOLIA_VUE-05.jpg') }}\">
+                                        </div>
+                                        <div class=\"thumbnail-image d-flex justify-content-center align-items-center list-inline-item\" data-item=\"2\">
+                                            <img src=\"{{ asset('build/images/static/K&+-NEOLIA-VUE-04.jpg') }}\">
+                                        </div>
+                                        <div class=\"thumbnail-image d-flex justify-content-center align-items-center list-inline-item\" data-item=\"3\">
+                                            <img src=\"{{ asset('build/images/static/photo-sat-st-ferjeux_sm.jpg') }}\">
+                                        </div>
                                     </div>
-                                    <div class=\"thumbnail-image d-flex justify-content-center align-items-center list-inline-item\" data-item=\"1\">
-                                        <img src=\"{{ asset('build/images/static/habitat-participatif-domaine-des-possibles-le-22-09-2020-pho_4940749.0d585c4d.jpeg') }}\">
-                                    </div>
-                                    <div class=\"thumbnail-image d-flex justify-content-center align-items-center list-inline-item\" data-item=\"2\">
-                                        <img src=\"{{ asset('build/images/static/cpuig.1608285c.jpg') }}\">
-                                    </div>
-                                    <div class=\"thumbnail-image d-flex justify-content-center align-items-center list-inline-item\" data-item=\"3\">
-                                        <img src=\"{{ asset('build/images/static/unnamed-2.a4c8bc21.jpg') }}\">
-                                    </div>
-                                </div>
+                                    {# __________FIN__________ #}
                             </div>
 
                             <div class=\"row group-projet mt-4\">
@@ -1277,15 +1289,15 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
                                                 <div class=\"min-author\">
                                                     <img src=\"{{ asset('build/images/static/logotype_lcz.svg') }}\">
                                                 </div>
-                                                    <h5 class=\"mt-3 mb-0\"> LesCityZens </h5>
+                                                    {# <h5 class=\"mt-3 mb-0\"> LesCityZens </h5> #}
                                                 <a href=\"{{path('contact_ad_author')}}\" class=\"btn btnPrimary btn-sm w-100 ml-l3 mr-3 mt-3\">Contacter</a>
                                                 <div class=\"blk-phone\">
                                                     <div>
                                                     <button class=\"btn btnSubmitBlue btn-sm btn-author ml-l3 mr-3 mt-3 w-100\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\" data-info=\"0600000000\"> Afficher le numéro de téléphone </button>
                                                     </div>
                                                 </div>
-                                                <p style=\"margin-top: 1rem;font-size: 12px\">
-                                                    Des questions ? Envie d'en savoir plus ? Venez en discuter avec nous !
+                                                <p style=\"margin-top: 1rem;font-size: 13px\">
+                                                    Des questions ? Envie d'en savoir plus ? <br> Venez en discuter avec nous !
                                                 </p>
                                             </div>
                                             {# Iteration #}
@@ -1574,7 +1586,7 @@ class __TwigTemplate_607eb489a7213040c73ee6ed8946fe738f502ece45348b1e46e71255025
                            \$('#blk-author').removeClass('fixed')
                        }
                         if(scroll >= top.offsetTop) {
-                            \$('#blk-author').addClass('absolute')
+                            \$('#blk-author').addClass('absolute').removeClass('fixed')
                         }
                     });
                 })

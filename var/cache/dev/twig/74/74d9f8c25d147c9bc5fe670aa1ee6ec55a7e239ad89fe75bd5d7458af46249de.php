@@ -1109,7 +1109,7 @@ class __TwigTemplate_b17a0618504d211407efc5b56e62575feb3a6c6845147ecaebecf5c6ee0
                 );
                 \$(\".autresStatus\").focus()
             });
-            
+
             \$('#candidature_LogementActuel_statuts input[type=\"radio\"]').not(\$(\"#candidature_LogementActuel_statuts_3\")).on('input', function () {
                 \$(\".autresStatus\").fadeOut();
             });
@@ -1131,6 +1131,7 @@ class __TwigTemplate_b17a0618504d211407efc5b56e62575feb3a6c6845147ecaebecf5c6ee0
                     \$('.date').datepicker({
                         language: 'fr'
                     })
+                    // Activer la button courant
                     \$('#myTab li>div').on('click',function() {
                         var el = \$(this)
                         \$('#myTab li>div').removeClass('actives')
@@ -1928,7 +1929,7 @@ class __TwigTemplate_b17a0618504d211407efc5b56e62575feb3a6c6845147ecaebecf5c6ee0
                 );
                 \$(\".autresStatus\").focus()
             });
-            
+
             \$('#candidature_LogementActuel_statuts input[type=\"radio\"]').not(\$(\"#candidature_LogementActuel_statuts_3\")).on('input', function () {
                 \$(\".autresStatus\").fadeOut();
             });
@@ -1950,6 +1951,7 @@ class __TwigTemplate_b17a0618504d211407efc5b56e62575feb3a6c6845147ecaebecf5c6ee0
                     \$('.date').datepicker({
                         language: 'fr'
                     })
+                    // Activer la button courant
                     \$('#myTab li>div').on('click',function() {
                         var el = \$(this)
                         \$('#myTab li>div').removeClass('actives')

@@ -354,9 +354,9 @@ class __TwigTemplate_304907fbb7f299b9b1463ac6f14351a8d63a3a5409fb7b00fe3dd46871d
       ";
         // line 172
         echo "          <div class=\"pop-up-connexion \">
-               ";
+            ";
         // line 173
-        echo $this->env->getRuntime('Symfony\Bridge\Twig\Extension\HttpKernelRuntime')->renderFragment(Symfony\Bridge\Twig\Extension\HttpKernelExtension::controller("App\\Controller\\HomeController::loginform"));
+        echo $this->env->getRuntime('Symfony\Bridge\Twig\Extension\HttpKernelRuntime')->renderFragment($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("loginform"));
         echo "
           </div>
         ";
@@ -781,7 +781,7 @@ class __TwigTemplate_304907fbb7f299b9b1463ac6f14351a8d63a3a5409fb7b00fe3dd46871d
       </div>
       {# block de connexion #}
           <div class=\"pop-up-connexion \">
-               {{ render(controller(\"App\\\\Controller\\\\HomeController::loginform\")) }}
+            {{ render(path(\"loginform\")) }}
           </div>
         {# fin #}
           {% block body %}{% endblock %}
